@@ -3,229 +3,270 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>מנאראת טורעאן · המסלול</title>
+<title>מנאראת טורעאן · הליווי לא נגמר</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;700;900&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500;700;900&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
   :root{
-    --pink:#E8348A; --pink-soft:#FDE4F0; --yellow:#FFF200; --yellow-soft:#FFFBC2;
-    --ink:#1E1B2E; --muted:#5E5A6E; --paper:#FFFDF7; --line:#EADFE6;
+    --bg:#0B0A10; --bg2:#13121B; --ink:#F4F1EC; --muted:#9A96A8; --dim:#5D596B;
+    --line:rgba(244,241,236,.12); --pink:#E8348A; --pink-glow:rgba(232,52,138,.45); --yellow:#FFF200;
   }
   *{box-sizing:border-box;margin:0;padding:0}
-  body{font-family:'Rubik',system-ui,sans-serif;background:var(--paper);color:var(--ink);line-height:1.5}
-  header{padding:40px 16px 24px;text-align:center;position:relative;overflow:hidden}
-  header .logo{height:56px;margin-bottom:18px}
-  header .eyebrow{display:inline-block;background:var(--yellow);padding:4px 14px;border-radius:99px;font-weight:700;font-size:14px}
-  header h1{font-size:clamp(30px,6vw,56px);font-weight:900;line-height:1.1;margin:14px 0 10px}
-  header h1 span{color:var(--pink)}
-  header p{color:var(--muted);font-size:18px;max-width:620px;margin:0 auto}
+  html{scroll-behavior:smooth}
+  body{font-family:'Rubik',system-ui,sans-serif;background:var(--bg);color:var(--ink);line-height:1.55;
+       -webkit-font-smoothing:antialiased;overflow-x:hidden}
+  body::before{content:"";position:fixed;inset:0;pointer-events:none;z-index:0;
+       background-image:linear-gradient(var(--line) 1px,transparent 1px),linear-gradient(90deg,var(--line) 1px,transparent 1px);
+       background-size:64px 64px;opacity:.35;mask-image:radial-gradient(ellipse at 50% 20%,#000 20%,transparent 75%)}
+  .wrap{position:relative;z-index:1;max-width:1180px;margin:0 auto;padding:0 24px}
+  .mono{font-family:'IBM Plex Mono',monospace;letter-spacing:.08em}
 
-  .route{position:relative;max-width:1000px;margin:20px auto 40px;padding:0 16px}
-  .road{position:absolute;top:0;bottom:0;right:50%;width:0;border-right:6px dashed var(--pink);transform:translateX(3px);opacity:.35}
-  .stop{position:relative;display:grid;grid-template-columns:1fr 80px 1fr;align-items:center;margin-bottom:46px}
-  .pin{grid-column:2;justify-self:center;width:62px;height:62px;border-radius:50%;background:var(--pink);color:#fff;
-       display:flex;align-items:center;justify-content:center;font-weight:900;font-size:28px;
-       box-shadow:0 0 0 8px var(--paper),0 0 0 12px var(--pink-soft);z-index:2}
-  .card{background:#fff;border-radius:24px;overflow:hidden;box-shadow:0 10px 30px rgba(232,52,138,.12);border:1px solid var(--line)}
-  .stop:nth-child(odd) .card{grid-column:1;grid-row:1}
-  .stop:nth-child(even) .card{grid-column:3;grid-row:1}
-  .pin{grid-row:1}
-  .art{aspect-ratio:16/10;display:flex;align-items:center;justify-content:center}
-  .art svg{width:100%;height:100%}
-  .txt{padding:18px 22px 22px}
-  .tag{font-size:13px;font-weight:700;color:var(--pink);letter-spacing:.5px}
-  .txt h2{font-size:26px;font-weight:900;margin:2px 0 6px}
-  .txt p{font-size:17px;color:var(--muted)}
-  .obj{margin-top:12px;font-size:14px;background:var(--yellow-soft);border-radius:10px;padding:8px 12px;color:var(--ink)}
-  .obj b{font-weight:700}
-  .big{font-size:44px;font-weight:900;color:var(--pink);line-height:1}
+  /* top bar */
+  .bar{display:flex;justify-content:space-between;align-items:center;padding:22px 0;border-bottom:1px solid var(--line);
+       font-size:13px;color:var(--muted)}
+  .bar .plate{background:#fff;border-radius:8px;padding:6px 10px;display:flex}
+  .bar .plate img{height:30px;display:block}
 
-  .finish{text-align:center;padding:10px 16px 50px}
-  .finish .flag{display:inline-block;background:var(--ink);color:#fff;font-weight:900;font-size:22px;padding:14px 26px;border-radius:16px}
-  footer{text-align:center;padding:20px 16px 40px;color:var(--muted);font-size:14px}
-  footer a{color:var(--pink);font-weight:700}
+  /* hero */
+  .hero{padding:72px 0 40px;position:relative}
+  .kicker{display:flex;gap:14px;align-items:center;color:var(--pink);font-size:14px;font-weight:500;letter-spacing:.12em}
+  .kicker::before{content:"";width:40px;height:1px;background:var(--pink)}
+  h1{font-size:clamp(44px,8.4vw,112px);font-weight:900;line-height:.98;letter-spacing:-.02em;margin:22px 0 26px}
+  h1 em{font-style:normal;color:transparent;-webkit-text-stroke:2px var(--ink)}
+  h1 .p{color:var(--pink)}
+  .lede{max-width:640px;font-size:clamp(18px,2.2vw,22px);font-weight:300;color:#CFCBD8}
+  .lede b{font-weight:500;color:var(--ink)}
 
-  @media (max-width:760px){
-    .road{right:39px;transform:none}
-    .stop{grid-template-columns:56px 1fr;gap:14px;margin-bottom:30px;align-items:start}
-    .pin{grid-column:1 !important;width:48px;height:48px;font-size:22px;margin-top:10px;box-shadow:0 0 0 6px var(--paper),0 0 0 9px var(--pink-soft)}
-    .stop:nth-child(odd) .card,.stop:nth-child(even) .card{grid-column:2}
-    .txt h2{font-size:22px}
+  /* trajectory */
+  .traj{margin:56px 0 0;position:relative}
+  .traj svg{width:100%;height:auto;display:block;overflow:visible}
+  .traj .curve{stroke-dasharray:1400;stroke-dashoffset:1400;animation:draw 2.6s cubic-bezier(.6,.1,.2,1) .3s forwards}
+  .traj .node{opacity:0;animation:pop .5s ease forwards}
+  @keyframes draw{to{stroke-dashoffset:0}}
+  @keyframes pop{to{opacity:1}}
+  .axis{display:flex;justify-content:space-between;color:var(--dim);font-size:12px;margin-top:10px}
+
+  /* figures */
+  .figs{display:grid;grid-template-columns:repeat(3,1fr);border-top:1px solid var(--line);border-bottom:1px solid var(--line);margin:72px 0 0}
+  .fig{padding:36px 28px;border-inline-start:1px solid var(--line)}
+  .fig:first-child{border-inline-start:0}
+  .fig .n{font-family:'IBM Plex Mono',monospace;font-size:clamp(64px,9vw,112px);font-weight:500;line-height:1;color:var(--ink)}
+  .fig .n sup{font-size:.32em;color:var(--pink);vertical-align:top;margin-inline-start:6px}
+  .fig .l{margin-top:14px;font-size:17px;color:var(--muted);max-width:240px}
+  .fig .l b{color:var(--ink);font-weight:500}
+
+  /* stations */
+  .sec-title{display:flex;justify-content:space-between;align-items:baseline;margin:110px 0 8px;padding-bottom:18px;border-bottom:1px solid var(--line)}
+  .sec-title h2{font-size:clamp(26px,3.4vw,40px);font-weight:700}
+  .sec-title span{color:var(--dim);font-size:13px}
+  .st{display:grid;grid-template-columns:120px 1fr 300px;gap:40px;padding:48px 0;border-bottom:1px solid var(--line);align-items:start}
+  .st .no{font-family:'IBM Plex Mono',monospace;font-size:15px;color:var(--pink)}
+  .st .no span{display:block;font-size:64px;line-height:1;color:var(--ink);font-weight:400;margin-top:6px;opacity:.9}
+  .st .stage{font-size:14px;letter-spacing:.14em;color:var(--muted);margin-bottom:10px}
+  .st h3{font-size:clamp(28px,3.6vw,44px);font-weight:700;line-height:1.1;margin-bottom:16px;letter-spacing:-.01em}
+  .st h3 .p{color:var(--pink)}
+  .st p{font-size:18px;font-weight:300;color:#CFCBD8;max-width:560px}
+  .st p b{font-weight:500;color:var(--ink)}
+  .st blockquote{margin-top:22px;padding:4px 18px 4px 0;border-inline-start:2px solid var(--pink);font-size:24px;font-weight:300;font-style:italic}
+  .visual{aspect-ratio:1/1;border:1px solid var(--line);border-radius:4px;position:relative;
+          background:radial-gradient(circle at 50% 45%,rgba(232,52,138,.16),transparent 62%),var(--bg2);display:flex;align-items:center;justify-content:center}
+  .visual svg{width:58%;height:58%}
+  .visual .cap{position:absolute;bottom:0;inset-inline:0;padding:10px 14px;border-top:1px solid var(--line);
+               font-size:12px;color:var(--muted);display:flex;justify-content:space-between;gap:10px}
+  .visual .cap b{color:var(--ink);font-weight:500}
+  .visual::before,.visual::after{content:"";position:absolute;width:10px;height:10px;border-color:var(--pink);border-style:solid}
+  .visual::before{top:-1px;right:-1px;border-width:2px 2px 0 0}
+  .visual::after{top:-1px;left:-1px;border-width:2px 0 0 2px}
+  .ico{fill:none;stroke:var(--ink);stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
+  .ico .a{stroke:var(--pink)}
+  .ico .f{fill:var(--pink);stroke:none}
+
+  /* closing */
+  .close{padding:120px 0 60px;text-align:center}
+  .close .kicker{justify-content:center}
+  .close .kicker::after{content:"";width:40px;height:1px;background:var(--pink)}
+  .close h2{font-size:clamp(34px,6vw,76px);font-weight:900;line-height:1.05;letter-spacing:-.02em;margin:22px auto 0;max-width:900px}
+  .close h2 .p{color:var(--pink)}
+  .partners{display:flex;justify-content:center;gap:0;margin:56px auto 0;border:1px solid var(--line);max-width:620px}
+  .partners div{flex:1;padding:22px 16px;border-inline-start:1px solid var(--line)}
+  .partners div:first-child{border-inline-start:0}
+  .partners small{display:block;color:var(--dim);font-size:12px;letter-spacing:.12em;margin-bottom:6px}
+  .partners strong{font-size:18px;font-weight:500}
+  footer{border-top:1px solid var(--line);padding:26px 0 40px;display:flex;justify-content:space-between;align-items:center;color:var(--dim);font-size:13px}
+  footer a{color:var(--ink);text-decoration:none;border-bottom:1px solid var(--pink)}
+
+  .reveal{opacity:0;transform:translateY(24px);transition:opacity .9s ease,transform .9s ease}
+  .reveal.in{opacity:1;transform:none}
+
+  @media (max-width:900px){
+    .st{grid-template-columns:1fr;gap:20px;padding:40px 0}
+    .st .no{display:flex;align-items:baseline;gap:14px}
+    .st .no span{font-size:44px;margin:0}
+    .visual{max-width:360px;aspect-ratio:4/3}
+    .visual svg{width:44%;height:44%}
+  }
+  @media (max-width:640px){
+    .wrap{padding:0 16px}
+    .hero{padding:48px 0 24px}
+    h1 em{-webkit-text-stroke:1.4px var(--ink)}
+    .figs{grid-template-columns:1fr}
+    .fig{border-inline-start:0;border-top:1px solid var(--line);padding:28px 4px;display:flex;align-items:center;gap:22px}
+    .fig:first-child{border-top:0}
+    .fig .l{margin-top:0}
+    .bar .t2{display:none}
+    .partners{flex-direction:column}
+    .partners div{border-inline-start:0;border-top:1px solid var(--line)}
+    .partners div:first-child{border-top:0}
+    footer{flex-direction:column;gap:10px;text-align:center}
+    .traj .axis span:nth-child(2),.traj .axis span:nth-child(4){display:none}
+  }
+  @media (prefers-reduced-motion:reduce){
+    .traj .curve{animation:none;stroke-dashoffset:0}.traj .node{animation:none;opacity:1}
+    .reveal{opacity:1;transform:none;transition:none}
   }
 </style>
 </head>
 <body>
+<div class="wrap">
 
-<header>
-  <img class="logo" src="hopa-logo.png" alt="הופה">
-  <div><span class="eyebrow">מוזאון החדשנות · כנס מנהלים</span></div>
-  <h1>הליווי <span>לא נגמר</span><br>ביום הסיום</h1>
-  <p>מנאראת טורעאן · המסלול של בוגר, מכיתה י״ב ועד הצעד הבא</p>
-</header>
+  <div class="bar">
+    <span class="plate"><img src="hopa-logo.png" alt="הופה"></span>
+    <span class="t2">מוזאון החדשנות · כנס מנהלים</span>
+    <span class="mono" dir="ltr">MANARAT TUR'AN</span>
+  </div>
 
-<main class="route">
-  <div class="road" aria-hidden="true"></div>
+  <section class="hero">
+    <div class="kicker">מנאראת טורעאן · ליווי בוגרים</div>
+    <h1>הליווי <em>לא נגמר</em><br>ביום <span class="p">הסיום.</span></h1>
+    <p class="lede">איך בית ספר הופך ל<b>כתובת קבועה</b> לבוגרים שלו, מכיתה י״ב ועד הלימודים, העבודה והצעד הבא. מסלול של <b>מוביליות חברתית</b>, בשיתוף מרכז ריאן והופה.</p>
 
-  <!-- 1 -->
-  <section class="stop">
-    <div class="pin">1</div>
-    <div class="card">
-      <div class="art" style="background:linear-gradient(160deg,#FDE4F0,#FFF)">
-        <svg viewBox="0 0 320 200" aria-hidden="true">
-          <ellipse cx="160" cy="178" rx="110" ry="10" fill="#E8348A" opacity=".12"/>
-          <!-- diploma -->
-          <g transform="rotate(-8 160 140)">
-            <rect x="70" y="118" width="180" height="40" rx="20" fill="#FFF7D6" stroke="#E0C77A" stroke-width="3"/>
-            <circle cx="70" cy="138" r="20" fill="#FFF1B8" stroke="#E0C77A" stroke-width="3"/>
-            <rect x="150" y="114" width="22" height="48" fill="#E8348A"/>
-          </g>
-          <!-- cap -->
-          <polygon points="160,30 250,62 160,94 70,62" fill="#1E1B2E"/>
-          <path d="M115 78 v26 c0 14 90 14 90 0 v-26 l-45 16z" fill="#2E2A42"/>
-          <path d="M240 66 v38" stroke="#FFF200" stroke-width="4"/>
-          <circle cx="240" cy="110" r="8" fill="#FFF200"/>
-          <circle cx="160" cy="62" r="5" fill="#FFF200"/>
-          <!-- sparkles -->
-          <g fill="#E8348A"><circle cx="50" cy="40" r="5"/><circle cx="280" cy="30" r="4"/><circle cx="285" cy="150" r="5"/></g>
-          <g fill="#FFD400"><path d="M40 120 l4 10 10 4 -10 4 -4 10 -4 -10 -10 -4 10 -4z"/><path d="M270 80 l3 7 7 3 -7 3 -3 7 -3 -7 -7 -3 7 -3z"/></g>
-        </svg>
-      </div>
-      <div class="txt">
-        <div class="tag">תחנה 1 · י״ב</div>
-        <h2>עוד בבית הספר</h2>
-        <p>מרכז ריאן מלווה את התלמידים כבר בשנות הלימודים. הקשר נבנה לפני שהם יוצאים לדרך.</p>
-        <div class="obj"><b>על השולחן:</b> כובע סיום ותעודה</div>
-      </div>
+    <div class="traj" aria-hidden="true">
+      <svg viewBox="0 0 1000 260" preserveAspectRatio="none">
+        <defs>
+          <linearGradient id="g" x1="1" x2="0" y1="0" y2="0">
+            <stop offset="0" stop-color="#F4F1EC" stop-opacity=".25"/>
+            <stop offset="1" stop-color="#E8348A"/>
+          </linearGradient>
+          <filter id="glow"><feGaussianBlur stdDeviation="6"/></filter>
+        </defs>
+        <g stroke="rgba(244,241,236,.08)">
+          <line x1="0" y1="65" x2="1000" y2="65"/><line x1="0" y1="130" x2="1000" y2="130"/><line x1="0" y1="195" x2="1000" y2="195"/>
+        </g>
+        <path class="curve" d="M990 236 C 880 232, 840 214, 770 200 S 620 176, 540 150 S 380 104, 300 86 S 120 40, 10 18" fill="none" stroke="url(#g)" stroke-width="10" filter="url(#glow)" opacity=".5"/>
+        <path class="curve" d="M990 236 C 880 232, 840 214, 770 200 S 620 176, 540 150 S 380 104, 300 86 S 120 40, 10 18" fill="none" stroke="url(#g)" stroke-width="3"/>
+        <g class="node" style="animation-delay:.6s"><circle cx="900" cy="226" r="7" fill="#0B0A10" stroke="#F4F1EC" stroke-width="2"/></g>
+        <g class="node" style="animation-delay:1.0s"><circle cx="720" cy="190" r="7" fill="#0B0A10" stroke="#F4F1EC" stroke-width="2"/></g>
+        <g class="node" style="animation-delay:1.4s"><circle cx="520" cy="145" r="7" fill="#0B0A10" stroke="#E8348A" stroke-width="2"/></g>
+        <g class="node" style="animation-delay:1.8s"><circle cx="300" cy="86" r="7" fill="#0B0A10" stroke="#E8348A" stroke-width="2"/></g>
+        <g class="node" style="animation-delay:2.3s"><circle cx="90" cy="34" r="12" fill="#E8348A" opacity=".25"/><circle cx="90" cy="34" r="7" fill="#E8348A"/></g>
+      </svg>
+      <div class="axis mono"><span>01 י״ב</span><span>02 היציאה</span><span>03 הקפיצה</span><span>04 היום</span><span>05 הצעד הבא</span></div>
     </div>
   </section>
 
-  <!-- 2 -->
-  <section class="stop">
-    <div class="pin">2</div>
-    <div class="card">
-      <div class="art" style="background:linear-gradient(160deg,#FFFBC2,#FFF)">
-        <svg viewBox="0 0 320 200" aria-hidden="true">
-          <ellipse cx="160" cy="186" rx="70" ry="8" fill="#1E1B2E" opacity=".1"/>
-          <rect x="112" y="14" width="96" height="170" rx="18" fill="#1E1B2E"/>
-          <rect x="120" y="30" width="80" height="140" rx="8" fill="#FFFFFF"/>
-          <rect x="120" y="30" width="80" height="22" rx="8" fill="#E8348A"/>
-          <text x="160" y="46" font-family="Rubik" font-size="10" font-weight="700" fill="#fff" text-anchor="middle">בוגרי טורעאן</text>
-          <rect x="146" y="60" width="48" height="16" rx="8" fill="#FDE4F0"/>
-          <rect x="126" y="82" width="54" height="16" rx="8" fill="#F1EEF6"/>
-          <rect x="140" y="104" width="54" height="16" rx="8" fill="#FDE4F0"/>
-          <rect x="126" y="126" width="40" height="16" rx="8" fill="#F1EEF6"/>
-          <rect x="150" y="148" width="44" height="16" rx="8" fill="#FFF200"/>
-          <!-- heart bubbles -->
-          <g transform="translate(232 52)"><circle r="22" fill="#E8348A"/><path d="M0 9 c-14 -9 -10 -20 -3 -20 c3 0 3 3 3 3 s0 -3 3 -3 c7 0 11 11 -3 20z" fill="#fff"/></g>
-          <g transform="translate(78 120)"><circle r="18" fill="#FFF200"/><text y="7" font-family="Rubik" font-size="20" font-weight="900" text-anchor="middle" fill="#1E1B2E">?</text></g>
-          <g transform="translate(250 140)"><circle r="12" fill="#E8348A" opacity=".5"/></g>
-        </svg>
-      </div>
-      <div class="txt">
-        <div class="tag">תחנה 2 · היציאה</div>
-        <h2>יש להם כתובת</h2>
-        <p>ביום הסיום הבוגרים לא נעלמים. קבוצת בוגרים וקשר אישי שוטף, ובית הספר נשאר פתוח לעזרה.</p>
-        <div class="obj"><b>על השולחן:</b> טלפון דמה עם צילום של קבוצת הבוגרים</div>
-      </div>
+  <section class="figs reveal">
+    <div class="fig"><div class="n">9</div><div class="l"><b>בוגרים נרשמו</b> ללימודי המשך</div></div>
+    <div class="fig"><div class="n">5</div><div class="l"><b>מחשבים ניידים</b> לבוגרים שהתחילו ללמוד</div></div>
+    <div class="fig"><div class="n">1</div><div class="l"><b>כתובת קבועה</b> לכל בוגר, גם אחרי הסיום</div></div>
+  </section>
+
+  <div class="sec-title"><h2>המסלול</h2><span class="mono">05 תחנות על השולחן</span></div>
+
+  <!-- 01 -->
+  <article class="st reveal">
+    <div class="no">תחנה<span>01</span></div>
+    <div>
+      <div class="stage">י״ב · עוד בבית הספר</div>
+      <h3>הקשר נבנה <span class="p">לפני</span> היציאה</h3>
+      <p><b>מרכז ריאן</b> מלווה את התלמידים כבר בשנות הלימודים. עוד לפני הסיום שואלים כל תלמיד על החלומות והחששות שלו, והתשובות הופכות לנקודת הפתיחה של הליווי.</p>
+    </div>
+    <div class="visual">
+      <svg class="ico" viewBox="0 0 64 64"><path d="M4 22 32 10l28 12-28 12z"/><path d="M16 27v13c0 5 32 5 32 0V27"/><path class="a" d="M56 24v14"/><circle class="f" cx="56" cy="40" r="2.4"/></svg>
+      <div class="cap"><span>על השולחן</span><b>כובע סיום ותעודה</b></div>
+    </div>
+  </article>
+
+  <!-- 02 -->
+  <article class="st reveal">
+    <div class="no">תחנה<span>02</span></div>
+    <div>
+      <div class="stage">היציאה · יום הסיום</div>
+      <h3>הם לא נעלמים. <span class="p">יש להם כתובת.</span></h3>
+      <p>קבוצת בוגרים פעילה וקשר אישי שוטף. הבוגרים יודעים שבית הספר שעזבו <b>פתוח ומוכן לתת עזרה ותמיכה</b>, ושיש אנשים שעוזרים להם.</p>
+    </div>
+    <div class="visual">
+      <svg class="ico" viewBox="0 0 64 64"><rect x="18" y="6" width="28" height="52" rx="5"/><path d="M28 51h8"/><path class="a" d="M24 18h12M24 24h16M28 30h12"/><circle class="f" cx="46" cy="12" r="5"/></svg>
+      <div class="cap"><span>על השולחן</span><b>טלפון עם קבוצת הבוגרים</b></div>
+    </div>
+  </article>
+
+  <!-- 03 -->
+  <article class="st reveal">
+    <div class="no">תחנה<span>03</span></div>
+    <div>
+      <div class="stage">הקפיצה · תחילת הלימודים</div>
+      <h3><span class="p">5</span> מחשבים ניידים, מהיום הראשון</h3>
+      <p>לבוגרים שהתחילו ללמוד, דרך <b>המענים של הופה</b>. כלי עבודה ביד מהרגע שבו הלימודים מתחילים, כך שהפער לא נפתח כבר בסמסטר הראשון.</p>
+    </div>
+    <div class="visual">
+      <svg class="ico" viewBox="0 0 64 64"><rect x="12" y="14" width="40" height="28" rx="2"/><path d="M4 48h56l-4 5H8z"/><path class="a" d="M24 34l6-8 5 5 6-9"/><circle class="f" cx="41" cy="22" r="2.4"/></svg>
+      <div class="cap"><span>על השולחן</span><b>מחשב נייד עם מדבקת הופה</b></div>
+    </div>
+  </article>
+
+  <!-- 04 -->
+  <article class="st reveal">
+    <div class="no">תחנה<span>04</span></div>
+    <div>
+      <div class="stage">היום · איפה הם עכשיו</div>
+      <h3><span class="p">9</span> בוגרים בלימודי המשך</h3>
+      <p>ובוגר ממחזור קודם: היום <b>עצמאי בחשמל רכב ומפקח</b>. זו המוביליות שהליווי מכוון אליה.</p>
+      <blockquote>"תודה לבית ספר"</blockquote>
+    </div>
+    <div class="visual">
+      <svg class="ico" viewBox="0 0 64 64"><path d="M8 54h14V42h14V30h14V16"/><path class="a" d="M44 18l6-6 6 6"/><path class="a" d="M50 12v14"/><circle class="f" cx="15" cy="48" r="2.4"/></svg>
+      <div class="cap"><span>על השולחן</span><b>תמונה וציטוט של הבוגר</b></div>
+    </div>
+  </article>
+
+  <!-- 05 -->
+  <article class="st reveal">
+    <div class="no">תחנה<span>05</span></div>
+    <div>
+      <div class="stage">הצעד הבא · השנה</div>
+      <h3>כנס בוגרים: <span class="p">חוזרים הביתה</span></h3>
+      <p>חלוקת תעודות ומפגש לשמירת קשר. הבוגרים חוזרים לבית הספר, והקשר שנבנה ממשיך לשנה הבאה.</p>
+    </div>
+    <div class="visual">
+      <svg class="ico" viewBox="0 0 64 64"><circle cx="22" cy="22" r="7"/><circle cx="42" cy="22" r="7"/><path d="M8 50c0-9 6-15 14-15s14 6 14 15"/><path d="M30 39c3-3 7-4 12-4 8 0 14 6 14 15"/><circle class="f" cx="32" cy="8" r="3"/></svg>
+      <div class="cap"><span>על השולחן</span><b>הזמנה לכנס הבוגרים</b></div>
+    </div>
+  </article>
+
+  <section class="close reveal">
+    <div class="kicker">השורה התחתונה</div>
+    <h2>מוביליות חברתית מתחילה<br>ב<span class="p">כתובת קבועה.</span></h2>
+    <div class="partners">
+      <div><small>בית הספר</small><strong>מנאראת טורעאן</strong></div>
+      <div><small>ליווי בבית הספר</small><strong>מרכז ריאן</strong></div>
+      <div><small>מענים לבוגרים</small><strong>הופה</strong></div>
     </div>
   </section>
 
-  <!-- 3 -->
-  <section class="stop">
-    <div class="pin">3</div>
-    <div class="card">
-      <div class="art" style="background:linear-gradient(160deg,#FDE4F0,#FFF)">
-        <svg viewBox="0 0 320 200" aria-hidden="true">
-          <ellipse cx="160" cy="180" rx="120" ry="9" fill="#E8348A" opacity=".12"/>
-          <rect x="82" y="40" width="156" height="104" rx="10" fill="#1E1B2E"/>
-          <rect x="92" y="50" width="136" height="84" rx="4" fill="#FFF8FC"/>
-          <path d="M60 148 h200 l-14 22 h-172z" fill="#3A3550"/>
-          <rect x="140" y="148" width="40" height="6" rx="3" fill="#57516F"/>
-          <!-- screen: open book -->
-          <path d="M160 72 c-14 -8 -30 -8 -40 -4 v44 c10 -4 26 -4 40 4z" fill="#FFF200"/>
-          <path d="M160 72 c14 -8 30 -8 40 -4 v44 c-10 -4 -26 -4 -40 4z" fill="#E8348A"/>
-          <!-- sticker -->
-          <g transform="translate(232 44) rotate(14)"><circle r="20" fill="#FFF200" stroke="#E8348A" stroke-width="3"/><text y="6" font-family="Rubik" font-size="14" font-weight="900" text-anchor="middle" fill="#E8348A">הופה</text></g>
-          <g fill="#FFD400"><path d="M50 60 l4 10 10 4 -10 4 -4 10 -4 -10 -10 -4 10 -4z"/></g>
-          <circle cx="270" cy="120" r="5" fill="#E8348A"/>
-        </svg>
-      </div>
-      <div class="txt">
-        <div class="tag">תחנה 3 · הקפיצה</div>
-        <div class="big">5</div>
-        <h2>מחשבים ניידים</h2>
-        <p>לבוגרים שהתחילו ללמוד, דרך המענים של הופה. כלי עבודה ביד מהיום הראשון.</p>
-        <div class="obj"><b>על השולחן:</b> מחשב נייד (ישן או דגם) עם מדבקת הופה</div>
-      </div>
-    </div>
-  </section>
+  <footer>
+    <span>מיצג · מוזאון החדשנות · כנס מנהלים</span>
+    <a href="https://hopa.org.il" dir="ltr">hopa.org.il</a>
+  </footer>
+</div>
 
-  <!-- 4 -->
-  <section class="stop">
-    <div class="pin">4</div>
-    <div class="card">
-      <div class="art" style="background:linear-gradient(160deg,#FFFBC2,#FFF)">
-        <svg viewBox="0 0 320 200" aria-hidden="true">
-          <ellipse cx="160" cy="184" rx="120" ry="8" fill="#1E1B2E" opacity=".08"/>
-          <!-- books stack -->
-          <rect x="60" y="150" width="80" height="16" rx="3" fill="#E8348A"/>
-          <rect x="66" y="134" width="70" height="16" rx="3" fill="#1E1B2E"/>
-          <rect x="58" y="118" width="76" height="16" rx="3" fill="#FFD400"/>
-          <text x="98" y="104" font-family="Rubik" font-size="44" font-weight="900" text-anchor="middle" fill="#E8348A">9</text>
-          <!-- rising stairs arrow -->
-          <path d="M160 166 h28 v-26 h28 v-26 h28 v-26" fill="none" stroke="#E8348A" stroke-width="8" stroke-linejoin="round" stroke-linecap="round"/>
-          <path d="M232 70 l12 -14 12 14" fill="none" stroke="#E8348A" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
-          <!-- lightning (vehicle electrics) -->
-          <g transform="translate(262 140)"><circle r="24" fill="#1E1B2E"/><path d="M4 -14 l-14 18 h10 l-4 14 14 -18 h-10z" fill="#FFF200"/></g>
-          <g fill="#E8348A"><circle cx="40" cy="40" r="5"/><circle cx="200" cy="30" r="4"/></g>
-        </svg>
-      </div>
-      <div class="txt">
-        <div class="tag">תחנה 4 · היום</div>
-        <div class="big">9</div>
-        <h2>נרשמו ללימודי המשך</h2>
-        <p>ובוגר משנתיים קודם: היום עצמאי בחשמל רכב ומפקח. במילים שלו: <b>"תודה לבית ספר"</b>.</p>
-        <div class="obj"><b>על השולחן:</b> תמונה ממוסגרת של הבוגר והציטוט</div>
-      </div>
-    </div>
-  </section>
-
-  <!-- 5 -->
-  <section class="stop">
-    <div class="pin">5</div>
-    <div class="card">
-      <div class="art" style="background:linear-gradient(160deg,#FDE4F0,#FFF)">
-        <svg viewBox="0 0 320 200" aria-hidden="true">
-          <ellipse cx="160" cy="182" rx="100" ry="8" fill="#E8348A" opacity=".12"/>
-          <rect x="90" y="70" width="140" height="100" rx="10" fill="#FFFFFF" stroke="#E8348A" stroke-width="3"/>
-          <path d="M90 80 l70 50 70 -50" fill="none" stroke="#E8348A" stroke-width="3"/>
-          <!-- card popping out -->
-          <rect x="108" y="28" width="104" height="70" rx="8" fill="#FFF200"/>
-          <text x="160" y="56" font-family="Rubik" font-size="15" font-weight="900" text-anchor="middle" fill="#1E1B2E">כנס בוגרים</text>
-          <text x="160" y="78" font-family="Rubik" font-size="11" font-weight="500" text-anchor="middle" fill="#1E1B2E">תעודות · מפגש</text>
-          <!-- confetti -->
-          <g><rect x="60" y="40" width="10" height="5" fill="#E8348A" transform="rotate(30 65 42)"/>
-             <rect x="250" y="40" width="10" height="5" fill="#FFD400" transform="rotate(-20 255 42)"/>
-             <rect x="40" y="110" width="10" height="5" fill="#FFD400" transform="rotate(60 45 112)"/>
-             <rect x="268" y="110" width="10" height="5" fill="#E8348A" transform="rotate(10 273 112)"/>
-             <circle cx="80" cy="20" r="4" fill="#1E1B2E"/><circle cx="240" cy="18" r="4" fill="#E8348A"/></g>
-        </svg>
-      </div>
-      <div class="txt">
-        <div class="tag">תחנה 5 · הצעד הבא</div>
-        <h2>נפגשים שוב</h2>
-        <p>כנס בוגרים לחלוקת תעודות ומפגש לשמירת קשר. הדלת של בית הספר נשארת פתוחה.</p>
-        <div class="obj"><b>על השולחן:</b> הזמנה מודפסת לכנס הבוגרים</div>
-      </div>
-    </div>
-  </section>
-</main>
-
-<div class="finish"><span class="flag">מוביליות חברתית מתחילה בכתובת קבועה</span></div>
-
-<footer>
-  בשיתוף מרכז ריאן · <a href="https://hopa.org.il" dir="ltr">hopa.org.il</a>
-</footer>
-
+<script>
+  (function(){
+    var els=document.querySelectorAll('.reveal');
+    if(!('IntersectionObserver' in window)){els.forEach(function(e){e.classList.add('in')});return;}
+    var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}})},{threshold:.12});
+    els.forEach(function(e){io.observe(e)});
+  })();
+</script>
 </body>
 </html>
