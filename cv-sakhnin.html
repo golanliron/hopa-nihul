@@ -1,0 +1,635 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>سيرتي الذاتية الأولى · الأماني سخنين</title>
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+/* סדנת קורות חיים בערבית → קורות חיים בעברית · סחנין אלאמאני
+   בוגרים = צהוב. רקע בהיר, שחור רק לטקסט. שום פרט לא נשמר. */
+:root{
+  --yellow:#FFF200; --yellow-deep:#FFD500; --yellow-soft:#FFFCE6;
+  --ink:#111111; --ink-2:#3A3A3A; --muted:#6B6B6B;
+  --line:#E9E7E4; --bg:#FAF8F5; --card:#FFFFFF;
+  --good:#2C7D45; --good-soft:#E8F5EC;
+  --r:20px;
+  --shadow:0 1px 2px rgba(17,17,17,.04), 0 10px 32px rgba(17,17,17,.07);
+}
+*,*::before,*::after{box-sizing:border-box}
+html,body{min-height:100%}
+body{margin:0;background:var(--bg);color:var(--ink);
+  font-family:Rubik,"Heebo","Segoe UI",Tahoma,system-ui,sans-serif;
+  font-size:17px;line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden;
+  touch-action:manipulation;-webkit-tap-highlight-color:transparent}
+.topbar{height:8px;background:linear-gradient(90deg,var(--yellow-deep),var(--yellow))}
+.app{max-width:1040px;margin:0 auto;padding:18px 16px 12px;min-height:calc(100vh - 8px);display:flex;flex-direction:column}
+header.school{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:16px}
+.badge{display:flex;align-items:center;gap:12px;min-width:0}
+.badge .mark{flex:none;width:50px;height:50px;border-radius:14px;background:var(--yellow);display:grid;place-items:center}
+.badge .mark svg{width:26px;height:26px}
+.badge .name{font-weight:800;font-size:19px;line-height:1.25}
+.badge .sub{font-size:14px;color:var(--muted)}
+.lang{display:flex;gap:6px;flex:none}
+.lang button{font:inherit;font-size:15px;font-weight:600;border:1.5px solid var(--line);background:var(--card);
+  color:var(--ink-2);border-radius:999px;padding:8px 14px;cursor:pointer}
+.lang button[aria-pressed="true"]{background:var(--ink);color:#fff;border-color:var(--ink)}
+main{flex:1;display:flex;flex-direction:column}
+.screen{display:none;flex-direction:column;flex:1;animation:in .3s ease}
+.screen.on{display:flex}
+@keyframes in{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+
+.kicker{display:inline-block;align-self:flex-start;background:var(--yellow);font-weight:700;font-size:15px;padding:6px 14px;border-radius:999px}
+.hero{flex:1;display:flex;flex-direction:column;justify-content:center;gap:16px;padding:8px 2px 20px}
+.hero h1{font-size:clamp(32px,5.6vw,56px);line-height:1.12;margin:0;font-weight:800}
+.hero p{font-size:clamp(18px,2.3vw,21px);color:var(--ink-2);margin:0;max-width:680px}
+.flow{display:flex;align-items:center;gap:10px;flex-wrap:wrap;font-weight:700}
+.flow span{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:8px 14px}
+.flow svg{width:22px;height:22px;flex:none}
+.row{display:flex;gap:12px;flex-wrap:wrap;align-items:center}
+.link{font:inherit;background:none;border:0;color:var(--ink-2);text-decoration:underline;text-underline-offset:4px;cursor:pointer;font-size:17px;padding:10px 4px}
+
+.btn{font:inherit;font-weight:700;font-size:20px;border:0;border-radius:999px;padding:14px 30px;cursor:pointer;
+  background:var(--ink);color:#fff;display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:56px}
+.btn svg{width:22px;height:22px}
+.btn.yellow{background:var(--yellow);color:var(--ink)}
+.btn.ghost{background:transparent;color:var(--ink);border:2px solid var(--ink)}
+.btn:disabled{opacity:.35;cursor:default}
+
+/* צעדים */
+.progress{display:flex;gap:8px;margin-bottom:6px}
+.progress i{flex:1;height:8px;border-radius:99px;background:var(--line)}
+.progress i.done{background:var(--yellow-deep)}
+.progress i.now{background:var(--ink)}
+.stepnum{font-size:15px;color:var(--muted);margin:6px 0 2px}
+.step h2{font-size:clamp(26px,3.6vw,34px);margin:0 0 14px;line-height:1.2;font-weight:800}
+.card{background:var(--card);border-radius:var(--r);box-shadow:var(--shadow);padding:18px}
+.field{display:flex;flex-direction:column;gap:6px;margin-bottom:14px}
+.field:last-child{margin-bottom:0}
+.field label,.flabel{font-weight:700;font-size:17px}
+.hint{font-size:14px;color:var(--muted);font-weight:400}
+input[type=text],input[type=tel],input[type=email],select{font:inherit;font-size:18px;border:2px solid var(--line);border-radius:14px;
+  padding:12px 14px;background:#fff;color:var(--ink);width:100%;min-height:52px}
+input:focus,select:focus{outline:none;border-color:var(--ink)}
+.ltr{direction:ltr;text-align:right}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:0 14px}
+.chips{display:flex;flex-wrap:wrap;gap:10px}
+.chip{font:inherit;font-size:17px;border:2px solid var(--line);background:#fff;color:var(--ink);border-radius:999px;padding:10px 16px;cursor:pointer;
+  display:inline-flex;align-items:center;gap:8px;min-height:48px}
+.chip[aria-pressed="true"]{background:var(--yellow);border-color:var(--ink);font-weight:700}
+.chip svg{width:18px;height:18px;display:none}
+.chip[aria-pressed="true"] svg{display:block}
+.exp{display:grid;gap:10px}
+.exp-item{border:2px solid var(--line);border-radius:16px;padding:12px 14px;background:#fff}
+.exp-item.on{border-color:var(--ink);background:var(--yellow-soft)}
+.exp-item label.top{display:flex;gap:12px;align-items:center;font-weight:600;cursor:pointer;font-size:18px}
+.exp-item input[type=checkbox]{width:24px;height:24px;accent-color:#111;flex:none}
+.exp-item select{margin-top:10px;display:none}
+.exp-item.on select{display:block}
+.count{font-weight:700;margin-inline-start:8px;font-size:16px;color:var(--muted)}
+.tip{display:flex;gap:10px;align-items:flex-start;background:var(--yellow-soft);border-radius:14px;padding:12px 14px;font-size:16px;margin-top:14px}
+.tip svg{flex:none;width:22px;height:22px;margin-top:2px}
+.nav{display:flex;justify-content:space-between;gap:12px;margin-top:18px}
+.err{color:#B3261E;font-size:15px;margin-top:6px;display:none}
+.err.show{display:block}
+
+/* תוצאה */
+.result h2{font-size:clamp(26px,3.6vw,34px);margin:0 0 6px;font-weight:800}
+.result .lead{margin:0 0 14px;color:var(--ink-2)}
+.docs{display:grid;grid-template-columns:1.15fr .85fr;gap:16px;align-items:start}
+.doc-wrap{display:flex;flex-direction:column;gap:8px}
+.doc-label{display:flex;align-items:center;gap:8px;font-weight:700;font-size:15px;color:var(--muted)}
+.doc-label b{background:var(--ink);color:#fff;border-radius:999px;padding:2px 10px;font-size:13px}
+.doc{background:#fff;border:1px solid var(--line);border-radius:6px;box-shadow:var(--shadow);padding:26px 26px 22px;font-size:15.5px;line-height:1.55;color:#111}
+.doc.ar{background:#FDFCF9;font-size:14.5px}
+.doc h3{margin:0;font-size:26px;font-weight:800;line-height:1.15}
+.doc .contact{color:#444;font-size:14px;margin:6px 0 12px;display:flex;flex-wrap:wrap;gap:4px 14px}
+.doc .contact span{white-space:nowrap}
+.doc .bar{height:4px;width:56px;background:var(--yellow-deep);border-radius:4px;margin:0 0 14px}
+.doc h4{margin:14px 0 6px;font-size:15px;font-weight:800;border-bottom:1.5px solid #111;padding-bottom:3px}
+.doc p{margin:0}
+.doc ul{margin:0;padding-inline-start:20px}
+.doc li{margin:2px 0}
+.after{display:flex;flex-wrap:wrap;gap:12px;margin-top:18px}
+.six{margin-top:18px}
+.six h3{margin:0 0 10px;font-size:20px}
+.six ol{margin:0;padding-inline-start:22px;display:grid;gap:6px;font-size:17px}
+.privacy{font-size:14px;color:var(--muted);margin-top:10px}
+
+footer{display:flex;align-items:center;justify-content:center;gap:10px;padding:16px 0 4px;color:var(--muted);font-size:14px;text-align:center;flex-wrap:wrap}
+footer img{height:26px;width:auto}
+
+@media (max-width:760px){
+  .docs{grid-template-columns:1fr}
+}
+@media (max-width:560px){
+  .app{padding:14px 16px 10px}
+  header.school{flex-direction:column;align-items:flex-start}
+  .badge .mark{width:44px;height:44px}
+  .badge .name{font-size:17px}
+  .grid2{grid-template-columns:1fr}
+  .btn{font-size:18px;padding:12px 22px}
+  .hero .btn{width:100%}
+  .doc{padding:20px 16px}
+  .doc h3{font-size:22px}
+}
+@media print{
+  @page{size:A4;margin:14mm}
+  body{background:#fff}
+  body *{visibility:hidden}
+  #docHe,#docHe *{visibility:visible}
+  #docHe{position:absolute;inset:0 0 auto 0;border:0;box-shadow:none;padding:0;font-size:12pt}
+}
+</style>
+</head>
+<body>
+<div class="topbar"></div>
+<div class="app">
+  <header class="school">
+    <div class="badge">
+      <div class="mark" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#111" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5"/><path d="M9 13h6"/><path d="M9 17h4"/></svg>
+      </div>
+      <div>
+        <div class="name" data-t="school"></div>
+        <div class="sub" data-t="schoolSub"></div>
+      </div>
+    </div>
+    <div class="lang" role="group" aria-label="language">
+      <button type="button" data-lang="ar" aria-pressed="true">العربية</button>
+      <button type="button" data-lang="he" aria-pressed="false">עברית</button>
+    </div>
+  </header>
+
+  <main>
+    <!-- פתיחה -->
+    <section class="screen on" id="s0">
+      <div class="hero">
+        <span class="kicker" data-t="kicker"></span>
+        <h1 data-t="title"></h1>
+        <p data-t="intro"></p>
+        <div class="flow" aria-hidden="true">
+          <span data-t="flowA"></span>
+          <svg viewBox="0 0 24 24" fill="none" stroke="#111" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
+          <span data-t="flowB"></span>
+        </div>
+        <div class="row">
+          <button class="btn yellow" type="button" id="go"><span data-t="start"></span></button>
+          <button class="link" type="button" id="demo" data-t="demo"></button>
+        </div>
+      </div>
+    </section>
+
+    <!-- צעדים -->
+    <section class="screen step" id="s1">
+      <div class="progress"><i class="now"></i><i></i><i></i><i></i></div>
+      <div class="stepnum" data-t="st1n"></div>
+      <h2 data-t="st1"></h2>
+      <div class="card">
+        <div class="field"><span class="flabel" data-t="gender"></span>
+          <div class="chips" id="gender">
+            <button type="button" class="chip" data-v="m" aria-pressed="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg><span data-t="male"></span></button>
+            <button type="button" class="chip" data-v="f" aria-pressed="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg><span data-t="female"></span></button>
+          </div>
+        </div>
+        <div class="grid2">
+          <div class="field"><label for="nameHe"><span data-t="nameHe"></span> <span class="hint" data-t="nameHeHint"></span></label>
+            <input type="text" id="nameHe" dir="rtl" lang="he" autocomplete="off" placeholder="אחמד / רים">
+            <div class="err" id="errName" data-t="errName"></div></div>
+          <div class="field"><label for="nameAr"><span data-t="nameAr"></span> <span class="hint" data-t="optional"></span></label>
+            <input type="text" id="nameAr" dir="rtl" lang="ar" autocomplete="off" placeholder="أحمد / ريم"></div>
+          <div class="field"><label for="city" data-t="city"></label><select id="city"></select></div>
+          <div class="field" id="cityOtherWrap" hidden><label for="cityOther" data-t="cityOther"></label>
+            <input type="text" id="cityOther" dir="rtl" lang="he" autocomplete="off"></div>
+          <div class="field"><label for="phone" data-t="phone"></label>
+            <input type="tel" id="phone" class="ltr" dir="ltr" autocomplete="off" placeholder="05X-XXXXXXX"></div>
+          <div class="field"><label for="email"><span data-t="email"></span> <span class="hint" data-t="optional"></span></label>
+            <input type="email" id="email" class="ltr" dir="ltr" autocomplete="off" placeholder="name@gmail.com"></div>
+        </div>
+      </div>
+      <div class="tip"><svg viewBox="0 0 24 24" fill="none" stroke="#111" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18h6"/><path d="M10 22h4"/><path d="M12 2a7 7 0 0 0-4 12.7V17h8v-2.3A7 7 0 0 0 12 2z"/></svg><span data-t="tip1"></span></div>
+      <div class="nav"><button class="btn ghost" type="button" data-back data-t="back"></button><button class="btn" type="button" data-next data-t="next"></button></div>
+    </section>
+
+    <section class="screen step" id="s2">
+      <div class="progress"><i class="done"></i><i class="now"></i><i></i><i></i></div>
+      <div class="stepnum" data-t="st2n"></div>
+      <h2 data-t="st2"></h2>
+      <div class="card">
+        <div class="grid2">
+          <div class="field"><label for="year" data-t="year"></label><select id="year"></select></div>
+          <div class="field"><label for="major" data-t="major"></label><select id="major"></select></div>
+          <div class="field" id="majorOtherWrap" hidden><label for="majorOther" data-t="majorOther"></label>
+            <input type="text" id="majorOther" dir="rtl" lang="he" autocomplete="off"></div>
+          <div class="field"><label for="bagrut" data-t="bagrut"></label><select id="bagrut"></select></div>
+        </div>
+        <div class="field"><span class="flabel" data-t="cert"></span>
+          <div class="chips" id="cert">
+            <button type="button" class="chip" data-v="1" aria-pressed="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg><span data-t="yes"></span></button>
+            <button type="button" class="chip" data-v="0" aria-pressed="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg><span data-t="notYet"></span></button>
+          </div>
+        </div>
+        <div class="grid2">
+          <div class="field"><label for="heb" data-t="heb"></label><select id="heb"></select></div>
+          <div class="field"><label for="eng" data-t="eng"></label><select id="eng"></select></div>
+        </div>
+      </div>
+      <div class="tip"><svg viewBox="0 0 24 24" fill="none" stroke="#111" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18h6"/><path d="M10 22h4"/><path d="M12 2a7 7 0 0 0-4 12.7V17h8v-2.3A7 7 0 0 0 12 2z"/></svg><span data-t="tip2"></span></div>
+      <div class="nav"><button class="btn ghost" type="button" data-back data-t="back"></button><button class="btn" type="button" data-next data-t="next"></button></div>
+    </section>
+
+    <section class="screen step" id="s3">
+      <div class="progress"><i class="done"></i><i class="done"></i><i class="now"></i><i></i></div>
+      <div class="stepnum" data-t="st3n"></div>
+      <h2 data-t="st3"></h2>
+      <div class="exp" id="exp"></div>
+      <div class="tip"><svg viewBox="0 0 24 24" fill="none" stroke="#111" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18h6"/><path d="M10 22h4"/><path d="M12 2a7 7 0 0 0-4 12.7V17h8v-2.3A7 7 0 0 0 12 2z"/></svg><span data-t="tip3"></span></div>
+      <div class="nav"><button class="btn ghost" type="button" data-back data-t="back"></button><button class="btn" type="button" data-next data-t="next"></button></div>
+    </section>
+
+    <section class="screen step" id="s4">
+      <div class="progress"><i class="done"></i><i class="done"></i><i class="done"></i><i class="now"></i></div>
+      <div class="stepnum" data-t="st4n"></div>
+      <h2><span data-t="st4"></span><span class="count" id="sCount"></span></h2>
+      <div class="card"><div class="chips" id="strengths"></div>
+        <div class="err" id="errStr" data-t="errStr"></div></div>
+      <div class="tip"><svg viewBox="0 0 24 24" fill="none" stroke="#111" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18h6"/><path d="M10 22h4"/><path d="M12 2a7 7 0 0 0-4 12.7V17h8v-2.3A7 7 0 0 0 12 2z"/></svg><span data-t="tip4"></span></div>
+      <div class="nav"><button class="btn ghost" type="button" data-back data-t="back"></button><button class="btn yellow" type="button" data-next data-t="make"></button></div>
+    </section>
+
+    <!-- תוצאה -->
+    <section class="screen result" id="s5">
+      <span class="kicker" data-t="doneKicker"></span>
+      <h2 data-t="doneTitle"></h2>
+      <p class="lead" data-t="doneLead"></p>
+      <div class="docs">
+        <div class="doc-wrap"><div class="doc-label"><b>עברית</b><span data-t="forEmployer"></span></div>
+          <article class="doc" id="docHe" dir="rtl" lang="he"></article></div>
+        <div class="doc-wrap"><div class="doc-label"><b>العربية</b><span data-t="forYou"></span></div>
+          <article class="doc ar" id="docAr" dir="rtl" lang="ar"></article></div>
+      </div>
+      <div class="after">
+        <button class="btn" type="button" id="print">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9V3h12v6"/><rect x="3" y="9" width="18" height="8" rx="2"/><path d="M7 14h10v7H7z"/></svg>
+          <span data-t="print"></span></button>
+        <button class="btn ghost" type="button" id="edit" data-t="edit"></button>
+        <button class="btn ghost" type="button" id="again" data-t="again"></button>
+      </div>
+      <div class="card six">
+        <h3 data-t="sixTitle"></h3>
+        <ol><li data-t="six1"></li><li data-t="six2"></li><li data-t="six3"></li><li data-t="six4"></li></ol>
+      </div>
+      <p class="privacy" data-t="privacy"></p>
+    </section>
+  </main>
+
+  <footer>
+    <span data-t="partner"></span>
+    <img src="hopa-logo.png" alt="הופה" onerror="this.style.display='none'">
+  </footer>
+</div>
+
+<script>
+(function(){
+  var UI = {
+    ar: {
+      school:"المدرسة الثانوية التكنولوجية الأماني سخنين", schoolSub:"ورشة السيرة الذاتية · مرافقة الخرّيجين",
+      kicker:"ورشة السيرة الذاتية", title:"سيرتك الذاتية الأولى، بالعبرية، في 10 دقائق",
+      intro:"تختار بالعربية، ونحن نكتب لك الجمل بالعبرية الصحيحة. في النهاية تحصل على سيرة ذاتية بالعبرية جاهزة لصاحب العمل، ونسخة بالعربية لتفهم كل كلمة فيها.",
+      flowA:"تختار بالعربية", flowB:"سيرة ذاتية بالعبرية", start:"لنبدأ", demo:"تجربة سريعة بمثال جاهز",
+      st1n:"الخطوة 1 من 4", st1:"التفاصيل الشخصية", gender:"أنا", male:"خرّيج", female:"خرّيجة",
+      nameHe:"الاسم الكامل بالعبرية", nameHeHint:"(كما في بطاقة الهوية)", nameAr:"الاسم بالعربية", optional:"(اختياري)",
+      city:"البلد", cityOther:"اسم البلد بالعبرية", phone:"رقم الهاتف", email:"البريد الإلكتروني",
+      errName:"اكتب اسمك بالعبرية لنكمل",
+      tip1:"بريد إلكتروني جدّي: الاسم والعائلة فقط، بدون ألقاب. أصحاب العمل ينتبهون لذلك.",
+      st2n:"الخطوة 2 من 4", st2:"الدراسة واللغات", year:"سنة إنهاء الثانوية", major:"التخصّص", majorOther:"اسم التخصّص بالعبرية",
+      bagrut:"البجروت", cert:"هل حصلت على شهادة مهنية؟", yes:"نعم", notYet:"ليس بعد", heb:"العبرية", eng:"الإنجليزية",
+      tip2:"التخصّص والشهادة المهنية هما أقوى ما لديك في السيرة الذاتية الأولى. ضعهما في البداية.",
+      st3n:"الخطوة 3 من 4", st3:"الخبرة: اختر كل ما ينطبق عليك",
+      tip3:"العمل في مصلحة العائلة هو خبرة حقيقية. اكتبه! وإذا لم تعمل بعد، فالتدريب العملي في التخصّص هو أيضًا خبرة.",
+      st4n:"الخطوة 4 من 4", st4:"اختر 3 نقاط قوة", errStr:"اختر نقطة قوة واحدة على الأقل",
+      tip4:"3 فقط. صاحب العمل يقرأ السيرة الذاتية في 6 ثوانٍ، والقليل الواضح أقوى من الكثير.",
+      back:"رجوع", next:"التالي", make:"اصنع لي السيرة الذاتية",
+      doneKicker:"جاهزة!", doneTitle:"سيرتك الذاتية بالعبرية", doneLead:"على اليمين ما سيقرؤه صاحب العمل، وبجانبه نفس النص بالعربية.",
+      forEmployer:"لصاحب العمل", forYou:"لك، لتفهم ما كُتب",
+      print:"طباعة / حفظ PDF", edit:"تعديل", again:"المشارك التالي (مسح كل شيء)",
+      sixTitle:"ماذا يفحص صاحب العمل في 6 ثوانٍ؟",
+      six1:"الاسم والهاتف واضحان في الأعلى.", six2:"صفحة واحدة فقط.", six3:"بدون أخطاء إملائية بالعبرية: لهذا كتبنا الجمل مسبقًا.", six4:"ماذا تعلّمت وماذا تعرف أن تعمل، قبل أي شيء آخر.",
+      privacy:"لا يُحفظ أي شيء: التفاصيل تبقى على هذه الشاشة فقط وتُمسح عند الانتهاء.",
+      partner:"بالشراكة مع هوبا ووزارة العمل",
+      pick:"اختر", other:"آخر"
+    },
+    he: {
+      school:"תיכון טכנולוגי אלאמאני סחנין", schoolSub:"סדנת קורות חיים · ליווי בוגרים",
+      kicker:"סדנת קורות חיים", title:"קורות החיים הראשונים שלך, בעברית, ב-10 דקות",
+      intro:"הבוגר בוחר בערבית, והמשפטים נכתבים לו בעברית נכונה. בסוף יש לו קורות חיים בעברית שמוכנים למעסיק, ועותק בערבית כדי שיבין כל מילה.",
+      flowA:"בוחרים בערבית", flowB:"קורות חיים בעברית", start:"מתחילים", demo:"ניסיון מהיר עם דוגמה מוכנה",
+      st1n:"צעד 1 מתוך 4", st1:"פרטים אישיים", gender:"אני", male:"בוגר", female:"בוגרת",
+      nameHe:"שם מלא בעברית", nameHeHint:"(כמו בתעודת הזהות)", nameAr:"שם בערבית", optional:"(לא חובה)",
+      city:"יישוב", cityOther:"שם היישוב בעברית", phone:"טלפון", email:"אימייל",
+      errName:"כדי להמשיך צריך לכתוב שם בעברית",
+      tip1:"אימייל רציני: שם ושם משפחה בלבד, בלי כינויים. מעסיקים שמים לב לזה.",
+      st2n:"צעד 2 מתוך 4", st2:"לימודים ושפות", year:"שנת סיום התיכון", major:"מגמה", majorOther:"שם המגמה בעברית",
+      bagrut:"בגרות", cert:"קיבלת תעודה מקצועית?", yes:"כן", notYet:"עוד לא", heb:"עברית", eng:"אנגלית",
+      tip2:"המגמה והתעודה המקצועית הן הדבר הכי חזק בקורות החיים הראשונים. שמים אותן בהתחלה.",
+      st3n:"צעד 3 מתוך 4", st3:"ניסיון: בוחרים כל מה שמתאים",
+      tip3:"עבודה בעסק המשפחתי היא ניסיון אמיתי. כותבים אותה! ומי שעוד לא עבד: ההתנסות המעשית במגמה היא גם ניסיון.",
+      st4n:"צעד 4 מתוך 4", st4:"בוחרים 3 חוזקות", errStr:"צריך לבחור לפחות חוזקה אחת",
+      tip4:"רק 3. מעסיק קורא קורות חיים ב-6 שניות, ומעט וברור חזק מהרבה.",
+      back:"חזרה", next:"הבא", make:"תכינו לי קורות חיים",
+      doneKicker:"מוכן!", doneTitle:"קורות החיים שלך בעברית", doneLead:"מימין מה שהמעסיק יקרא, ולידו אותו נוסח בערבית.",
+      forEmployer:"למעסיק", forYou:"לבוגר, כדי להבין מה כתוב",
+      print:"הדפסה / שמירה כ-PDF", edit:"עריכה", again:"המשתתף הבא (מוחק הכל)",
+      sixTitle:"מה מעסיק בודק ב-6 שניות?",
+      six1:"שם וטלפון בולטים למעלה.", six2:"עמוד אחד בלבד.", six3:"בלי שגיאות כתיב בעברית: בשביל זה המשפטים כתובים מראש.", six4:"מה למדת ומה את/ה יודע/ת לעשות, לפני כל דבר אחר.",
+      privacy:"שום דבר לא נשמר: הפרטים נשארים רק על המסך הזה ונמחקים בסיום.",
+      partner:"בשיתוף הופה ומשרד העבודה",
+      pick:"בחירה", other:"אחר"
+    }
+  };
+
+  /* ---- מאגרי המשפטים: לכל בחירה בערבית יש משפט קבוע בעברית ---- */
+  var SCHOOL = {he:"תיכון טכנולוגי אלאמאני, סחנין", ar:"المدرسة الثانوية التكنولوجية الأماني، سخنين"};
+  var CITIES = [
+    ["סח'נין","سخنين"],["עראבה","عرابة"],["דיר חנא","دير حنا"],["כאבול","كابول"],["מג'ד אל-כרום","مجد الكروم"],
+    ["דיר אל-אסד","دير الأسد"],["בענה","البعنة"],["נחף","نحف"],["כפר מנדא","كفر مندا"],["עילבון","عيلبون"],
+    ["שעב","شعب"],["כוכב אבו אל-היג'א","كوكب أبو الهيجاء"],["כרמיאל","كرميئيل"],["עכו","عكا"]
+  ];
+  var MAJORS = [
+    ["חשמל","كهرباء"],["אלקטרוניקה","إلكترونيكا"],["מכונאות רכב","ميكانيكا السيارات"],["מכונות","ميكانيكا"],
+    ["מחשבים","حاسوب"],["תקשוב","اتصالات وحوسبة"],["עיצוב שיער","تصفيف الشعر"],["קוסמטיקה","تجميل"],
+    ["בישול","طبخ"],["מזכירות","سكرتارية"],["עיצוב","تصميم"]
+  ];
+  var BAGRUT = [["full","תעודת בגרות מלאה","شهادة بجروت كاملة","בגרות מלאה","بجروت كاملة"],
+                ["part","בגרות חלקית","بجروت جزئية","בגרות חלקית","بجروت جزئية"],
+                ["none","","","בלי בגרות","بدون بجروت"]];
+  var LEVELS = [["basic","בסיסית","أساسية"],["good","טובה","جيدة"],["vgood","טובה מאוד","جيدة جدًا"]];
+  var DOMAINS = [
+    ["rest","במסעדה","في مطعم","מסעדה","مطعم"],["shop","בחנות","في متجر","חנות","متجر"],
+    ["build","בענף הבנייה","في البناء","בנייה","بناء"],["garage","במוסך","في كراج","מוסך","كراج"],
+    ["agri","בחקלאות","في الزراعة","חקלאות","زراعة"],["deliv","בשליחויות","في التوصيل","משלוחים","توصيل"],
+    ["events","באולם אירועים","في قاعة مناسبات","אירועים","مناسبات"],["salon","במספרה","في صالون","מספרה","صالون"],
+    ["other","","","אחר","آخر"]
+  ];
+  /* ניסיון: מה רואים בערבית/עברית, ואיזה משפט נכתב בקורות החיים */
+  var EXP = [
+    {id:"summer", dom:true, ar:"عمل صيفي", he:"עבודה בקיץ",
+      cvHe:function(d){ return "עבודת קיץ" + (d ? " " + d[1] : "") + ": עבודה מסודרת, עמידה במשמרות ושירות לקוחות"; },
+      cvAr:function(d){ return "عمل صيفي" + (d ? " " + d[2] : "") + ": عمل منتظم، التزام بالورديات وخدمة الزبائن"; }},
+    {id:"family", dom:true, ar:"مساعدة في مصلحة العائلة", he:"עזרה בעסק המשפחתי",
+      cvHe:function(d){ return "עבודה בעסק המשפחתי" + (d ? " (" + d[3] + ")" : "") + ": אחריות, שירות לקוחות ועבודה מעשית"; },
+      cvAr:function(d){ return "عمل في مصلحة العائلة" + (d ? " (" + d[4] + ")" : "") + ": مسؤولية، خدمة الزبائن وعمل عملي"; }},
+    {id:"practicum", ar:"تدريب عملي ضمن التخصّص", he:"התנסות מעשית במגמה",
+      cvHe:function(d,m){ return "התנסות מעשית במסגרת מגמת " + (m ? m[0] : "הלימודים המקצועית"); },
+      cvAr:function(d,m){ return "تدريب عملي ضمن تخصّص " + (m ? m[1] : "الدراسة المهنية"); }},
+    {id:"volunteer", ar:"تطوّع", he:"התנדבות",
+      cvHe:function(){ return "התנדבות בקהילה"; },
+      cvAr:function(){ return "تطوّع في المجتمع"; }},
+    {id:"service", ar:"خدمة مدنية", he:"שירות אזרחי",
+      cvHe:function(){ return "שירות לאומי-אזרחי"; },
+      cvAr:function(){ return "خدمة مدنية"; }},
+    {id:"youth", ar:"إرشاد في حركة شبابية / كشاف", he:"הדרכה בתנועת נוער / צופים",
+      cvHe:function(d,m,g){ return (g==="f" ? "מדריכה" : "מדריך") + " בתנועת נוער / צופים"; },
+      cvAr:function(d,m,g){ return (g==="f" ? "مرشدة" : "مرشد") + " في حركة شبابية / كشاف"; }}
+  ];
+  /* חוזקות: [ערבית ז, ערבית נ, עברית לכפתור, עברית ז בקו"ח, עברית נ בקו"ח] */
+  var STR = [
+    ["مسؤول","مسؤولة","אחראי/ת","אחראי ועומד בהתחייבויות","אחראית ועומדת בהתחייבויות"],
+    ["أتعلّم بسرعة","أتعلّم بسرعة","לומד/ת מהר","לומד מהר ומסתגל למשימות חדשות","לומדת מהר ומסתגלת למשימות חדשות"],
+    ["أعمل ضمن فريق","أعمل ضمن فريق","עבודה בצוות","עבודה טובה בצוות","עבודה טובה בצוות"],
+    ["ملتزم بالمواعيد","ملتزمة بالمواعيد","דייקנות","דייקנות ועמידה בזמנים","דייקנות ועמידה בזמנים"],
+    ["أحلّ المشاكل","أحلّ المشاكل","פתרון בעיות","יכולת לפתור בעיות בעבודה","יכולת לפתור בעיות בעבודה"],
+    ["ماهر بالعمل اليدوي والتقني","ماهرة بالعمل اليدوي والتقني","מיומנות טכנית","מיומנות טכנית ועבודה מעשית","מיומנות טכנית ועבודה מעשית"],
+    ["لطيف مع الزبائن","لطيفة مع الزبائن","שירותיות","יחסי אנוש טובים ושירותיות","יחסי אנוש טובים ושירותיות"],
+    ["منظّم","منظّمة","סדר וארגון","סדר וארגון","סדר וארגון"],
+    ["أعمل تحت الضغط","أعمل تحت الضغط","עבודה תחת לחץ","עבודה רגועה גם תחת לחץ","עבודה רגועה גם תחת לחץ"],
+    ["أستخدم الحاسوب","أستخدم الحاسوب","מחשב","שליטה בתוכנות מחשב בסיסיות (Office)","שליטה בתוכנות מחשב בסיסיות (Office)"],
+    ["صاحب مبادرة","صاحبة مبادرة","יוזמה","יוזמה ומוטיבציה גבוהה","יוזמה ומוטיבציה גבוהה"],
+    ["أمين وموثوق","أمينة وموثوقة","אמינות","אמינות ויושרה","אמינות ויושרה"]
+  ];
+  /* עברית לסיכום ההתאמה בערבית של קו"ח */
+  var STR_AR_CV = [
+    ["مسؤول وملتزم بتعهّداته","مسؤولة وملتزمة بتعهّداتها"],
+    ["أتعلّم بسرعة وأتأقلم مع مهام جديدة","أتعلّم بسرعة وأتأقلم مع مهام جديدة"],
+    ["عمل جيد ضمن فريق","عمل جيد ضمن فريق"],
+    ["دقّة والتزام بالمواعيد","دقّة والتزام بالمواعيد"],
+    ["قدرة على حلّ المشاكل في العمل","قدرة على حلّ المشاكل في العمل"],
+    ["مهارة تقنية وعمل يدوي","مهارة تقنية وعمل يدوي"],
+    ["علاقات إنسانية جيدة وخدمة الزبائن","علاقات إنسانية جيدة وخدمة الزبائن"],
+    ["ترتيب وتنظيم","ترتيب وتنظيم"],
+    ["عمل هادئ حتى تحت الضغط","عمل هادئ حتى تحت الضغط"],
+    ["إتقان برامج الحاسوب الأساسية (Office)","إتقان برامج الحاسوب الأساسية (Office)"],
+    ["مبادرة ودافعية عالية","مبادرة ودافعية عالية"],
+    ["أمانة ونزاهة","أمانة ونزاهة"]
+  ];
+
+  var lang = "ar", cur = "s0";
+  var st = {g:"m", cert:"1", exp:{}, str:[]};
+  var $ = function(id){ return document.getElementById(id); };
+  var esc = function(s){ return String(s).replace(/[&<>"']/g, function(c){ return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]; }); };
+
+  function opt(sel, items, placeholder){
+    var keep = sel.value; sel.innerHTML = "";
+    if (placeholder){ var o0 = document.createElement("option"); o0.value=""; o0.textContent = placeholder; sel.appendChild(o0); }
+    items.forEach(function(it){ var o = document.createElement("option"); o.value = it[0]; o.textContent = it[1]; sel.appendChild(o); });
+    if (keep !== "") sel.value = keep;
+  }
+  function fillSelects(){
+    var A = lang === "ar";
+    opt($("city"), CITIES.map(function(c,i){ return [String(i), A ? c[1] + " · " + c[0] : c[0]]; }).concat([["other", UI[lang].other]]), UI[lang].pick);
+    var yrs = []; for (var y=2026; y>=2019; y--) yrs.push([String(y), String(y)]);
+    opt($("year"), yrs);
+    opt($("major"), MAJORS.map(function(m,i){ return [String(i), A ? m[1] + " · " + m[0] : m[0]]; }).concat([["other", UI[lang].other]]), UI[lang].pick);
+    opt($("bagrut"), BAGRUT.map(function(b){ return [b[0], A ? b[4] : b[3]]; }));
+    opt($("heb"), LEVELS.map(function(l){ return [l[0], A ? l[2] : l[1]]; }));
+    opt($("eng"), LEVELS.map(function(l){ return [l[0], A ? l[2] : l[1]]; }));
+    if (!$("heb").dataset.init){ $("heb").value = "good"; $("eng").value = "basic"; $("heb").dataset.init = "1"; }
+  }
+  function renderExp(){
+    var box = $("exp"); box.innerHTML = "";
+    EXP.forEach(function(e){
+      var on = !!st.exp[e.id];
+      var d = document.createElement("div"); d.className = "exp-item" + (on ? " on" : "");
+      var lab = document.createElement("label"); lab.className = "top";
+      var cb = document.createElement("input"); cb.type = "checkbox"; cb.checked = on;
+      var sp = document.createElement("span"); sp.textContent = lang === "ar" ? e.ar : e.he;
+      lab.appendChild(cb); lab.appendChild(sp); d.appendChild(lab);
+      var sel = null;
+      if (e.dom){
+        sel = document.createElement("select");
+        opt(sel, DOMAINS.map(function(x){ return [x[0], lang === "ar" ? x[4] + " · " + x[3] : x[3]]; }), lang === "ar" ? "في أي مجال؟" : "באיזה תחום?");
+        if (on && st.exp[e.id] !== true) sel.value = st.exp[e.id];
+        sel.addEventListener("change", function(){ st.exp[e.id] = sel.value || true; });
+        d.appendChild(sel);
+      }
+      cb.addEventListener("change", function(){
+        if (cb.checked){ st.exp[e.id] = (sel && sel.value) || true; d.classList.add("on"); }
+        else { delete st.exp[e.id]; d.classList.remove("on"); }
+      });
+      box.appendChild(d);
+    });
+  }
+  var CHECK = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>';
+  function renderStr(){
+    var box = $("strengths"); box.innerHTML = "";
+    STR.forEach(function(s, i){
+      var b = document.createElement("button"); b.type = "button"; b.className = "chip";
+      b.setAttribute("aria-pressed", st.str.indexOf(i) > -1 ? "true" : "false");
+      b.innerHTML = CHECK + "<span></span>";
+      b.querySelector("span").textContent = lang === "ar" ? (st.g === "f" ? s[1] : s[0]) : s[2];
+      b.addEventListener("click", function(){
+        var k = st.str.indexOf(i);
+        if (k > -1) st.str.splice(k,1);
+        else { if (st.str.length >= 3) st.str.shift(); st.str.push(i); }
+        $("errStr").classList.remove("show");
+        renderStr();
+      });
+      box.appendChild(b);
+    });
+    $("sCount").textContent = "(" + st.str.length + "/3)";
+  }
+  function setChips(id, val){
+    var bs = $(id).querySelectorAll(".chip");
+    for (var i=0;i<bs.length;i++) bs[i].setAttribute("aria-pressed", bs[i].getAttribute("data-v") === val ? "true" : "false");
+  }
+
+  function applyLang(){
+    document.documentElement.lang = lang;
+    document.title = lang === "ar" ? "سيرتي الذاتية الأولى · الأماني سخنين" : "קורות החיים הראשונים שלי · אלאמאני סחנין";
+    var n = document.querySelectorAll("[data-t]");
+    for (var i=0;i<n.length;i++){ var k = n[i].getAttribute("data-t"); if (UI[lang][k] != null) n[i].textContent = UI[lang][k]; }
+    var lb = document.querySelectorAll(".lang button");
+    for (var j=0;j<lb.length;j++) lb[j].setAttribute("aria-pressed", lb[j].getAttribute("data-lang") === lang ? "true" : "false");
+    fillSelects(); renderExp(); renderStr();
+    if (cur === "s5") buildCV();
+  }
+
+  var ORDER = ["s0","s1","s2","s3","s4","s5"];
+  function show(id){
+    cur = id;
+    var s = document.querySelectorAll(".screen");
+    for (var i=0;i<s.length;i++) s[i].classList.toggle("on", s[i].id === id);
+    window.scrollTo(0,0);
+  }
+  function next(){
+    if (cur === "s1" && !$("nameHe").value.trim()){ $("errName").classList.add("show"); $("nameHe").focus(); return; }
+    if (cur === "s4"){ if (!st.str.length){ $("errStr").classList.add("show"); return; } buildCV(); }
+    show(ORDER[ORDER.indexOf(cur)+1]);
+  }
+  function back(){ show(ORDER[ORDER.indexOf(cur)-1]); }
+
+  function city(){
+    var v = $("city").value;
+    if (v === "other") return [$("cityOther").value.trim(), $("cityOther").value.trim()];
+    if (v === "") return null;
+    var c = CITIES[+v]; return [c[0], c[1]];
+  }
+  function major(){
+    var v = $("major").value;
+    if (v === "other"){ var t = $("majorOther").value.trim(); return t ? [t, t] : null; }
+    if (v === "") return null;
+    return MAJORS[+v];
+  }
+  function lvl(id){ for (var i=0;i<LEVELS.length;i++) if (LEVELS[i][0] === $(id).value) return LEVELS[i]; return LEVELS[0]; }
+
+  function buildCV(){
+    var g = st.g, F = g === "f";
+    var nameHe = $("nameHe").value.trim(), nameAr = $("nameAr").value.trim() || nameHe;
+    var c = city(), m = major(), year = $("year").value, cert = st.cert === "1";
+    var b = BAGRUT.filter(function(x){ return x[0] === $("bagrut").value; })[0];
+    var phone = $("phone").value.trim(), email = $("email").value.trim();
+    var h = lvl("heb"), e = lvl("eng");
+
+    var sumHe = (F ? "בוגרת " : "בוגר ") + SCHOOL.he + (m ? ", מגמת " + m[0] : "") + (cert ? (F ? ", בעלת תעודה מקצועית" : ", בעל תעודה מקצועית") : "") + ". "
+      + (F ? "מחפשת" : "מחפש") + " משרה שבה אוכל ללמוד, לתרום ולהתקדם.";
+    var sumAr = (F ? "خرّيجة " : "خرّيج ") + SCHOOL.ar + (m ? "، تخصّص " + m[1] : "") + (cert ? (F ? "، حاصلة على شهادة مهنية" : "، حاصل على شهادة مهنية") : "") + ". "
+      + "أبحث عن وظيفة أتعلّم فيها وأساهم وأتقدّم.";
+
+    var eduHe = [year + " · " + SCHOOL.he + (m ? ", מגמת " + m[0] : "")];
+    var eduAr = [year + " · " + SCHOOL.ar + (m ? "، تخصّص " + m[1] : "")];
+    if (cert){ eduHe.push("תעודה מקצועית" + (m ? " במגמת " + m[0] : "")); eduAr.push("شهادة مهنية" + (m ? " في تخصّص " + m[1] : "")); }
+    if (b && b[1]){ eduHe.push(b[1]); eduAr.push(b[2]); }
+
+    var expHe = [], expAr = [];
+    EXP.forEach(function(x){
+      if (!st.exp[x.id]) return;
+      var dv = st.exp[x.id], d = null;
+      if (dv !== true) DOMAINS.forEach(function(z){ if (z[0] === dv && z[0] !== "other") d = z; });
+      expHe.push(x.cvHe(d, m, g)); expAr.push(x.cvAr(d, m, g));
+    });
+
+    var skHe = st.str.map(function(i){ return F ? STR[i][4] : STR[i][3]; });
+    var skAr = st.str.map(function(i){ return F ? STR_AR_CV[i][1] : STR_AR_CV[i][0]; });
+
+    function li(a){ return "<ul>" + a.map(function(t){ return "<li>" + esc(t) + "</li>"; }).join("") + "</ul>"; }
+    function contact(cityName){
+      var p = [];
+      if (cityName) p.push("<span>" + esc(cityName) + "</span>");
+      if (phone) p.push('<span dir="ltr">' + esc(phone) + "</span>");
+      if (email) p.push('<span dir="ltr">' + esc(email) + "</span>");
+      return '<div class="contact">' + p.join("") + "</div>";
+    }
+    $("docHe").innerHTML = "<h3>" + esc(nameHe) + "</h3>" + contact(c && c[0]) + '<div class="bar"></div>'
+      + "<p>" + esc(sumHe) + "</p>"
+      + "<h4>השכלה</h4>" + li(eduHe)
+      + (expHe.length ? "<h4>ניסיון</h4>" + li(expHe) : "")
+      + "<h4>כישורים</h4>" + li(skHe)
+      + "<h4>שפות</h4>" + li(["ערבית: שפת אם", "עברית: " + h[1], "אנגלית: " + e[1]]);
+    $("docAr").innerHTML = "<h3>" + esc(nameAr) + "</h3>" + contact(c && c[1]) + '<div class="bar"></div>'
+      + "<p>" + esc(sumAr) + "</p>"
+      + "<h4>التعليم</h4>" + li(eduAr)
+      + (expAr.length ? "<h4>الخبرة</h4>" + li(expAr) : "")
+      + "<h4>المهارات</h4>" + li(skAr)
+      + "<h4>اللغات</h4>" + li(["العربية: اللغة الأم", "العبرية: " + h[2], "الإنجليزية: " + e[2]]);
+  }
+
+  function clearAll(){
+    ["nameHe","nameAr","cityOther","phone","email","majorOther"].forEach(function(id){ $(id).value = ""; });
+    $("city").value = ""; $("major").value = ""; $("bagrut").value = "full";
+    $("heb").value = "good"; $("eng").value = "basic"; $("year").value = "2026";
+    $("cityOtherWrap").hidden = true; $("majorOtherWrap").hidden = true;
+    st = {g:"m", cert:"1", exp:{}, str:[]};
+    setChips("gender","m"); setChips("cert","1");
+    $("docHe").innerHTML = ""; $("docAr").innerHTML = "";
+    document.querySelectorAll(".err").forEach(function(x){ x.classList.remove("show"); });
+    renderExp(); renderStr(); show("s0");
+  }
+  function demo(){
+    clearAll();
+    $("nameHe").value = "אחמד בוגר לדוגמה"; $("nameAr").value = "أحمد خرّيج للمثال";
+    $("city").value = "0"; $("phone").value = "050-0000000";
+    $("year").value = "2026"; $("major").value = "0"; $("bagrut").value = "part";
+    st.exp = {family:"shop", practicum:true};
+    renderExp(); renderStr(); show("s4");
+  }
+
+  /* אירועים */
+  $("go").addEventListener("click", function(){ show("s1"); });
+  $("demo").addEventListener("click", demo);
+  document.querySelectorAll("[data-next]").forEach(function(b){ b.addEventListener("click", next); });
+  document.querySelectorAll("[data-back]").forEach(function(b){ b.addEventListener("click", back); });
+  $("gender").addEventListener("click", function(ev){ var c = ev.target.closest(".chip"); if (!c) return; st.g = c.getAttribute("data-v"); setChips("gender", st.g); renderStr(); });
+  $("cert").addEventListener("click", function(ev){ var c = ev.target.closest(".chip"); if (!c) return; st.cert = c.getAttribute("data-v"); setChips("cert", st.cert); });
+  $("city").addEventListener("change", function(){ $("cityOtherWrap").hidden = this.value !== "other"; });
+  $("major").addEventListener("change", function(){ $("majorOtherWrap").hidden = this.value !== "other"; });
+  $("nameHe").addEventListener("input", function(){ $("errName").classList.remove("show"); });
+  $("print").addEventListener("click", function(){ window.print(); });
+  $("edit").addEventListener("click", function(){ show("s1"); });
+  $("again").addEventListener("click", clearAll);
+  document.querySelectorAll(".lang button").forEach(function(b){ b.addEventListener("click", function(){ lang = b.getAttribute("data-lang"); applyLang(); }); });
+
+  /* בעמדה בכנס: אחרי 3 דקות בלי מגע הכל נמחק וחוזרים להתחלה */
+  var idle;
+  function bump(){ clearTimeout(idle); idle = setTimeout(function(){ if (cur !== "s0") clearAll(); }, 180000); }
+  ["pointerdown","keydown","input","scroll","touchstart"].forEach(function(ev){ document.addEventListener(ev, bump, {passive:true}); });
+  bump();
+
+  applyLang();
+  $("year").value = "2026"; $("bagrut").value = "full";
+})();
+</script>
+</body>
+</html>
