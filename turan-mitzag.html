@@ -6,265 +6,198 @@
 <title>מנאראת טורעאן · הליווי לא נגמר</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500;700;900&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500;700;900&display=swap" rel="stylesheet">
 <style>
-  :root{
-    --bg:#0B0A10; --bg2:#13121B; --ink:#F4F1EC; --muted:#9A96A8; --dim:#5D596B;
-    --line:rgba(244,241,236,.12); --pink:#E8348A; --pink-glow:rgba(232,52,138,.45); --yellow:#FFF200;
-  }
+  :root{--bg:#F6F3EE;--card:#FFFFFF;--ink:#16141D;--muted:#5F5B6B;--line:#E2DDD5;--pink:#E8348A;--dark:#14121A}
   *{box-sizing:border-box;margin:0;padding:0}
-  html{scroll-behavior:smooth}
-  body{font-family:'Rubik',system-ui,sans-serif;background:var(--bg);color:var(--ink);line-height:1.55;
-       -webkit-font-smoothing:antialiased;overflow-x:hidden}
-  body::before{content:"";position:fixed;inset:0;pointer-events:none;z-index:0;
-       background-image:linear-gradient(var(--line) 1px,transparent 1px),linear-gradient(90deg,var(--line) 1px,transparent 1px);
-       background-size:64px 64px;opacity:.35;mask-image:radial-gradient(ellipse at 50% 20%,#000 20%,transparent 75%)}
-  .wrap{position:relative;z-index:1;max-width:1180px;margin:0 auto;padding:0 24px}
-  .mono{font-family:'IBM Plex Mono',monospace;letter-spacing:.08em}
-
-  /* top bar */
-  .bar{display:flex;justify-content:space-between;align-items:center;padding:22px 0;border-bottom:1px solid var(--line);
-       font-size:13px;color:var(--muted)}
-  .bar .plate{background:#fff;border-radius:8px;padding:6px 10px;display:flex}
-  .bar .plate img{height:30px;display:block}
+  body{font-family:'Rubik',system-ui,sans-serif;background:var(--bg);color:var(--ink);line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+  img{display:block;max-width:100%}
+  .wrap{max-width:1180px;margin:0 auto;padding:0 24px}
 
   /* hero */
-  .hero{padding:72px 0 40px;position:relative}
-  .kicker{display:flex;gap:14px;align-items:center;color:var(--pink);font-size:14px;font-weight:500;letter-spacing:.12em}
-  .kicker::before{content:"";width:40px;height:1px;background:var(--pink)}
-  h1{font-size:clamp(44px,8.4vw,112px);font-weight:900;line-height:.98;letter-spacing:-.02em;margin:22px 0 26px}
-  h1 em{font-style:normal;color:transparent;-webkit-text-stroke:2px var(--ink)}
-  h1 .p{color:var(--pink)}
-  .lede{max-width:640px;font-size:clamp(18px,2.2vw,22px);font-weight:300;color:#CFCBD8}
-  .lede b{font-weight:500;color:var(--ink)}
-
-  /* trajectory */
-  .traj{margin:56px 0 0;position:relative}
-  .traj svg{width:100%;height:auto;display:block;overflow:visible}
-  .traj .curve{stroke-dasharray:1400;stroke-dashoffset:1400;animation:draw 2.6s cubic-bezier(.6,.1,.2,1) .3s forwards}
-  .traj .node{opacity:0;animation:pop .5s ease forwards}
-  @keyframes draw{to{stroke-dashoffset:0}}
-  @keyframes pop{to{opacity:1}}
-  .axis{display:flex;justify-content:space-between;color:var(--dim);font-size:12px;margin-top:10px}
+  .hero{position:relative;min-height:88vh;display:flex;align-items:flex-end;color:#fff;overflow:hidden;background:var(--dark)}
+  .hero>img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.92}
+  .hero::after{content:"";position:absolute;inset:0;background:linear-gradient(to top,rgba(10,9,14,.92) 0%,rgba(10,9,14,.55) 38%,rgba(10,9,14,.05) 70%)}
+  .hero .top{position:absolute;top:0;inset-inline:0;z-index:2;display:flex;justify-content:space-between;align-items:center;padding:20px 24px;max-width:1180px;margin:0 auto}
+  .hero .plate{background:#fff;border-radius:8px;padding:6px 10px}
+  .hero .plate img{height:30px}
+  .hero .tag{font-size:13px;letter-spacing:.1em;background:rgba(255,255,255,.14);backdrop-filter:blur(6px);padding:6px 12px;border-radius:99px}
+  .hero .in{position:relative;z-index:2;width:100%;padding:0 24px 64px;max-width:1180px;margin:0 auto}
+  .kicker{font-size:14px;font-weight:500;letter-spacing:.14em;color:#FF8CC2;display:flex;align-items:center;gap:12px}
+  .kicker::before{content:"";width:36px;height:2px;background:var(--pink)}
+  h1{font-size:clamp(42px,7.4vw,96px);font-weight:900;line-height:1;letter-spacing:-.02em;margin:16px 0 18px}
+  h1 span{color:var(--pink)}
+  .hero p{font-size:clamp(17px,2vw,21px);font-weight:300;max-width:620px;color:#E9E5EF}
+  .hero p b{font-weight:500;color:#fff}
+  .note{font-size:12px;color:rgba(255,255,255,.55);margin-top:18px}
 
   /* figures */
-  .figs{display:grid;grid-template-columns:repeat(3,1fr);border-top:1px solid var(--line);border-bottom:1px solid var(--line);margin:72px 0 0}
-  .fig{padding:36px 28px;border-inline-start:1px solid var(--line)}
+  .figs{display:grid;grid-template-columns:repeat(3,1fr);background:var(--card);border-radius:18px;margin-top:-1px;box-shadow:0 20px 50px rgba(20,18,26,.08);position:relative;top:-40px;z-index:3}
+  .fig{padding:30px 30px;border-inline-start:1px solid var(--line)}
   .fig:first-child{border-inline-start:0}
-  .fig .n{font-family:'IBM Plex Mono',monospace;font-size:clamp(64px,9vw,112px);font-weight:500;line-height:1;color:var(--ink)}
-  .fig .n sup{font-size:.32em;color:var(--pink);vertical-align:top;margin-inline-start:6px}
-  .fig .l{margin-top:14px;font-size:17px;color:var(--muted);max-width:240px}
+  .fig .n{font-size:clamp(56px,7vw,84px);font-weight:900;line-height:1;color:var(--pink)}
+  .fig .l{margin-top:8px;font-size:17px;color:var(--muted)}
   .fig .l b{color:var(--ink);font-weight:500}
 
-  /* stations */
-  .sec-title{display:flex;justify-content:space-between;align-items:baseline;margin:110px 0 8px;padding-bottom:18px;border-bottom:1px solid var(--line)}
-  .sec-title h2{font-size:clamp(26px,3.4vw,40px);font-weight:700}
-  .sec-title span{color:var(--dim);font-size:13px}
-  .st{display:grid;grid-template-columns:120px 1fr 300px;gap:40px;padding:48px 0;border-bottom:1px solid var(--line);align-items:start}
-  .st .no{font-family:'IBM Plex Mono',monospace;font-size:15px;color:var(--pink)}
-  .st .no span{display:block;font-size:64px;line-height:1;color:var(--ink);font-weight:400;margin-top:6px;opacity:.9}
-  .st .stage{font-size:14px;letter-spacing:.14em;color:var(--muted);margin-bottom:10px}
-  .st h3{font-size:clamp(28px,3.6vw,44px);font-weight:700;line-height:1.1;margin-bottom:16px;letter-spacing:-.01em}
-  .st h3 .p{color:var(--pink)}
-  .st p{font-size:18px;font-weight:300;color:#CFCBD8;max-width:560px}
-  .st p b{font-weight:500;color:var(--ink)}
-  .st blockquote{margin-top:22px;padding:4px 18px 4px 0;border-inline-start:2px solid var(--pink);font-size:24px;font-weight:300;font-style:italic}
-  .visual{aspect-ratio:1/1;border:1px solid var(--line);border-radius:4px;position:relative;
-          background:radial-gradient(circle at 50% 45%,rgba(232,52,138,.16),transparent 62%),var(--bg2);display:flex;align-items:center;justify-content:center}
-  .visual svg{width:58%;height:58%}
-  .visual .cap{position:absolute;bottom:0;inset-inline:0;padding:10px 14px;border-top:1px solid var(--line);
-               font-size:12px;color:var(--muted);display:flex;justify-content:space-between;gap:10px}
-  .visual .cap b{color:var(--ink);font-weight:500}
-  .visual::before,.visual::after{content:"";position:absolute;width:10px;height:10px;border-color:var(--pink);border-style:solid}
-  .visual::before{top:-1px;right:-1px;border-width:2px 2px 0 0}
-  .visual::after{top:-1px;left:-1px;border-width:2px 0 0 2px}
-  .ico{fill:none;stroke:var(--ink);stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
-  .ico .a{stroke:var(--pink)}
-  .ico .f{fill:var(--pink);stroke:none}
+  /* path */
+  .head{display:flex;justify-content:space-between;align-items:end;margin:40px 0 30px;gap:20px}
+  .head h2{font-size:clamp(28px,3.6vw,44px);font-weight:900;letter-spacing:-.01em}
+  .head p{color:var(--muted);max-width:420px}
+  .st{display:grid;grid-template-columns:1fr 1fr;gap:0;background:var(--card);border-radius:18px;overflow:hidden;margin-bottom:28px;box-shadow:0 10px 30px rgba(20,18,26,.06)}
+  .st:nth-of-type(even) .ph{order:2}
+  .ph{position:relative;min-height:380px}
+  .ph img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+  .ph .num{position:absolute;top:18px;inset-inline-start:18px;background:var(--pink);color:#fff;font-weight:900;font-size:22px;width:52px;height:52px;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 6px 18px rgba(232,52,138,.4)}
+  .tx{padding:44px 44px;display:flex;flex-direction:column;justify-content:center}
+  .stage{font-size:13px;font-weight:500;letter-spacing:.14em;color:var(--pink);margin-bottom:10px}
+  .tx h3{font-size:clamp(26px,3vw,38px);font-weight:900;line-height:1.15;margin-bottom:14px;letter-spacing:-.01em}
+  .tx p{font-size:18px;color:var(--muted)}
+  .tx p b{color:var(--ink);font-weight:500}
+  .tx blockquote{margin-top:20px;font-size:26px;font-weight:300;border-inline-start:3px solid var(--pink);padding-inline-start:16px}
+  .obj{margin-top:24px;padding-top:16px;border-top:1px solid var(--line);font-size:15px;color:var(--muted);display:flex;gap:10px;align-items:center}
+  .obj::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--pink);flex:none}
+  .obj b{color:var(--ink);font-weight:500}
 
-  /* closing */
-  .close{padding:120px 0 60px;text-align:center}
+  /* close */
+  .close{background:var(--dark);color:#fff;margin-top:70px;padding:90px 0 70px;text-align:center}
   .close .kicker{justify-content:center}
-  .close .kicker::after{content:"";width:40px;height:1px;background:var(--pink)}
-  .close h2{font-size:clamp(34px,6vw,76px);font-weight:900;line-height:1.05;letter-spacing:-.02em;margin:22px auto 0;max-width:900px}
-  .close h2 .p{color:var(--pink)}
-  .partners{display:flex;justify-content:center;gap:0;margin:56px auto 0;border:1px solid var(--line);max-width:620px}
-  .partners div{flex:1;padding:22px 16px;border-inline-start:1px solid var(--line)}
+  .close h2{font-size:clamp(32px,5.4vw,68px);font-weight:900;line-height:1.08;letter-spacing:-.02em;margin:18px auto 0;max-width:880px}
+  .close h2 span{color:var(--pink)}
+  .partners{display:flex;justify-content:center;margin:48px auto 0;max-width:640px;border:1px solid rgba(255,255,255,.14);border-radius:14px;overflow:hidden}
+  .partners div{flex:1;padding:20px 14px;border-inline-start:1px solid rgba(255,255,255,.14)}
   .partners div:first-child{border-inline-start:0}
-  .partners small{display:block;color:var(--dim);font-size:12px;letter-spacing:.12em;margin-bottom:6px}
+  .partners small{display:block;color:rgba(255,255,255,.5);font-size:12px;letter-spacing:.1em;margin-bottom:4px}
   .partners strong{font-size:18px;font-weight:500}
-  footer{border-top:1px solid var(--line);padding:26px 0 40px;display:flex;justify-content:space-between;align-items:center;color:var(--dim);font-size:13px}
-  footer a{color:var(--ink);text-decoration:none;border-bottom:1px solid var(--pink)}
+  footer{background:var(--dark);color:rgba(255,255,255,.5);font-size:13px;padding:0 0 36px}
+  footer .wrap{display:flex;justify-content:space-between;border-top:1px solid rgba(255,255,255,.1);padding-top:22px;gap:12px}
+  footer a{color:#fff;text-decoration:none;border-bottom:1px solid var(--pink)}
 
-  .reveal{opacity:0;transform:translateY(24px);transition:opacity .9s ease,transform .9s ease}
+  .reveal{opacity:0;transform:translateY(22px);transition:opacity .8s ease,transform .8s ease}
   .reveal.in{opacity:1;transform:none}
 
-  @media (max-width:900px){
-    .st{grid-template-columns:1fr;gap:20px;padding:40px 0}
-    .st .no{display:flex;align-items:baseline;gap:14px}
-    .st .no span{font-size:44px;margin:0}
-    .visual{max-width:360px;aspect-ratio:4/3}
-    .visual svg{width:44%;height:44%}
+  @media (max-width:860px){
+    .st{grid-template-columns:1fr}
+    .st:nth-of-type(even) .ph{order:0}
+    .ph{min-height:0;aspect-ratio:4/3}
+    .tx{padding:28px 22px 30px}
+    .head{flex-direction:column;align-items:flex-start}
   }
   @media (max-width:640px){
     .wrap{padding:0 16px}
-    .hero{padding:48px 0 24px}
-    h1 em{-webkit-text-stroke:1.4px var(--ink)}
-    .figs{grid-template-columns:1fr}
-    .fig{border-inline-start:0;border-top:1px solid var(--line);padding:28px 4px;display:flex;align-items:center;gap:22px}
+    .hero{min-height:78vh}
+    .hero .top{padding:16px}
+    .hero .tag{display:none}
+    .hero .in{padding:0 16px 56px}
+    .figs{grid-template-columns:1fr;top:-28px}
+    .fig{border-inline-start:0;border-top:1px solid var(--line);padding:20px 22px;display:flex;align-items:center;gap:18px}
     .fig:first-child{border-top:0}
     .fig .l{margin-top:0}
-    .bar .t2{display:none}
     .partners{flex-direction:column}
-    .partners div{border-inline-start:0;border-top:1px solid var(--line)}
+    .partners div{border-inline-start:0;border-top:1px solid rgba(255,255,255,.14)}
     .partners div:first-child{border-top:0}
-    footer{flex-direction:column;gap:10px;text-align:center}
-    .traj .axis span:nth-child(2),.traj .axis span:nth-child(4){display:none}
+    footer .wrap{flex-direction:column;text-align:center}
   }
-  @media (prefers-reduced-motion:reduce){
-    .traj .curve{animation:none;stroke-dashoffset:0}.traj .node{animation:none;opacity:1}
-    .reveal{opacity:1;transform:none;transition:none}
-  }
+  @media (prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}}
 </style>
 </head>
 <body>
-<div class="wrap">
 
-  <div class="bar">
+<header class="hero">
+  <img src="img/turan/hero.jpg" alt="הדמיה של המיצג: שולחן עם חמש תחנות וקאפה לידו">
+  <div class="top">
     <span class="plate"><img src="hopa-logo.png" alt="הופה"></span>
-    <span class="t2">מוזאון החדשנות · כנס מנהלים</span>
-    <span class="mono" dir="ltr">MANARAT TUR'AN</span>
+    <span class="tag">מוזאון החדשנות · כנס מנהלים</span>
   </div>
-
-  <section class="hero">
+  <div class="in">
     <div class="kicker">מנאראת טורעאן · ליווי בוגרים</div>
-    <h1>הליווי <em>לא נגמר</em><br>ביום <span class="p">הסיום.</span></h1>
-    <p class="lede">איך בית ספר הופך ל<b>כתובת קבועה</b> לבוגרים שלו, מכיתה י״ב ועד הלימודים, העבודה והצעד הבא. מסלול של <b>מוביליות חברתית</b>, בשיתוף מרכז ריאן והופה.</p>
+    <h1>הליווי לא נגמר<br>ביום <span>הסיום.</span></h1>
+    <p>בית ספר שנשאר <b>כתובת קבועה</b> לבוגרים שלו, מכיתה י״ב ועד הלימודים, העבודה והצעד הבא. מסלול של <b>מוביליות חברתית</b>, בשיתוף מרכז ריאן והופה.</p>
+    <div class="note">הדמיה של המיצג · כל התמונות בדף להמחשה</div>
+  </div>
+</header>
 
-    <div class="traj" aria-hidden="true">
-      <svg viewBox="0 0 1000 260" preserveAspectRatio="none">
-        <defs>
-          <linearGradient id="g" x1="1" x2="0" y1="0" y2="0">
-            <stop offset="0" stop-color="#F4F1EC" stop-opacity=".25"/>
-            <stop offset="1" stop-color="#E8348A"/>
-          </linearGradient>
-          <filter id="glow"><feGaussianBlur stdDeviation="6"/></filter>
-        </defs>
-        <g stroke="rgba(244,241,236,.08)">
-          <line x1="0" y1="65" x2="1000" y2="65"/><line x1="0" y1="130" x2="1000" y2="130"/><line x1="0" y1="195" x2="1000" y2="195"/>
-        </g>
-        <path class="curve" d="M990 236 C 880 232, 840 214, 770 200 S 620 176, 540 150 S 380 104, 300 86 S 120 40, 10 18" fill="none" stroke="url(#g)" stroke-width="10" filter="url(#glow)" opacity=".5"/>
-        <path class="curve" d="M990 236 C 880 232, 840 214, 770 200 S 620 176, 540 150 S 380 104, 300 86 S 120 40, 10 18" fill="none" stroke="url(#g)" stroke-width="3"/>
-        <g class="node" style="animation-delay:.6s"><circle cx="900" cy="226" r="7" fill="#0B0A10" stroke="#F4F1EC" stroke-width="2"/></g>
-        <g class="node" style="animation-delay:1.0s"><circle cx="720" cy="190" r="7" fill="#0B0A10" stroke="#F4F1EC" stroke-width="2"/></g>
-        <g class="node" style="animation-delay:1.4s"><circle cx="520" cy="145" r="7" fill="#0B0A10" stroke="#E8348A" stroke-width="2"/></g>
-        <g class="node" style="animation-delay:1.8s"><circle cx="300" cy="86" r="7" fill="#0B0A10" stroke="#E8348A" stroke-width="2"/></g>
-        <g class="node" style="animation-delay:2.3s"><circle cx="90" cy="34" r="12" fill="#E8348A" opacity=".25"/><circle cx="90" cy="34" r="7" fill="#E8348A"/></g>
-      </svg>
-      <div class="axis mono"><span>01 י״ב</span><span>02 היציאה</span><span>03 הקפיצה</span><span>04 היום</span><span>05 הצעד הבא</span></div>
-    </div>
-  </section>
-
-  <section class="figs reveal">
+<div class="wrap">
+  <section class="figs">
     <div class="fig"><div class="n">9</div><div class="l"><b>בוגרים נרשמו</b> ללימודי המשך</div></div>
     <div class="fig"><div class="n">5</div><div class="l"><b>מחשבים ניידים</b> לבוגרים שהתחילו ללמוד</div></div>
     <div class="fig"><div class="n">1</div><div class="l"><b>כתובת קבועה</b> לכל בוגר, גם אחרי הסיום</div></div>
   </section>
 
-  <div class="sec-title"><h2>המסלול</h2><span class="mono">05 תחנות על השולחן</span></div>
+  <div class="head">
+    <h2>המסלול על השולחן</h2>
+    <p>חמש תחנות, חפץ אחד בכל תחנה. מי שעובר לאורך השולחן עובר את הדרך של בוגר.</p>
+  </div>
 
-  <!-- 01 -->
   <article class="st reveal">
-    <div class="no">תחנה<span>01</span></div>
-    <div>
+    <div class="ph"><img src="img/turan/s1.jpg" alt="שיחת ליווי עם תלמיד י״ב" loading="lazy"><span class="num">1</span></div>
+    <div class="tx">
       <div class="stage">י״ב · עוד בבית הספר</div>
-      <h3>הקשר נבנה <span class="p">לפני</span> היציאה</h3>
-      <p><b>מרכז ריאן</b> מלווה את התלמידים כבר בשנות הלימודים. עוד לפני הסיום שואלים כל תלמיד על החלומות והחששות שלו, והתשובות הופכות לנקודת הפתיחה של הליווי.</p>
-    </div>
-    <div class="visual">
-      <svg class="ico" viewBox="0 0 64 64"><path d="M4 22 32 10l28 12-28 12z"/><path d="M16 27v13c0 5 32 5 32 0V27"/><path class="a" d="M56 24v14"/><circle class="f" cx="56" cy="40" r="2.4"/></svg>
-      <div class="cap"><span>על השולחן</span><b>כובע סיום ותעודה</b></div>
+      <h3>הקשר נבנה לפני היציאה</h3>
+      <p><b>מרכז ריאן</b> מלווה את התלמידים כבר בשנות הלימודים. לפני הסיום שואלים כל תלמיד על החלומות והחששות שלו, ומשם מתחיל הליווי.</p>
+      <div class="obj"><span>על השולחן: <b>כובע סיום ותעודה</b></span></div>
     </div>
   </article>
 
-  <!-- 02 -->
   <article class="st reveal">
-    <div class="no">תחנה<span>02</span></div>
-    <div>
+    <div class="ph"><img src="img/turan/s2.jpg" alt="בוגר מחובר לקבוצת הבוגרים בטלפון" loading="lazy"><span class="num">2</span></div>
+    <div class="tx">
       <div class="stage">היציאה · יום הסיום</div>
-      <h3>הם לא נעלמים. <span class="p">יש להם כתובת.</span></h3>
-      <p>קבוצת בוגרים פעילה וקשר אישי שוטף. הבוגרים יודעים שבית הספר שעזבו <b>פתוח ומוכן לתת עזרה ותמיכה</b>, ושיש אנשים שעוזרים להם.</p>
-    </div>
-    <div class="visual">
-      <svg class="ico" viewBox="0 0 64 64"><rect x="18" y="6" width="28" height="52" rx="5"/><path d="M28 51h8"/><path class="a" d="M24 18h12M24 24h16M28 30h12"/><circle class="f" cx="46" cy="12" r="5"/></svg>
-      <div class="cap"><span>על השולחן</span><b>טלפון עם קבוצת הבוגרים</b></div>
+      <h3>הם לא נעלמים. יש להם כתובת.</h3>
+      <p>קבוצת בוגרים פעילה וקשר אישי שוטף. הבוגרים יודעים שבית הספר שעזבו <b>פתוח ומוכן לתת עזרה ותמיכה</b>.</p>
+      <div class="obj"><span>על השולחן: <b>טלפון עם קבוצת הבוגרים</b></span></div>
     </div>
   </article>
 
-  <!-- 03 -->
   <article class="st reveal">
-    <div class="no">תחנה<span>03</span></div>
-    <div>
+    <div class="ph"><img src="img/turan/s3.jpg" alt="סטודנטית פותחת מחשב נייד בספרייה" loading="lazy"><span class="num">3</span></div>
+    <div class="tx">
       <div class="stage">הקפיצה · תחילת הלימודים</div>
-      <h3><span class="p">5</span> מחשבים ניידים, מהיום הראשון</h3>
-      <p>לבוגרים שהתחילו ללמוד, דרך <b>המענים של הופה</b>. כלי עבודה ביד מהרגע שבו הלימודים מתחילים, כך שהפער לא נפתח כבר בסמסטר הראשון.</p>
-    </div>
-    <div class="visual">
-      <svg class="ico" viewBox="0 0 64 64"><rect x="12" y="14" width="40" height="28" rx="2"/><path d="M4 48h56l-4 5H8z"/><path class="a" d="M24 34l6-8 5 5 6-9"/><circle class="f" cx="41" cy="22" r="2.4"/></svg>
-      <div class="cap"><span>על השולחן</span><b>מחשב נייד עם מדבקת הופה</b></div>
+      <h3>5 מחשבים ניידים, מהיום הראשון</h3>
+      <p>לבוגרים שהתחילו ללמוד, דרך <b>המענים של הופה</b>. כלי עבודה ביד מהרגע שהלימודים מתחילים.</p>
+      <div class="obj"><span>על השולחן: <b>מחשב נייד עם מדבקת הופה</b></span></div>
     </div>
   </article>
 
-  <!-- 04 -->
   <article class="st reveal">
-    <div class="no">תחנה<span>04</span></div>
-    <div>
+    <div class="ph"><img src="img/turan/s4.jpg" alt="חשמלאי רכב צעיר עובד במוסך שלו" loading="lazy"><span class="num">4</span></div>
+    <div class="tx">
       <div class="stage">היום · איפה הם עכשיו</div>
-      <h3><span class="p">9</span> בוגרים בלימודי המשך</h3>
+      <h3>9 בוגרים בלימודי המשך</h3>
       <p>ובוגר ממחזור קודם: היום <b>עצמאי בחשמל רכב ומפקח</b>. זו המוביליות שהליווי מכוון אליה.</p>
       <blockquote>"תודה לבית ספר"</blockquote>
-    </div>
-    <div class="visual">
-      <svg class="ico" viewBox="0 0 64 64"><path d="M8 54h14V42h14V30h14V16"/><path class="a" d="M44 18l6-6 6 6"/><path class="a" d="M50 12v14"/><circle class="f" cx="15" cy="48" r="2.4"/></svg>
-      <div class="cap"><span>על השולחן</span><b>תמונה וציטוט של הבוגר</b></div>
+      <div class="obj"><span>על השולחן: <b>תמונה וציטוט של הבוגר</b></span></div>
     </div>
   </article>
 
-  <!-- 05 -->
   <article class="st reveal">
-    <div class="no">תחנה<span>05</span></div>
-    <div>
+    <div class="ph"><img src="img/turan/s5.jpg" alt="מפגש בוגרים בחצר בית הספר" loading="lazy"><span class="num">5</span></div>
+    <div class="tx">
       <div class="stage">הצעד הבא · השנה</div>
-      <h3>כנס בוגרים: <span class="p">חוזרים הביתה</span></h3>
-      <p>חלוקת תעודות ומפגש לשמירת קשר. הבוגרים חוזרים לבית הספר, והקשר שנבנה ממשיך לשנה הבאה.</p>
-    </div>
-    <div class="visual">
-      <svg class="ico" viewBox="0 0 64 64"><circle cx="22" cy="22" r="7"/><circle cx="42" cy="22" r="7"/><path d="M8 50c0-9 6-15 14-15s14 6 14 15"/><path d="M30 39c3-3 7-4 12-4 8 0 14 6 14 15"/><circle class="f" cx="32" cy="8" r="3"/></svg>
-      <div class="cap"><span>על השולחן</span><b>הזמנה לכנס הבוגרים</b></div>
+      <h3>כנס בוגרים: חוזרים הביתה</h3>
+      <p>חלוקת תעודות ומפגש לשמירת קשר. הבוגרים חוזרים לבית הספר, והקשר ממשיך לשנה הבאה.</p>
+      <div class="obj"><span>על השולחן: <b>הזמנה לכנס הבוגרים</b></span></div>
     </div>
   </article>
+</div>
 
-  <section class="close reveal">
+<section class="close">
+  <div class="wrap reveal">
     <div class="kicker">השורה התחתונה</div>
-    <h2>מוביליות חברתית מתחילה<br>ב<span class="p">כתובת קבועה.</span></h2>
+    <h2>מוביליות חברתית מתחילה<br>ב<span>כתובת קבועה.</span></h2>
     <div class="partners">
       <div><small>בית הספר</small><strong>מנאראת טורעאן</strong></div>
       <div><small>ליווי בבית הספר</small><strong>מרכז ריאן</strong></div>
       <div><small>מענים לבוגרים</small><strong>הופה</strong></div>
     </div>
-  </section>
-
-  <footer>
-    <span>מיצג · מוזאון החדשנות · כנס מנהלים</span>
-    <a href="https://hopa.org.il" dir="ltr">hopa.org.il</a>
-  </footer>
-</div>
+  </div>
+</section>
+<footer><div class="wrap"><span>מיצג · מוזאון החדשנות · כנס מנהלים</span><a href="https://hopa.org.il" dir="ltr">hopa.org.il</a></div></footer>
 
 <script>
   (function(){
     var els=document.querySelectorAll('.reveal');
     if(!('IntersectionObserver' in window)){els.forEach(function(e){e.classList.add('in')});return;}
-    var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}})},{threshold:.12});
+    var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}})},{threshold:.1});
     els.forEach(function(e){io.observe(e)});
   })();
 </script>
