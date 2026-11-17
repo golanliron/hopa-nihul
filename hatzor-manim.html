@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>הופה · מענים לנוער בחצור הגלילית</title>
+<meta name="description" content="אנשי הקשר ברשות והמענים לנוער 14–18 בחצור הגלילית ובסביבה — לרכזת מניעת הנשירה.">
+<meta property="og:title" content="הופה · מענים לנוער 14–18 בחצור הגלילית">
+<meta property="og:description" content="קב&quot;ס, רווחה, שפ&quot;ח ומענים בחצור, בצפת ובגליל העליון — עם טלפון ומייל.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+:root{
+  --pink:#E8348A; --pink-deep:#C2185B; --pink-soft:#FCE7F2;
+  --yellow:#FFF200; --yellow-deep:#FFD500; --yellow-soft:#FFFCE6;
+  --ink:#111111; --ink-2:#3A3A3A; --muted:#6B6B6B;
+  --line:#E9E7E4; --bg:#FFFFFF; --tint:#FAF8F5;
+  --accent:#00897B; --accent-deep:#00695C; --accent-soft:#E6F4F2;
+  --r-md:16px; --shadow:0 1px 2px rgba(17,17,17,.04), 0 8px 28px rgba(17,17,17,.06);
+  --maxw:940px;
+}
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%; scroll-behavior:smooth}
+body{margin:0;font-family:Rubik,"Heebo","Segoe UI",system-ui,sans-serif;background:var(--bg);color:var(--ink);
+  font-size:17px;line-height:1.65;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+img{max-width:100%;display:block}
+a{color:var(--pink-deep);text-decoration-thickness:1.5px;text-underline-offset:3px}
+h1,h2,h3,h4{line-height:1.2;margin:0;letter-spacing:-.02em;font-weight:800}
+.topbar{position:fixed;top:0;left:0;right:0;height:6px;z-index:60;
+  background:linear-gradient(90deg,var(--pink) 0%,#F0679E 35%,var(--yellow-deep) 72%,var(--yellow) 100%)}
+.wrap{max-width:var(--maxw);margin:0 auto;padding:0 20px}
+.hero{position:relative;padding:52px 0 34px;overflow:hidden;
+  background:radial-gradient(1100px 420px at 88% -8%, rgba(255,242,0,.42), transparent 62%),
+    radial-gradient(900px 460px at 4% 4%, rgba(0,137,123,.13), transparent 60%), #FFFFFF;
+  border-bottom:1px solid var(--line)}
+.hero-grid{position:absolute;inset:0;opacity:.5;pointer-events:none;
+  background-image:linear-gradient(rgba(17,17,17,.035) 1px,transparent 1px),linear-gradient(90deg,rgba(17,17,17,.035) 1px,transparent 1px);
+  background-size:44px 44px;
+  -webkit-mask-image:radial-gradient(70% 60% at 50% 30%,#000,transparent);
+  mask-image:radial-gradient(70% 60% at 50% 30%,#000,transparent)}
+.hero .wrap{position:relative}
+.brandrow{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;margin-bottom:30px}
+.logo-chip{display:inline-flex;align-items:center;gap:14px;text-decoration:none}
+.logo-chip img{height:48px;width:auto}
+.logo-chip .org{border-inline-start:1px solid var(--line);padding-inline-start:14px;line-height:1.25}
+.logo-chip .org b{display:block;font-size:16px;font-weight:800;color:var(--ink)}
+.logo-chip .org span{display:block;font-size:12.5px;color:var(--muted);font-weight:600}
+.issue{display:inline-flex;align-items:center;gap:9px;font-weight:600;font-size:13.5px;color:var(--ink-2);
+  background:#fff;border:1px solid var(--line);border-radius:999px;padding:7px 15px}
+.issue b{color:var(--accent-deep);font-weight:800}
+.kicker{display:inline-block;font-weight:800;font-size:13px;letter-spacing:.16em;
+  color:var(--accent-deep);background:var(--accent-soft);border-radius:999px;padding:7px 16px;margin-bottom:18px}
+h1.title{font-size:clamp(32px,6.2vw,52px);font-weight:900;letter-spacing:-.035em;max-width:19ch}
+h1.title .hl{background:linear-gradient(180deg,transparent 62%, var(--yellow) 62%, var(--yellow) 94%, transparent 94%);padding:0 4px}
+.lede{font-size:clamp(16px,2.2vw,19px);color:var(--ink-2);max-width:62ch;margin-top:18px}
+section{padding:42px 0}
+.sec-h{margin-bottom:22px}
+.sec-h .eyebrow{font-size:12.5px;font-weight:800;letter-spacing:.14em;color:var(--accent-deep);margin-bottom:8px}
+.sec-h h2{font-size:clamp(24px,4vw,32px);font-weight:900;letter-spacing:-.03em}
+.sec-h p{color:var(--ink-2);margin:10px 0 0;max-width:66ch}
+.callout{background:var(--yellow-soft);border:1px solid #F3E9A0;border-radius:var(--r-md);padding:16px 20px;margin:18px 0}
+.callout b{color:#7A6A00}
+.tabs{position:sticky;top:6px;z-index:50;padding:12px 0;background:rgba(255,255,255,.94);
+  backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+.tabs .wrap{display:flex;gap:8px;flex-wrap:wrap}
+.tab{cursor:pointer;font-family:inherit;font-size:14px;font-weight:700;border-radius:999px;padding:8px 15px;
+  border:1.5px solid var(--line);background:#fff;color:var(--ink-2);transition:all .12s ease}
+.tab:hover{border-color:var(--ink)}
+.tab.on{color:#fff;border-color:transparent}
+.grp{margin-bottom:30px}
+.grp > h3{font-size:19px;font-weight:900;letter-spacing:-.02em}
+.grp > .src{font-size:12.5px;color:var(--muted);font-weight:600;margin-top:3px;margin-bottom:14px}
+.cards{display:grid;gap:11px}
+.p{background:#fff;border:1px solid var(--line);border-radius:var(--r-md);padding:16px 18px}
+.p.key{border-inline-start:4px solid var(--accent);background:var(--accent-soft)}
+.p .top{display:flex;gap:10px;align-items:baseline;flex-wrap:wrap}
+.p b{font-size:17px;font-weight:800;letter-spacing:-.02em}
+.p .role{font-size:14px;color:var(--accent-deep);font-weight:700}
+.p .why{margin:8px 0 0;font-size:14.5px;color:var(--ink-2);line-height:1.5}
+.p .acts{margin-top:11px;display:flex;gap:8px;flex-wrap:wrap}
+.btn{display:inline-flex;align-items:center;gap:6px;font-size:13.5px;font-weight:700;text-decoration:none;
+  border-radius:999px;padding:7px 13px;border:1.5px solid var(--line);color:var(--ink-2);background:#fff}
+.btn:hover{border-color:var(--ink)}
+.btn.wa{background:#25D366;border-color:#25D366;color:#fff}
+.btn.mail{background:var(--accent);border-color:var(--accent);color:#fff}
+.star{font-size:11.5px;font-weight:800;color:var(--accent-deep);background:#fff;border:1px solid #D9CEF0;
+  border-radius:999px;padding:3px 9px}
+.natgrid{display:grid;gap:12px}
+.nat{background:var(--tint);border:1px solid var(--line);border-radius:var(--r-md);padding:18px 20px}
+.nat h3{font-size:17.5px;font-weight:800}
+.nat .org{font-size:13px;color:var(--accent-deep);font-weight:700;margin-top:3px}
+.nat p{margin:9px 0 0;font-size:15px;color:var(--ink-2);line-height:1.55}
+footer{border-top:1px solid var(--line);padding:34px 0 60px;background:var(--tint)}
+.foot{display:flex;justify-content:space-between;gap:18px;flex-wrap:wrap;align-items:center}
+.foot .note{font-size:13.5px;color:var(--muted);max-width:62ch}
+@media (max-width:600px){ body{font-size:16px} }
+
+.list{display:grid;gap:12px}
+.card{background:#fff;border:1px solid var(--line);border-radius:var(--r-md);padding:16px 18px}
+.card.direct{border-inline-start:4px solid var(--pink)}
+.card h3{font-size:17px;font-weight:800}
+.card p{margin:7px 0 0;font-size:14.5px;color:var(--ink-2);line-height:1.55}
+.card .meta{display:flex;gap:6px;flex-wrap:wrap;margin-top:10px}
+.pill{font-size:12px;font-weight:700;border-radius:999px;padding:3px 10px;background:var(--tint);border:1px solid var(--line);color:var(--ink-2)}
+.pill.cat{background:var(--accent-soft);border-color:transparent;color:var(--accent-deep)}
+.card .acts{margin-top:11px;display:flex;gap:8px;flex-wrap:wrap}
+.btn.plain{background:var(--tint)}
+.btn{max-width:100%;overflow-wrap:anywhere}
+.jump{display:flex;gap:8px;flex-wrap:wrap;margin-top:22px}
+.jump a{font-size:14px;font-weight:700;text-decoration:none;border-radius:999px;padding:8px 15px;background:#fff;border:1.5px solid var(--line);color:var(--ink-2)}
+.legend{font-size:13.5px;color:var(--muted);margin-top:-8px;margin-bottom:16px}
+.legend i{display:inline-block;width:12px;height:12px;border-radius:3px;background:var(--pink);vertical-align:-1px;margin-inline-end:4px}
+.big{display:inline-flex;margin-top:14px;font-size:15px;font-weight:800;text-decoration:none;color:#fff;background:var(--accent);border-radius:999px;padding:11px 20px}
+</style>
+</head>
+<body>
+<div class="topbar"></div>
+<header class="hero"><div class="hero-grid"></div><div class="wrap">
+  <div class="brandrow">
+    <a class="logo-chip" href="https://hopa.org.il" target="_blank" rel="noopener"><img src="hopa-logo.png" alt="הופה">
+      <span class="org"><b>הופה</b><span>מרחב הזדמנויות לצעירים</span></span></a>
+    <span class="issue">עודכן <b>17.11.2026</b></span>
+  </div>
+  <span class="kicker">מניעת נשירה · 14–18</span>
+  <h1 class="title">מענים לנוער ב<span class="hl">חצור הגלילית</span></h1>
+  <p class="lede">כל מה שצריך כדי להתחיל: מי הכתובת ברשות, אילו מסגרות כבר פועלות ביישוב, ומה יש בצפת ובגליל העליון. בכל כרטיס יש טלפון, ובחלק מהם גם מייל.</p>
+  <nav class="jump"><a href="#rashut">אנשי הקשר ברשות</a><a href="#hatzor">מענים בחצור</a><a href="#ezor">מענים באזור</a><a href="#arzi">מענים ארציים</a></nav>
+</div></header>
+
+<section id="rashut"><div class="wrap">
+  <div class="sec-h"><div class="eyebrow">שלב 1</div><h2>אנשי הקשר ברשות</h2>
+    <p>לפני שפונים לעמותה, כדאי לפנות לאנשים ברשות שזה התפקיד שלהם. כדאי להתחיל בקב"סית, כי היא כבר מחזיקה את רשימת התלמידים בהיעדרויות.</p></div>
+  <div class="callout"><b>שימו לב:</b> בחצור אין יחידה שנקראת "קידום נוער". התחום נמצא תחת המחלקה לחינוך ילדים ונוער בסיכון, ושם האחראי/ת לא מפורסם. אפשר לברר במחלקת החינוך.</div>
+  <div class="grp"><h3>מועצה מקומית חצור הגלילית — חינוך</h3><div class="cards">
+  <div class="p key"><div class="top"><b>יפעת כהן</b><span class="role">קב&quot;ס — קצינת ביקור סדיר</span><span class="star">מתחילים כאן</span></div>
+  <p class="why">הכתובת הראשונה לכל תלמיד בהיעדרויות חוזרות או בנשירה סמויה. חוק לימוד חובה מחייב אותה לטפל.</p><div class="acts"><a class="btn" href="tel:046916946">☎ 04-6916946</a><a class="btn mail" href="mailto:yifat@hatzorg.co.il?subject=%D7%94%D7%95%D7%A4%D7%94%20%E2%80%94%20%D7%9E%D7%A0%D7%99%D7%A2%D7%AA%20%D7%A0%D7%A9%D7%99%D7%A8%D7%94%2C%20%D7%97%D7%A6%D7%95%D7%A8%20%D7%94%D7%92%D7%9C%D7%99%D7%9C%D7%99%D7%AA"><span dir="ltr">✉ yifat@hatzorg.co.il</span></a></div></div>
+  <div class="p "><div class="top"><b>המחלקה לחינוך ילדים ונוער בסיכון</b><span class="role">במקום יחידת קידום נוער — אין שם מפורסם</span></div>
+  <p class="why">לפי מכרז המועצה אחראית על ביקור סדיר ועל טיפול בנשירה גלויה וסמויה.</p><div class="acts"><a class="btn" href="tel:046916935">☎ 04-6916935</a></div></div>
+  <div class="p "><div class="top"><b>ליאת כהן</b><span class="role">מנהלת מחלקת החינוך</span></div>
+  <p class="why">אישור תוכנית עבודה ומשאבים ברמת המועצה.</p><div class="acts"><a class="btn" href="tel:046916935">☎ 04-6916935</a><a class="btn mail" href="mailto:liat@hatzorg.co.il?subject=%D7%94%D7%95%D7%A4%D7%94%20%E2%80%94%20%D7%9E%D7%A0%D7%99%D7%A2%D7%AA%20%D7%A0%D7%A9%D7%99%D7%A8%D7%94%2C%20%D7%97%D7%A6%D7%95%D7%A8%20%D7%94%D7%92%D7%9C%D7%99%D7%9C%D7%99%D7%AA"><span dir="ltr">✉ liat@hatzorg.co.il</span></a></div></div>
+  <div class="p "><div class="top"><b>לילך ברגר גליק</b><span class="role">מנהלת השירות הפסיכולוגי החינוכי (שפ&quot;ח)</span></div>
+  <p class="why">אבחונים והתערבות רגשית לתלמידים בסיכון. המייל הוא של מזכירות השפ&quot;ח.</p><div class="acts"><a class="btn" href="tel:046935146">☎ 04-6935146</a><a class="btn mail" href="mailto:hatzorpsy@hatzorg.co.il?subject=%D7%94%D7%95%D7%A4%D7%94%20%E2%80%94%20%D7%9E%D7%A0%D7%99%D7%A2%D7%AA%20%D7%A0%D7%A9%D7%99%D7%A8%D7%94%2C%20%D7%97%D7%A6%D7%95%D7%A8%20%D7%94%D7%92%D7%9C%D7%99%D7%9C%D7%99%D7%AA"><span dir="ltr">✉ hatzorpsy@hatzorg.co.il</span></a></div></div>
+  <div class="p "><div class="top"><b>רבקה נאמן</b><span class="role">מזכירות מחלקת החינוך</span></div>
+  <div class="acts"><a class="btn" href="tel:046916907">☎ 04-6916907</a><a class="btn mail" href="mailto:revka@hatzorg.co.il?subject=%D7%94%D7%95%D7%A4%D7%94%20%E2%80%94%20%D7%9E%D7%A0%D7%99%D7%A2%D7%AA%20%D7%A0%D7%A9%D7%99%D7%A8%D7%94%2C%20%D7%97%D7%A6%D7%95%D7%A8%20%D7%94%D7%92%D7%9C%D7%99%D7%9C%D7%99%D7%AA"><span dir="ltr">✉ revka@hatzorg.co.il</span></a></div></div>
+  <div class="p "><div class="top"><b>עידו אמר</b><span class="role">קב&quot;ט מוסדות חינוך</span></div>
+  <div class="acts"><a class="btn" href="tel:046916903">☎ 04-6916903</a><a class="btn mail" href="mailto:ido@hatzorg.co.il?subject=%D7%94%D7%95%D7%A4%D7%94%20%E2%80%94%20%D7%9E%D7%A0%D7%99%D7%A2%D7%AA%20%D7%A0%D7%A9%D7%99%D7%A8%D7%94%2C%20%D7%97%D7%A6%D7%95%D7%A8%20%D7%94%D7%92%D7%9C%D7%99%D7%9C%D7%99%D7%AA"><span dir="ltr">✉ ido@hatzorg.co.il</span></a></div></div></div></div><div class="grp"><h3>מועצה מקומית חצור הגלילית — שירותים חברתיים</h3><div class="cards">
+  <div class="p key"><div class="top"><b>אילנית הדר</b><span class="role">עו&quot;ס משפחות ונוער · עו&quot;ס לחוק הנוער</span><span class="star">מתחילים כאן</span></div>
+  <p class="why">מטפלת בקטינים בסיכון ומלווה מהרווחה את התלמידים בתוכנית &quot;פותחים עתיד&quot;.</p><div class="acts"><a class="btn" href="tel:046916974">☎ 04-6916974</a></div></div>
+  <div class="p "><div class="top"><b>מרווה טל</b><span class="role">עו&quot;ס נערות ומשפחות</span></div>
+  <p class="why">מפעילה את מועדונית &quot;בית עלמא&quot; לנערות 13–16 ואת &quot;נירים&quot; לנערים. מקבלת הפניות מיועצות בתי הספר.</p><div class="acts"><a class="btn" href="tel:046916972">☎ 04-6916972</a></div></div>
+  <div class="p "><div class="top"><b>נורית כחלון</b><span class="role">מנהלת מחלקת שירותים חברתיים</span></div>
+  <p class="why">ועדות תכנון-טיפול, מסגרות חוץ-ביתיות, טיפול במשפחה.</p><div class="acts"><a class="btn" href="tel:046916970">☎ 04-6916970</a><a class="btn mail" href="mailto:nurit@hatzorg.co.il?subject=%D7%94%D7%95%D7%A4%D7%94%20%E2%80%94%20%D7%9E%D7%A0%D7%99%D7%A2%D7%AA%20%D7%A0%D7%A9%D7%99%D7%A8%D7%94%2C%20%D7%97%D7%A6%D7%95%D7%A8%20%D7%94%D7%92%D7%9C%D7%99%D7%9C%D7%99%D7%AA"><span dir="ltr">✉ nurit@hatzorg.co.il</span></a></div></div>
+  <div class="p "><div class="top"><b>יאיר פרידמן</b><span class="role">עו&quot;ס קהילה · רשת מתנדבים</span></div>
+  <p class="why">מקור למערך חונכות מתנדבים.</p><div class="acts"><a class="btn" href="tel:046916963">☎ 04-6916963</a></div></div></div></div><div class="grp"><h3>נוער, צעירים ומתנ&quot;ס</h3><div class="cards">
+  <div class="p "><div class="top"><b>מרכז רמון — יחידת הנוער</b><span class="role">מרכז העשרה ולמידה לכיתות ז'–ט'</span></div>
+  <p class="why">חינוך בלתי פורמלי ומרכז למידה — עוגן לתלמיד שאיבד חיבור לכיתה. מנהלת יחידת הנוער לא מפורסמת באתר.</p><div class="acts"><a class="btn" href="tel:046934746">☎ 04-6934746</a></div></div>
+  <div class="p "><div class="top"><b>מתנ&quot;ס חצור — אוהל משה</b><span class="role">מנהל: גיל פורת</span></div>
+  <p class="why">שותף להפעלת תוכניות ביישוב.</p><div class="acts"><a class="btn" href="tel:046935754">☎ 04-6935754</a><a class="btn mail" href="mailto:Hazor@matnasim.org.il?subject=%D7%94%D7%95%D7%A4%D7%94%20%E2%80%94%20%D7%9E%D7%A0%D7%99%D7%A2%D7%AA%20%D7%A0%D7%A9%D7%99%D7%A8%D7%94%2C%20%D7%97%D7%A6%D7%95%D7%A8%20%D7%94%D7%92%D7%9C%D7%99%D7%9C%D7%99%D7%AA"><span dir="ltr">✉ Hazor@matnasim.org.il</span></a></div></div>
+  <div class="p "><div class="top"><b>דביר אלכסנדר</b><span class="role">מנהל מרכז צעירים (מרכז פרס)</span></div>
+  <p class="why">הרצף אחרי י&quot;ב — חיבור לתוכנית הבוגרים של הופה.</p><div class="acts"><a class="btn" href="tel:0528011092">☎ 052-8011092</a><a class="btn" href="tel:046800119">☎ 04-6800119</a><a class="btn wa" href="https://wa.me/972528011092" target="_blank" rel="noopener">וואטסאפ</a><a class="btn mail" href="mailto:hazormz@gmail.com?subject=%D7%94%D7%95%D7%A4%D7%94%20%E2%80%94%20%D7%9E%D7%A0%D7%99%D7%A2%D7%AA%20%D7%A0%D7%A9%D7%99%D7%A8%D7%94%2C%20%D7%97%D7%A6%D7%95%D7%A8%20%D7%94%D7%92%D7%9C%D7%99%D7%9C%D7%99%D7%AA"><span dir="ltr">✉ hazormz@gmail.com</span></a></div></div>
+  <div class="p "><div class="top"><b>מוקד המועצה</b><span class="role">מוקד עירוני</span></div>
+  <div class="acts"><a class="btn" href="tel:046916999">☎ 04-6916999</a><a class="btn mail" href="mailto:mokedironihatzor@gmail.com?subject=%D7%94%D7%95%D7%A4%D7%94%20%E2%80%94%20%D7%9E%D7%A0%D7%99%D7%A2%D7%AA%20%D7%A0%D7%A9%D7%99%D7%A8%D7%94%2C%20%D7%97%D7%A6%D7%95%D7%A8%20%D7%94%D7%92%D7%9C%D7%99%D7%9C%D7%99%D7%AA"><span dir="ltr">✉ mokedironihatzor@gmail.com</span></a></div></div></div></div><div class="grp"><h3>מרכז משאבים — מיסודו של פרופ' מולי להד · מרכז חוסן גליל מזרחי</h3><div class="cards">
+  <div class="p key"><div class="top"><b>מרכז משאבים</b><span class="role">חוסן, התערבות במשבר והכשרת צוותים</span><span class="star">מתחילים כאן</span></div>
+  <p class="why">מרכז החוסן המוביל בגליל. עליית הנוער 7, ת.ד. 797 קריית שמונה. עובד ישירות מול בתי ספר.</p><div class="acts"><a class="btn" href="tel:046900600">☎ 04-6900600</a><a class="btn" href="tel:046950740">☎ 04-6950740</a><a class="btn mail" href="mailto:cspc@icspc.org?subject=%D7%94%D7%95%D7%A4%D7%94%20%E2%80%94%20%D7%9E%D7%A0%D7%99%D7%A2%D7%AA%20%D7%A0%D7%A9%D7%99%D7%A8%D7%94%2C%20%D7%97%D7%A6%D7%95%D7%A8%20%D7%94%D7%92%D7%9C%D7%99%D7%9C%D7%99%D7%AA"><span dir="ltr">✉ cspc@icspc.org</span></a></div></div>
+  <div class="p "><div class="top"><b>יחידת חוסן</b><span class="role">פנייה ישירה</span></div>
+  <div class="acts"><a class="btn" href="tel:0586576740">☎ 058-6576740</a><a class="btn wa" href="https://wa.me/972586576740" target="_blank" rel="noopener">וואטסאפ</a><a class="btn mail" href="mailto:hosen@icspc.org?subject=%D7%94%D7%95%D7%A4%D7%94%20%E2%80%94%20%D7%9E%D7%A0%D7%99%D7%A2%D7%AA%20%D7%A0%D7%A9%D7%99%D7%A8%D7%94%2C%20%D7%97%D7%A6%D7%95%D7%A8%20%D7%94%D7%92%D7%9C%D7%99%D7%9C%D7%99%D7%AA"><span dir="ltr">✉ hosen@icspc.org</span></a></div></div></div></div><div class="grp"><h3>מסגרות אזוריות — צפת</h3><div class="cards">
+  <div class="p "><div class="top"><b>עלם — מרכז נוער צפת</b><span class="role">נוער במצבי סיכון</span></div>
+  <p class="why">הקשבה, ליווי ופעילות לנוער בסיכון. מתחם הסראיה, צפת.</p><div class="acts"><a class="btn" href="tel:0502028373">☎ 050-2028373</a><a class="btn wa" href="https://wa.me/972502028373" target="_blank" rel="noopener">וואטסאפ</a></div></div>
+  <div class="p "><div class="top"><b>מפתן צפת</b><span class="role">מסגרת חלופית לנוער שנשר</span></div>
+  <p class="why">המקור אינדקס חיצוני — לוודא שהמספר עדכני.</p><div class="acts"><a class="btn" href="tel:046970531">☎ 04-6970531</a></div></div></div></div>
+</div></section>
+
+<section id="hatzor" style="background:var(--tint);border-top:1px solid var(--line);border-bottom:1px solid var(--line)"><div class="wrap">
+  <div class="sec-h"><div class="eyebrow">שלב 2</div><h2>מה כבר פועל בחצור</h2>
+    <p>10 מסגרות ותוכניות ביישוב: של המועצה, של הרווחה ושל עמותות שפועלות בה.</p></div>
+  <p class="legend"><i></i>פס ורוד = מענה ישיר לנוער בסיכון ולנשירה</p>
+  <div class="list"><article class="card direct"><h3>המחלקה לחינוך ילדים ונוער בסיכון — מועצה מקומית חצור הגלילית</h3><p>המחלקה של המועצה שאחראית על ביקור סדיר, קידום נוער ואיתור נשירה גלויה וסמויה. נקודת הפתיחה לכל תלמיד בסיכון בחצור.</p>
+  <div class="meta"><span class="pill cat">מניעת נשירה ונוער בסיכון</span><span class="pill">📍 חצור הגלילית</span></div>
+  <div class="acts"><a class="btn" href="tel:046916935">☎ 04-6916935</a><a class="btn" href="https://www.hatzorg.co.il/חינוך/" target="_blank" rel="noopener">אתר ↗</a></div></article><article class="card direct"><h3>התוכנית הלאומית 360° — אגד חצור הגלילית ומרום הגליל</h3><p>תוכנית ממשלתית שמרכזת ברשות את כל המענים לילדים ובני נוער בסיכון. פועלת כאגד משותף לחצור ולמרום הגליל. המקור מ-2021, לוודא שעדיין פעילה.</p>
+  <div class="meta"><span class="pill cat">מניעת נשירה ונוער בסיכון</span><span class="pill">📍 חצור הגלילית</span></div>
+  <div class="acts"><a class="btn" href="https://www.hatzorg.co.il" target="_blank" rel="noopener">אתר ↗</a></div></article><article class="card direct"><h3>פותחים עתיד — חצור הגלילית</h3><p>תוכנית חונכות של הסוכנות היהודית: נאמן במשרה מלאה מלווה כ-16 תלמידים בבית הספר ובקהילה. פועלת בקריית החינוך אורט, בשיתוף עו&quot;ס מהרווחה.</p>
+  <div class="meta"><span class="pill cat">מניעת נשירה ונוער בסיכון</span><span class="pill">📍 חצור הגלילית</span></div>
+  <div class="acts"><a class="btn" href="tel:046916974">☎ 04-6916974</a><a class="btn" href="https://www.hatzorg.co.il/עו-ס-משפחות-ונוער/" target="_blank" rel="noopener">אתר ↗</a></div></article><article class="card direct"><h3>בית עלמא — מועדונית לנערות</h3><p>מועדונית לנערות בגילאי 13–16 שמופנות מבתי הספר ומהרווחה (עם עמותת יעדים לצפון). פעמיים בשבוע: קבוצה, ארוחה, סדנאות ועזרה בשיעורי בית.</p>
+  <div class="meta"><span class="pill cat">מניעת נשירה ונוער בסיכון</span><span class="pill">📍 חצור הגלילית</span></div>
+  <div class="acts"><a class="btn" href="tel:046916972">☎ 04-6916972</a><a class="btn" href="https://www.hatzorg.co.il/עו-ס-נערות-ומשפחות/" target="_blank" rel="noopener">אתר ↗</a></div></article><article class="card direct"><h3>נירים — פרויקט לנערים בסיכון בחצור</h3><p>ליווי מקצועי ורגשי לנערים בסיכון דרך טיולים ופעילות אתגרית בטבע. מרכזת עו&quot;ס של המועצה.</p>
+  <div class="meta"><span class="pill cat">מניעת נשירה ונוער בסיכון</span><span class="pill">📍 חצור הגלילית</span></div>
+  <div class="acts"><a class="btn" href="tel:046916972">☎ 04-6916972</a><a class="btn" href="https://www.hatzorg.co.il/עו-ס-נערות-ומשפחות/" target="_blank" rel="noopener">אתר ↗</a></div></article><article class="card direct"><h3>סח&quot;י — סיירת חסד ייחודית חצור</h3><p>קבוצת נוער מכיתות ט'–י&quot;ב שמתנדבת בקהילה: חלוקת סלי מזון ושיפוץ בתים. המודל של סח&quot;י מיועד לגייס בני נוער בסיכון לעשייה חברתית.</p>
+  <div class="meta"><span class="pill cat">מניעת נשירה ונוער בסיכון</span><span class="pill">📍 חצור הגלילית</span></div>
+  <div class="acts"><a class="btn" href="https://www.hatzorg.co.il/סח-י-סיירת-חסד-ייחודית/" target="_blank" rel="noopener">אתר ↗</a></div></article><article class="card "><h3>מרכז מורנו — יחידת הנוער</h3><p>מרכז מנהיגות והכנה לשירות לתלמידי י'–י&quot;ב (מנחם בגין 39): מועצת נוער, קבוצת הכנה לצה&quot;ל (אחריי), קבוצת העצמה לנערות ומרכז למידה.</p>
+  <div class="meta"><span class="pill cat">העשרה וחוגים</span><span class="pill">📍 חצור הגלילית</span></div>
+  <div class="acts"><a class="btn" href="https://www.hatzorg.co.il/מרכז-מורנו/" target="_blank" rel="noopener">אתר ↗</a></div></article><article class="card "><h3>מרכז רמון — מרכז פנאי ולמידה לנוער</h3><p>מרכז העשרה לכיתות ז'–ט' (אילן רמון 8). בימים שני וחמישי מרכז למידה: שיעורי בית, עבודות והכנה למבחנים. מדריכים בו גם שינשינים של גרעין צמרת.</p>
+  <div class="meta"><span class="pill cat">העשרה וחוגים</span><span class="pill">📍 חצור הגלילית</span></div>
+  <div class="acts"><a class="btn" href="tel:046934746">☎ 04-6934746</a><a class="btn" href="https://www.hatzorg.co.il/מרכז-רמון/" target="_blank" rel="noopener">אתר ↗</a></div></article><article class="card "><h3>רואים רחוק — מנהיגות לבני נוער</h3><p>תוכנית לפיתוח מנהיגות ושייכות ליישוב, פועלת בקריית החינוך אורט חצור ובמרכז פרס לצעירים.</p>
+  <div class="meta"><span class="pill cat">העשרה וחוגים</span><span class="pill">📍 חצור הגלילית</span></div>
+  <div class="acts"><a class="btn" href="tel:046800119">☎ 04-6800119</a><a class="btn" href="https://www.hatzorg.co.il/קרית-החינוך-אורט/" target="_blank" rel="noopener">אתר ↗</a></div></article><article class="card "><h3>מתנ&quot;ס חצור — מרכז קהילתי אוהל משה</h3><p>המרכז הקהילתי של חצור: חוגים ופעילות נוער בלתי פורמלית.</p>
+  <div class="meta"><span class="pill cat">העשרה וחוגים</span><span class="pill">📍 חצור הגלילית</span></div>
+  <div class="acts"><a class="btn" href="tel:046935754">☎ 04-6935754</a><a class="btn mail" href="mailto:Hazor@matnasim.org.il?subject=%D7%94%D7%95%D7%A4%D7%94%20%E2%80%94%20%D7%9E%D7%A0%D7%99%D7%A2%D7%AA%20%D7%A0%D7%A9%D7%99%D7%A8%D7%94%2C%20%D7%97%D7%A6%D7%95%D7%A8%20%D7%94%D7%92%D7%9C%D7%99%D7%9C%D7%99%D7%AA"><span dir="ltr">✉ Hazor@matnasim.org.il</span></a><a class="btn" href="https://www.hatzorg.co.il/מתנ-ס/" target="_blank" rel="noopener">אתר ↗</a></div></article></div>
+</div></section>
+
+<section id="ezor"><div class="wrap">
+  <div class="sec-h"><div class="eyebrow">שלב 3</div><h2>באזור: צפת, קריית שמונה והגליל העליון</h2>
+    <p>מסגרות שמשרתות גם את חצור או נמצאות במרחק נסיעה קצר.</p></div>
+  <div class="list"><article class="card "><h3>מרכז חוסן גליל מזרחי</h3><p>טיפול רגשי בחרדה ובטראומה. משרת את חצור, ראש פינה, צפת, יסוד המעלה וקריית שמונה. עליית הנוער 7, קריית שמונה.</p>
+  <div class="meta"><span class="pill cat">סיוע רפואי ורגשי</span><span class="pill">📍 קריית שמונה</span></div>
+  <div class="acts"><a class="btn" href="tel:046900600">☎ 04-6900600</a><a class="btn" href="https://hoseneastgalil.org.il" target="_blank" rel="noopener">אתר ↗</a></div></article><article class="card direct"><h3>עלם — מרכז נוער צפת</h3><p>מרכז של עמותת עלם לבני נוער במצבי סיכון: הקשבה, ליווי ופעילות. הפלמ&quot;ח 100 (מתחם הסראיה), צפת.</p>
+  <div class="meta"><span class="pill cat">מניעת נשירה ונוער בסיכון</span><span class="pill">📍 צפת</span></div>
+  <div class="acts"><a class="btn" href="tel:0502028373">☎ 050-2028373</a><a class="btn wa" href="https://wa.me/972502028373" target="_blank" rel="noopener">וואטסאפ</a><a class="btn" href="https://elem.org.il" target="_blank" rel="noopener">אתר ↗</a></div></article><article class="card direct"><h3>עלם — ניידת צפת</h3><p>ניידת רחוב שמגיעה לבני נוער משוטטים ובסיכון באזור צפת.</p>
+  <div class="meta"><span class="pill cat">מניעת נשירה ונוער בסיכון</span><span class="pill">📍 צפת</span></div>
+  <div class="acts"><a class="btn" href="tel:0524629772">☎ 052-4629772</a><a class="btn wa" href="https://wa.me/972524629772" target="_blank" rel="noopener">וואטסאפ</a><a class="btn" href="https://elem.org.il" target="_blank" rel="noopener">אתר ↗</a></div></article><article class="card direct"><h3>סל&quot;ע — חונכות לנערות בסיכון (משרד הרווחה ועמותת ידידים)</h3><p>סטודנטים חונכים נערות עולות וותיקות בגילאי 13–18 במצבי סיכון. מסלול הנערות פועל בצפת ובקריית שמונה. ההפניה דרך השירותים החברתיים.</p>
+  <div class="meta"><span class="pill cat">מניעת נשירה ונוער בסיכון</span><span class="pill">📍 צפת</span></div>
+  <div class="acts"><a class="btn" href="https://www.kolzchut.org.il/he/תוכנית_סל%22ע_-_חונכות_לנערות_ונערים_עולים_וותיקים_במצבי_סיכון_ומצוקה" target="_blank" rel="noopener">אתר ↗</a></div></article><article class="card "><h3>כנפיים של קרמבו — סניף צפת</h3><p>תנועת נוער משלבת לילדים ובני נוער עם ובלי מוגבלות. בית הספר מנחם בגין, ז'בוטינסקי, צפת.</p>
+  <div class="meta"><span class="pill cat">העשרה וחוגים</span><span class="pill">📍 צפת</span></div>
+  <div class="acts"><a class="btn" href="tel:0527456089">☎ 052-7456089</a><a class="btn wa" href="https://wa.me/972527456089" target="_blank" rel="noopener">וואטסאפ</a><a class="btn" href="https://www.krembo.org.il" target="_blank" rel="noopener">אתר ↗</a></div></article><article class="card direct"><h3>מיט, ל - מכון לטיפוח יוזמות למידה בקרית שמונה</h3><p>אבחון וטיפול לילדים ובני נוער עם לקויות למידה, בפריפריה.</p>
+  <div class="meta"><span class="pill cat">הכוונה לימודית</span><span class="pill">📍 קריית שמונה</span></div>
+  <div class="acts"><a class="btn mail" href="mailto:unger@uk-cpa.com?subject=%D7%94%D7%95%D7%A4%D7%94%20%E2%80%94%20%D7%9E%D7%A0%D7%99%D7%A2%D7%AA%20%D7%A0%D7%A9%D7%99%D7%A8%D7%94%2C%20%D7%97%D7%A6%D7%95%D7%A8%20%D7%94%D7%92%D7%9C%D7%99%D7%9C%D7%99%D7%AA"><span dir="ltr">✉ unger@uk-cpa.com</span></a></div></article><article class="card direct"><h3>דרך הארץ - חינוך, קיימות וסביבה</h3><p>קבוצות לנוער בסיכון עם רצף שירותים: ליווי סוציאלי, העשרה ותעסוקה.</p>
+  <div class="meta"><span class="pill cat">מניעת נשירה ונוער בסיכון</span><span class="pill">📍 קריית שמונה</span></div>
+  <div class="acts"><a class="btn mail" href="mailto:ayalar.msr@gmail.com?subject=%D7%94%D7%95%D7%A4%D7%94%20%E2%80%94%20%D7%9E%D7%A0%D7%99%D7%A2%D7%AA%20%D7%A0%D7%A9%D7%99%D7%A8%D7%94%2C%20%D7%97%D7%A6%D7%95%D7%A8%20%D7%94%D7%92%D7%9C%D7%99%D7%9C%D7%99%D7%AA"><span dir="ltr">✉ ayalar.msr@gmail.com</span></a></div></article><article class="card direct"><h3>ניצוצות לחיים</h3><p>תמיכה בילדים ובני נוער שמתמודדים עם מצוקה רגשית.</p>
+  <div class="meta"><span class="pill cat">תמיכה רגשית וחברתית</span><span class="pill">📍 צפת</span></div>
+  <div class="acts"><a class="btn mail" href="mailto:ghanim6@gmail.com?subject=%D7%94%D7%95%D7%A4%D7%94%20%E2%80%94%20%D7%9E%D7%A0%D7%99%D7%A2%D7%AA%20%D7%A0%D7%A9%D7%99%D7%A8%D7%94%2C%20%D7%97%D7%A6%D7%95%D7%A8%20%D7%94%D7%92%D7%9C%D7%99%D7%9C%D7%99%D7%AA"><span dir="ltr">✉ ghanim6@gmail.com</span></a></div></article><article class="card direct"><h3>פסיפס - המרכז לחינוך וטיפול</h3><p>מכון טיפולים מסובסד לתלמידים, פרטני וקבוצתי, והדרכת הורים.</p>
+  <div class="meta"><span class="pill cat">מניעת נשירה ונוער בסיכון</span><span class="pill">📍 צפת</span></div>
+  <div class="acts"><a class="btn mail" href="mailto:cpagargi@gmail.com?subject=%D7%94%D7%95%D7%A4%D7%94%20%E2%80%94%20%D7%9E%D7%A0%D7%99%D7%A2%D7%AA%20%D7%A0%D7%A9%D7%99%D7%A8%D7%94%2C%20%D7%97%D7%A6%D7%95%D7%A8%20%D7%94%D7%92%D7%9C%D7%99%D7%9C%D7%99%D7%AA"><span dir="ltr">✉ cpagargi@gmail.com</span></a></div></article><article class="card direct"><h3>ישיבת חנוך לנער</h3><p>מסגרת חינוכית לנוער שנשר, לנערים מהציבור הדתי.</p>
+  <div class="meta"><span class="pill cat">מניעת נשירה ונוער בסיכון</span><span class="pill">📍 צפת</span></div>
+  <div class="acts"><a class="btn mail" href="mailto:vexler1@barak.net.il?subject=%D7%94%D7%95%D7%A4%D7%94%20%E2%80%94%20%D7%9E%D7%A0%D7%99%D7%A2%D7%AA%20%D7%A0%D7%A9%D7%99%D7%A8%D7%94%2C%20%D7%97%D7%A6%D7%95%D7%A8%20%D7%94%D7%92%D7%9C%D7%99%D7%9C%D7%99%D7%AA"><span dir="ltr">✉ vexler1@barak.net.il</span></a></div></article><article class="card direct"><h3>עם אחד לב אחד מצפת</h3><p>מסגרת לנוער בסיכון ובמצוקה, ולימודי מקצוע.</p>
+  <div class="meta"><span class="pill cat">מניעת נשירה ונוער בסיכון</span><span class="pill">📍 צפת</span></div>
+  <div class="acts"><a class="btn mail" href="mailto:dinatvila26@gmail.com?subject=%D7%94%D7%95%D7%A4%D7%94%20%E2%80%94%20%D7%9E%D7%A0%D7%99%D7%A2%D7%AA%20%D7%A0%D7%A9%D7%99%D7%A8%D7%94%2C%20%D7%97%D7%A6%D7%95%D7%A8%20%D7%94%D7%92%D7%9C%D7%99%D7%9C%D7%99%D7%AA"><span dir="ltr">✉ dinatvila26@gmail.com</span></a></div></article><article class="card "><h3>חוות קיימא חוקוק</h3><p>מסגרת תעסוקתית וקהילתית רב-גילאית לנוער שנשרו ממסגרות רשמיות</p>
+  <div class="meta"><span class="pill cat">סיוע רפואי ורגשי</span></div>
+  <div class="acts"><a class="btn" href="tel:0587132016">☎ 058-7132016</a><a class="btn wa" href="https://wa.me/972587132016" target="_blank" rel="noopener">וואטסאפ</a><a class="btn" href="https://www.kaimahukuk.org.il" target="_blank" rel="noopener">אתר ↗</a></div></article><article class="card "><h3>IsraAID — נמל מבטחים לצפון</h3><p>צוותי חירום ב-140 קהילות בצפון. מרחבי ילדים-הורים, סדנאות אמנות, חינוך מעברי</p>
+  <div class="meta"><span class="pill cat">חירום בתקופת מלחמה</span></div>
+  <div class="acts"><a class="btn" href="https://www.israaid.org/" target="_blank" rel="noopener">אתר ↗</a></div></article></div>
+  <p class="legend" style="margin-top:14px">חלק מהמיילים של העמותות נלקחו מרשם העמותות, ולפעמים הם של רואה החשבון. אם אין תשובה, עדיף להתקשר.</p>
+</div></section>
+
+<section id="arzi" style="background:var(--tint);border-top:1px solid var(--line)"><div class="wrap">
+  <div class="sec-h"><div class="eyebrow">ועוד</div><h2>353 מענים ארציים</h2>
+    <p>עמותות ותוכניות שפועלות בכל הארץ: חונכות, לקויות למידה, חוות טיפוליות, פנימיות ותמיכה רגשית. הן מרוכזות בדף המענים של הופה, עם חיפוש וסינון.</p></div>
+  <a class="big" href="manim-neshira.html">לכל המענים ←</a>
+</div></section>
+
+<footer><div class="wrap foot"><div>
+  <a href="https://hopa.org.il" target="_blank" rel="noopener">hopa.org.il</a>
+  <p class="note">הפרטים נאספו מאתר המועצה המקומית חצור הגלילית, מכל-זכות, מאתרי העמותות ומרשם העמותות. בעלי תפקידים מתחלפים, ולכן כדאי לוודא את הפרטים בשיחה הראשונה.</p>
+</div><span class="issue">הופה · <b>מניעת נשירה 14–18</b></span></div></footer>
+</body>
+</html>
