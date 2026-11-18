@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>הופה · מי עושה מה בליווי הבוגרים</title>
+<meta name="description" content="הגדרות התפקיד של מיטל, אסמאא, מיטב והמתנדבים, ומסלול הטיפול בפנייה של בוגר/ת: מי אחראי/ת על כל שלב, מתי מעבירים טיפול ומה מעדכנים בהופה סקיור.">
+<meta property="og:title" content="הופה · מי עושה מה בליווי הבוגרים">
+<meta property="og:description" content="הגדרות תפקיד ומסלול הטיפול בפנייה, בעמוד אחד.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+/* הופה · מערכת עיצוב: ורוד #E8348A · צהוב #FFF200 · Rubik · RTL · אין רקע שחור */
+:root{
+  --pink:#E8348A; --pink-deep:#C2185B; --pink-soft:#FCE7F2;
+  --yellow:#FFF200; --yellow-deep:#FFD500; --yellow-soft:#FFFCE6;
+  --ink:#111111; --ink-2:#3A3A3A; --muted:#6B6B6B;
+  --line:#E9E7E4; --bg:#FFFFFF; --tint:#FAF8F5;
+  --green:#3BA55C; --green-soft:#E8F5EC;
+  --orange:#E8862F; --orange-soft:#FDF0E3;
+  --blue:#3D7DD8; --blue-soft:#E7F0FB;
+  --red:#D64545; --red-soft:#FCEBEB;
+  --r-lg:24px; --r-md:16px;
+  --shadow:0 1px 2px rgba(17,17,17,.04), 0 8px 28px rgba(17,17,17,.06);
+  --maxw:900px;
+}
+*,*::before,*::after{box-sizing:border-box}
+body{margin:0;font-family:Rubik,"Heebo","Segoe UI",system-ui,sans-serif;background:var(--bg);color:var(--ink);
+  font-size:17px;line-height:1.7;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+img{max-width:100%;display:block}
+a{color:var(--pink-deep)}
+h1,h2,h3,h4{line-height:1.25;margin:0;letter-spacing:-.02em;font-weight:800}
+.topbar{position:fixed;top:0;left:0;right:0;height:6px;z-index:60;
+  background:linear-gradient(90deg,var(--pink) 0%,#F0679E 35%,var(--yellow-deep) 72%,var(--yellow) 100%)}
+.wrap{max-width:var(--maxw);margin:0 auto;padding:0 16px}
+.hero{position:relative;padding:52px 0 38px;overflow:hidden;
+  background:radial-gradient(1100px 420px at 88% -8%, rgba(255,242,0,.42), transparent 62%),
+             radial-gradient(900px 460px at 4% 4%, rgba(232,52,138,.14), transparent 60%),#FFF;
+  border-bottom:1px solid var(--line)}
+.brandrow{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;margin-bottom:24px}
+.logo-chip{display:inline-flex;align-items:center;gap:14px;text-decoration:none}
+.logo-chip img{height:48px;width:auto}
+.logo-chip .org{border-inline-start:1px solid var(--line);padding-inline-start:14px;line-height:1.25}
+.logo-chip .org b{display:block;font-size:16px;font-weight:800;color:var(--ink)}
+.logo-chip .org span{display:block;font-size:12.5px;color:var(--muted);font-weight:600}
+.datechip{background:var(--yellow-soft);border:1px solid var(--yellow-deep);border-radius:999px;
+  padding:6px 16px;font-size:13.5px;font-weight:700;color:var(--ink-2)}
+.hero h1{font-size:clamp(27px,5vw,40px)}
+.hero .sub{margin:14px 0 0;font-size:18px;color:var(--ink-2);max-width:720px}
+.toc{display:flex;flex-wrap:wrap;gap:8px;margin-top:22px}
+.toc a{text-decoration:none;font-size:14px;font-weight:700;color:var(--ink-2);background:#fff;border:1px solid var(--line);
+  border-radius:999px;padding:6px 14px}
+.toc a:hover{border-color:var(--pink);color:var(--pink-deep)}
+main{padding:34px 0 20px}
+section{margin-bottom:46px;scroll-margin-top:30px}
+.sec-head{display:flex;align-items:center;gap:12px;margin-bottom:6px}
+.sec-num{flex:none;width:36px;height:36px;border-radius:12px;background:var(--pink);color:#fff;
+  display:flex;align-items:center;justify-content:center;font-weight:900;font-size:17px}
+.sec-head h2{font-size:clamp(21px,3.4vw,27px)}
+.sec-lead{color:var(--muted);font-size:15.5px;margin:6px 0 18px}
+.mission{border:2px solid var(--pink);background:linear-gradient(180deg,#fff,var(--pink-soft) 200%);
+  border-radius:var(--r-lg);padding:22px 26px;font-size:19px;font-weight:600;box-shadow:var(--shadow)}
+.mission small{display:block;font-size:15px;font-weight:400;color:var(--ink-2);margin-top:8px}
+.hl{background:linear-gradient(0deg,rgba(255,242,0,.55),rgba(255,242,0,.55)) no-repeat 0 78%/100% 34%;font-weight:700}
+
+/* כרטיסי תפקיד */
+.roles{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+@media(max-width:760px){.roles{grid-template-columns:1fr}}
+.role{background:#fff;border:1px solid var(--line);border-radius:var(--r-lg);padding:20px 22px;box-shadow:var(--shadow);
+  border-top:6px solid var(--pink)}
+.role.y{border-top-color:var(--yellow-deep)}
+.role.b{border-top-color:var(--blue)}
+.role.g{border-top-color:var(--green)}
+.role-top{display:flex;align-items:center;gap:12px;margin-bottom:4px}
+.ico{flex:none;width:42px;height:42px;border-radius:13px;background:var(--pink-soft);color:var(--pink-deep);
+  display:flex;align-items:center;justify-content:center}
+.role.y .ico{background:var(--yellow-soft);color:#9A7A00}
+.role.b .ico{background:var(--blue-soft);color:var(--blue)}
+.role.g .ico{background:var(--green-soft);color:var(--green)}
+.ico svg{width:22px;height:22px}
+.role h3{font-size:20px}
+.role .title{font-size:14px;color:var(--muted);font-weight:600}
+.meta{display:flex;flex-wrap:wrap;gap:6px;margin:10px 0 6px}
+.meta span{font-size:13px;font-weight:700;background:var(--tint);border:1px solid var(--line);border-radius:999px;padding:3px 11px;color:var(--ink-2)}
+.role .goal{font-size:15.5px;font-weight:600;margin:8px 0 4px}
+.role h4{font-size:14.5px;color:var(--pink-deep);margin:12px 0 2px}
+.role ul{margin:4px 0;padding-inline-start:20px;font-size:15.5px}
+.role li{margin-bottom:5px}
+.role .not{margin-top:12px;font-size:14px;color:var(--ink-2);background:var(--tint);border-radius:12px;padding:9px 13px}
+.role .not b{color:var(--ink)}
+.schools{font-size:14px;color:var(--ink-2);margin-top:4px}
+
+/* סדר עדיפויות */
+.prio{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;counter-reset:p}
+@media(max-width:760px){.prio{grid-template-columns:1fr 1fr}}
+@media(max-width:420px){.prio{grid-template-columns:1fr}}
+.pr{background:var(--tint);border:1px solid var(--line);border-radius:var(--r-md);padding:13px 15px;position:relative}
+.pr::before{counter-increment:p;content:counter(p);display:inline-flex;width:26px;height:26px;border-radius:9px;background:var(--pink);
+  color:#fff;font-weight:900;font-size:14px;align-items:center;justify-content:center;margin-bottom:6px}
+.pr b{display:block;font-size:15px;margin-bottom:2px}
+.pr span{font-size:13.5px;color:var(--ink-2);line-height:1.5;display:block}
+
+/* מסלול הטיפול */
+.flow{display:flex;flex-direction:column;gap:0}
+.step{display:grid;grid-template-columns:44px 1fr;gap:14px;position:relative}
+.step::after{content:"";position:absolute;top:44px;bottom:0;right:21px;width:2px;background:var(--line)}
+.step:last-child::after{display:none}
+.dot{width:44px;height:44px;border-radius:50%;background:#fff;border:2px solid var(--pink);color:var(--pink-deep);
+  display:flex;align-items:center;justify-content:center;font-weight:900;font-size:17px;z-index:1}
+.step.care .dot{border-color:var(--red);color:var(--red)}
+.sbody{background:#fff;border:1px solid var(--line);border-radius:var(--r-md);padding:15px 18px;margin-bottom:14px;box-shadow:var(--shadow)}
+.step.care .sbody{border-color:var(--red);background:linear-gradient(180deg,#fff,var(--red-soft) 260%)}
+.sbody h3{font-size:18px;margin-bottom:8px}
+.srow{display:grid;grid-template-columns:120px 1fr;gap:10px;font-size:15px;padding:6px 0;border-top:1px dashed var(--line)}
+.srow:first-of-type{border-top:0}
+.srow .k{font-weight:700;color:var(--muted);font-size:13.5px;padding-top:2px}
+@media(max-width:520px){.srow{grid-template-columns:1fr;gap:0}}
+.tag{display:inline-block;font-size:13px;font-weight:700;border-radius:8px;padding:1px 8px;margin:1px 0;
+  background:var(--blue-soft);color:#2A5FA8;border:1px solid #CFE0F7;white-space:nowrap}
+.tag.out{background:var(--green-soft);color:#2B7A45;border-color:#CDE8D5}
+.tag.care{background:var(--red-soft);color:var(--red);border-color:#F3CACA}
+
+/* הדוגמה */
+.story{background:var(--yellow-soft);border:1px solid var(--yellow-deep);border-radius:var(--r-lg);padding:20px 24px}
+.story ol{margin:6px 0 0;padding-inline-start:22px}
+.story li{margin-bottom:9px}
+.story .day{font-weight:800;color:var(--pink-deep)}
+
+/* כללי העברה */
+.rules{display:grid;gap:10px}
+.rule{display:grid;grid-template-columns:1fr auto 1fr;gap:12px;align-items:center;background:#fff;border:1px solid var(--line);
+  border-radius:var(--r-md);padding:13px 16px;box-shadow:var(--shadow)}
+.rule .when{font-weight:600;font-size:15.5px}
+.rule .arr{color:var(--pink);display:flex}
+.rule .arr svg{width:22px;height:22px}
+.rule .to{font-size:15px;color:var(--ink-2)}
+.rule .to b{color:var(--ink)}
+@media(max-width:600px){.rule{grid-template-columns:1fr}.rule .arr{transform:rotate(-90deg);width:22px}}
+.rule.urgent{border-color:var(--red)}
+.golden{margin-top:14px;border-inline-start:5px solid var(--pink);background:var(--pink-soft);border-radius:12px;padding:13px 17px;font-size:15.5px}
+
+.btn{display:inline-flex;align-items:center;gap:8px;background:var(--pink);color:#fff;text-decoration:none;font-weight:800;
+  border-radius:999px;padding:11px 22px;font-size:15.5px;min-height:44px}
+.btn svg{width:18px;height:18px}
+.btn.ghost{background:#fff;color:var(--pink-deep);border:2px solid var(--pink)}
+.btns{display:flex;flex-wrap:wrap;gap:10px;margin-top:16px}
+
+.open{background:var(--tint);border:1px dashed #CFCBC5;border-radius:var(--r-md);padding:14px 18px;font-size:15px}
+.open ul{margin:4px 0;padding-inline-start:20px}
+
+footer{border-top:1px solid var(--line);padding:22px 0 34px;margin-top:10px}
+.frow{display:flex;align-items:center;gap:16px;flex-wrap:wrap}
+.frow img{height:34px;width:auto}
+.fnote{font-size:13px;color:var(--muted)}
+.credit{font-size:12px;color:var(--muted);margin-top:8px}
+@media print{.topbar,.toc,.btns{display:none}.role,.sbody,.rule{box-shadow:none;break-inside:avoid}}
+</style>
+</head>
+<body>
+<div class="topbar"></div>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="brandrow">
+      <a class="logo-chip" href="https://hopa.org.il" target="_blank" rel="noopener">
+        <img src="hopa-logo.png" alt="הופה">
+        <span class="org"><b>הופה</b><span>ליווי בוגרים</span></span>
+      </a>
+      <span class="datechip">טיוטה לדיון · 18.11.2026</span>
+    </div>
+    <h1>מי עושה מה בליווי הבוגרים</h1>
+    <p class="sub">הגדרות התפקיד של מיטל, אסמאא, מיטב והמתנדבים, ומסלול אחד לכל פנייה של בוגר/ת: מי אחראי/ת על כל שלב, מתי מעבירים טיפול הלאה ומה מעדכנים בהופה סקיור.</p>
+    <nav class="toc" aria-label="תוכן הדף">
+      <a href="#ikaron">העיקרון</a>
+      <a href="#tafkidim">התפקידים</a>
+      <a href="#seder">סדר העבודה</a>
+      <a href="#maslul">מסלול הפנייה</a>
+      <a href="#dugma">דוגמה</a>
+      <a href="#haavara">מתי מעבירים</a>
+    </nav>
+  </div>
+</header>
+
+<main class="wrap">
+
+<!-- 1 -->
+<section id="ikaron">
+  <div class="sec-head"><span class="sec-num">1</span><h2>העיקרון</h2></div>
+  <div class="mission">
+    מי שקיבל/ה את הפנייה מלווה אותה <span class="hl">עד שהיא נסגרת</span>, ולא רק עד ההפניה.
+    <small>לכל בוגר/ת יש כתובת אחת: הרכז/ת של בית הספר שלו/ה. הפניה למענה היא אמצע הדרך. התיק נסגר רק כשבודקים שהבוגר/ת באמת הגיע/ה למענה, או כשברור שאין מה להמשיך.</small>
+  </div>
+</section>
+
+<!-- 2 -->
+<section id="tafkidim">
+  <div class="sec-head"><span class="sec-num">2</span><h2>התפקידים</h2></div>
+  <p class="sec-lead">מיטב ואסמאא עובדים באותו מודל, של מלווה תיק. ההבדל ביניהם הוא בבתי הספר.</p>
+
+  <div class="roles">
+
+    <article class="role">
+      <div class="role-top">
+        <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l8 4v5c0 4.5-3.4 8.3-8 9-4.6-.7-8-4.5-8-9V7l8-4z"/><path d="M9 12l2 2 4-4"/></svg></span>
+        <div><h3>מיטל</h3><div class="title">סמנכ"לית תפעול · מובילת מערך הליווי</div></div>
+      </div>
+      <p class="goal">מחזיקה את המערך: את השגרות, את הנתונים ואת המקרים שדורשים החלטה.</p>
+      <h4>אחריות</h4>
+      <ul>
+        <li>הגדרת שגרות העבודה והמסלול הזה, ומעקב שהם עובדים</li>
+        <li>ריכוז המתנדבים: גיוס, הכשרה, חלוקת רשימות, זום חודשי ואישור שעות</li>
+        <li>הופה סקיור והנתונים: ייבוא רשימות, השלמת חוסרים ותמונת מצב</li>
+        <li>שליחת שאלון המיפוי לבוגרים (נשלח רק מהמטה)</li>
+        <li>מקבלת מקרים שמועברים אליה: מצוקה, תקיעות שלא נפתרה, ומקרים שדורשים החלטה או תקציב</li>
+        <li>שיחת מעקב שבועית עם מיטב ועם אסמאא על הפניות הפתוחות</li>
+      </ul>
+      <div class="not"><b>לא בתפקיד:</b> ליווי שוטף של תיקי בוגרים. תיק שמגיע אליה חוזר לרכז/ת ברגע שהבעיה נפתרת.</div>
+    </article>
+
+    <article class="role y">
+      <div class="role-top">
+        <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="8" r="3.2"/><path d="M3.5 19c.7-3.2 3-5 5.5-5s4.8 1.8 5.5 5"/><path d="M16 4.5a3 3 0 010 6"/><path d="M18 14.3c1.4.7 2.3 2.2 2.6 4.7"/></svg></span>
+        <div><h3>מיטב</h3><div class="title">רכז מענים ובוגרים · מלווה תיק</div></div>
+      </div>
+      <div class="meta"><span>חצי משרה · 21 ש' בשבוע</span><span>16 בתי ספר</span></div>
+      <p class="schools">בתי הספר שאינם במגזר הערבי, הבדואי והדרוזי (נכנס במקום בארי).</p>
+      <p class="goal">כל בוגר/ת שפונה, או שעלה אצלו/ה צורך, מקבל/ת ליווי עד שהגיע/ה למענה.</p>
+      <h4>אחריות</h4>
+      <ul>
+        <li>מענה לכל פנייה שנכנסת מבתי הספר שלו, ושיוך הפנייה אליו בהופה סקיור</li>
+        <li>שיחה ומיפוי הצורך, וחיבור למענה מתאים מהמאגר</li>
+        <li>מעקב אחרי כל הפניה: בדיקה אחרי 7 ימים שהבוגר/ת נרשם/ה, ועזרה אם נתקע/ה</li>
+        <li>פנייה יזומה לבוגרים שעלה אצלם צורך ולא פנו בעצמם</li>
+        <li>קשר עם הגורמים הקהילתיים באזורי בתי הספר שלו: היכרות, בניית שיתוף פעולה, והבנה מה כל גורם תורם לבוגרים</li>
+        <li>כשהפניות הפתוחות מטופלות: מצטרף לשיחות עם בוגרים שלא ענו על שאלון המיפוי</li>
+        <li>עדכון הופה סקיור בכל שלב (ראו המסלול)</li>
+      </ul>
+      <div class="not"><b>לא בתפקיד:</b> שליחת שאלון המיפוי (רק המטה שולח אותו), וטיפול לבד במקרה של מצוקה. מקרה כזה עובר למיטל עוד באותו יום.</div>
+    </article>
+
+    <article class="role b">
+      <div class="role-top">
+        <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="8" r="3.2"/><path d="M3.5 19c.7-3.2 3-5 5.5-5s4.8 1.8 5.5 5"/><path d="M16 4.5a3 3 0 010 6"/><path d="M18 14.3c1.4.7 2.3 2.2 2.6 4.7"/></svg></span>
+        <div><h3>אסמאא</h3><div class="title">רכזת מענים ובוגרים · מלווה תיק · החברה הערבית, הבדואית והדרוזית</div></div>
+      </div>
+      <div class="meta"><span>שליש משרה · 14 ש' בשבוע</span><span>9 בתי ספר</span></div>
+      <p class="schools">לקייה, ג'וליס, סח'נין, טורעאן, נווה מדבר, ביר אל-מכסור, רהט, כרמל חיפה, ירכא.</p>
+      <p class="goal">אותו מודל כמו מיטב, בשפה ובקשר המקומי של בתי הספר שלה.</p>
+      <h4>אחריות</h4>
+      <ul>
+        <li>מענה לכל פנייה שנכנסת מבתי הספר שלה, ושיוך הפנייה אליה בהופה סקיור</li>
+        <li>שיחה בערבית או בעברית, לפי הבוגר/ת, וחיבור למענה מתאים, כולל מענים בקהילה ובשפה</li>
+        <li>מעקב אחרי כל הפניה: בדיקה אחרי 7 ימים שהבוגר/ת נרשם/ה, ועזרה אם נתקע/ה</li>
+        <li>פנייה יזומה לבוגרים שעלה אצלם צורך ולא פנו בעצמם</li>
+        <li>קשר עם הגורמים הקהילתיים ברשויות של בתי הספר שלה: היכרות, בניית שיתוף פעולה, והבנה מה כל גורם תורם לבוגרים</li>
+        <li>כשהפניות הפתוחות מטופלות: מצטרפת לשיחות עם בוגרים שלא ענו על שאלון המיפוי</li>
+        <li>עדכון הופה סקיור בכל שלב (ראו המסלול)</li>
+      </ul>
+      <div class="not"><b>לא בתפקיד:</b> שליחת שאלון המיפוי, וטיפול לבד במקרה של מצוקה. מקרה כזה עובר למיטל עוד באותו יום.</div>
+    </article>
+
+    <article class="role g">
+      <div class="role-top">
+        <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 005 5L15 13l5 2v4a1 1 0 01-1 1A16 16 0 014 5a1 1 0 011-1z"/></svg></span>
+        <div><h3>מתנדבים ומלגאים</h3><div class="title">שיחות לבוגרים שלא ענו על השאלון · כולל נועם (מלגאי)</div></div>
+      </div>
+      <div class="meta"><span>כ-10 בוגרים בחודש</span><span>בריכוז מיטל</span></div>
+      <p class="goal">מחזירים למעגל בוגרים שלא ענו על שאלון המיפוי.</p>
+      <h4>אחריות</h4>
+      <ul>
+        <li>שיחה עם הבוגרים ברשימה שקיבלו, ומילוי שאלון המיפוי יחד איתם בטלפון</li>
+        <li>אם בשיחה עולה צורך: מקשיבים, רושמים, ומעבירים לרכז/ת של בית הספר (מיטב או אסמאא). לא מפנים בעצמם למענים.</li>
+        <li>סימן למצוקה: מעבירים למיטל מיד</li>
+        <li>דיווח שעות במערכת דיווח השעות</li>
+      </ul>
+      <div class="not"><b>לא בתפקיד:</b> ליווי תיק. מרגע שעלה צורך, הוא עובר לרכז/ת, והרכז/ת חוזר/ת לבוגר/ת.</div>
+    </article>
+
+  </div>
+</section>
+
+<!-- 3 -->
+<section id="seder">
+  <div class="sec-head"><span class="sec-num">3</span><h2>סדר העבודה של מלווה תיק</h2></div>
+  <p class="sec-lead">כשאין זמן לכל הדברים, זה הסדר. מה שלמעלה קודם.</p>
+  <div class="prio">
+    <div class="pr"><b>פניות חדשות</b><span>יצירת קשר ראשונה עם כל בוגר/ת שפנה/תה</span></div>
+    <div class="pr"><b>בדיקת הפניות</b><span>לחזור לכל מי שהופנה/תה ותאריך החזרה הגיע</span></div>
+    <div class="pr"><b>גורמים קהילתיים</b><span>היכרות ושיתופי פעולה באזורי בתי הספר</span></div>
+    <div class="pr"><b>שיחות לשאלון</b><span>יחד עם המתנדבים, לבוגרים שלא ענו</span></div>
+  </div>
+</section>
+
+<!-- 4 -->
+<section id="maslul">
+  <div class="sec-head"><span class="sec-num">4</span><h2>מסלול הפנייה, שלב אחר שלב</h2></div>
+  <p class="sec-lead">השלבים בכחול הם השמות שמופיעים בהופה סקיור, בחלון הפנייה ובלשונית "פניות וטיפול" בכרטיס הבוגר.</p>
+
+  <div class="flow">
+
+    <div class="step">
+      <span class="dot">1</span>
+      <div class="sbody">
+        <h3>פנייה נכנסת</h3>
+        <div class="srow"><span class="k">מאיפה</span><span>שאלון המיפוי, פנייה ישירה של הבוגר/ת, צורך שמתנדב/ת העביר/ה, או בית הספר</span></div>
+        <div class="srow"><span class="k">מי אחראי/ת</span><span>הרכז/ת של בית הספר: מיטב או אסמאא</span></div>
+        <div class="srow"><span class="k">בהופה סקיור</span><span>שיוך לאיש/ת צוות: לעצמך. הפנייה במצב <span class="tag">חדשה</span></span></div>
+      </div>
+    </div>
+
+    <div class="step">
+      <span class="dot">2</span>
+      <div class="sbody">
+        <h3>יצירת קשר</h3>
+        <div class="srow"><span class="k">מי אחראי/ת</span><span>מלווה התיק</span></div>
+        <div class="srow"><span class="k">מתי ממשיכים</span><span>ענה/תה: עוברים לשלב 3. לא ענה/תה: מנסים שוב, בטלפון ובוואטסאפ. אחרי 3 ניסיונות בלי מענה עוברים ל<span class="tag">ממתין לבוגר/ת</span> וקובעים תאריך לחזרה.</span></div>
+        <div class="srow"><span class="k">בהופה סקיור</span><span>"רישום הניסיון" על כל ניסיון, עם הדרך שבה ניסית</span></div>
+      </div>
+    </div>
+
+    <div class="step">
+      <span class="dot">3</span>
+      <div class="sbody">
+        <h3>שיחה והבנת הצורך</h3>
+        <div class="srow"><span class="k">מי אחראי/ת</span><span>מלווה התיק</span></div>
+        <div class="srow"><span class="k">מה עושים</span><span>מבינים מה הבוגר/ת צריך/ה באמת, ומה כבר ניסה/תה</span></div>
+        <div class="srow"><span class="k">בהופה סקיור</span><span><span class="tag">בטיפול</span> + הערה קצרה: מה הצורך</span></div>
+      </div>
+    </div>
+
+    <div class="step">
+      <span class="dot">4</span>
+      <div class="sbody">
+        <h3>הפניה למענה</h3>
+        <div class="srow"><span class="k">מי אחראי/ת</span><span>מלווה התיק</span></div>
+        <div class="srow"><span class="k">מה עושים</span><span>שולחים לבוגר/ת את המענה עם הצעד הבא, ברור ובשפה שלו/ה: קישור, טלפון או טופס, ומה לעשות עד מתי</span></div>
+        <div class="srow"><span class="k">בהופה סקיור</span><span><span class="tag">הופנה למענה</span> + "קביעת תאריך" לחזרה, <b>בעוד 7 ימים</b></span></div>
+      </div>
+    </div>
+
+    <div class="step">
+      <span class="dot">5</span>
+      <div class="sbody">
+        <h3>בדיקה: הגיע/ה למענה?</h3>
+        <div class="srow"><span class="k">מי אחראי/ת</span><span>אותו מלווה תיק, בתאריך שנקבע</span></div>
+        <div class="srow"><span class="k">מתי ממשיכים</span><span>נרשם/ה או קיבל/ה מענה: סוגרים (שלב 7). לא הצליח/ה או לא התחיל/ה: שלב 6.</span></div>
+      </div>
+    </div>
+
+    <div class="step">
+      <span class="dot">6</span>
+      <div class="sbody">
+        <h3>נתקע/ה: עוזרים</h3>
+        <div class="srow"><span class="k">מי אחראי/ת</span><span>מלווה התיק</span></div>
+        <div class="srow"><span class="k">מה עושים</span><span>ממלאים יחד את הטופס, מתקשרים לגורם המענה, או מחפשים חלופה. אם אחרי שבועיים זה עדיין תקוע, או שצריך החלטה או תקציב, מעבירים למיטל.</span></div>
+        <div class="srow"><span class="k">בהופה סקיור</span><span>חוזרים ל<span class="tag">בטיפול</span> + הערה: איפה נתקע/ה. תאריך חזרה חדש.</span></div>
+      </div>
+    </div>
+
+    <div class="step">
+      <span class="dot">7</span>
+      <div class="sbody">
+        <h3>סגירת התיק</h3>
+        <div class="srow"><span class="k">מי אחראי/ת</span><span>מלווה התיק</span></div>
+        <div class="srow"><span class="k">בהופה סקיור</span><span>"סגירת פנייה" עם התוצאה: <span class="tag out">קיבל/ה מענה</span> <span class="tag out">הופנה/תה לגורם אחר</span> <span class="tag out">לא היה מענה מהבוגר/ת</span> <span class="tag out">לא רלוונטי</span></span></div>
+        <div class="srow"><span class="k">אם חוזרים</span><span>בוגר/ת שחזר/ה עם אותו צורך: פותחים מחדש את הפנייה, ולא פותחים פנייה חדשה</span></div>
+      </div>
+    </div>
+
+    <div class="step care">
+      <span class="dot">!</span>
+      <div class="sbody">
+        <h3>בכל שלב: סימן למצוקה</h3>
+        <div class="srow"><span class="k">מי אחראי/ת</span><span>מיטל, <b>עוד באותו יום</b>, בטלפון ולא רק בהופה סקיור</span></div>
+        <div class="srow"><span class="k">בהופה סקיור</span><span><span class="tag care">מצוקה</span>, שיוך למיטל. אחרי החיבור לגורם טיפולי התיק חוזר לרכז/ת ללוות מרחוק.</span></div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- 5 -->
+<section id="dugma">
+  <div class="sec-head"><span class="sec-num">5</span><h2>דוגמה: בוגרת שהופנתה להכשרה</h2></div>
+  <div class="story">
+    <ol>
+      <li><span class="day">יום 1.</span> נועם מתקשר לבוגרת מאשקלון שלא ענתה על השאלון. בשיחה היא מספרת שהיא רוצה ללמוד מקצוע ולא יודעת איך מתחילים. נועם ממלא איתה את השאלון ומעביר למיטב.</li>
+      <li><span class="day">יום 2.</span> מיטב משייך את הפנייה לעצמו, מתקשר ומבין שמעניינת אותה הכשרה בתחום הטיפוח. מצב: <span class="tag">בטיפול</span>.</li>
+      <li><span class="day">יום 3.</span> מיטב מוצא במאגר הכשרה מסובסדת באזור, ושולח לה בוואטסאפ את הקישור להרשמה ואת המועד האחרון. מצב: <span class="tag">הופנה למענה</span>, וחזרה בעוד 7 ימים.</li>
+      <li><span class="day">יום 10.</span> מיטב חוזר אליה. היא לא נרשמה, כי הטופס ביקש מסמך שאין לה.</li>
+      <li><span class="day">יום 11.</span> מיטב מתקשר לגורם ההכשרה, מברר שאפשר להשלים את המסמך אחר כך, וממלא איתה את הטופס בשיחה. מצב: <span class="tag">בטיפול</span>, וחזרה בעוד שבוע.</li>
+      <li><span class="day">יום 18.</span> היא התקבלה. מיטב סוגר את הפנייה: <span class="tag out">קיבל/ה מענה</span>.</li>
+    </ol>
+    <p style="margin:10px 0 0;font-size:15px">לאורך כל הדרך הייתה לה כתובת אחת, ואף אחד לא היה צריך לשאול "מי אמור לבדוק אותה?".</p>
+  </div>
+</section>
+
+<!-- 6 -->
+<section id="haavara">
+  <div class="sec-head"><span class="sec-num">6</span><h2>מתי מעבירים טיפול הלאה</h2></div>
+  <p class="sec-lead">בכל מקרה אחר, התיק נשאר אצל מי שפתח/ה אותו.</p>
+  <div class="rules">
+    <div class="rule urgent">
+      <span class="when">סימן למצוקה, פגיעה או סכנה</span>
+      <span class="arr"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5"/><path d="M11 6l-6 6 6 6"/></svg></span>
+      <span class="to"><b>מיטל, עוד באותו יום</b>, בטלפון</span>
+    </div>
+    <div class="rule">
+      <span class="when">תקוע/ה יותר משבועיים, או שצריך החלטה או תקציב</span>
+      <span class="arr"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5"/><path d="M11 6l-6 6 6 6"/></svg></span>
+      <span class="to"><b>מיטל</b>. אחרי שהבעיה נפתרת התיק חוזר לרכז/ת</span>
+    </div>
+    <div class="rule">
+      <span class="when">מתנדב/ת שמע/ה בשיחה על צורך</span>
+      <span class="arr"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5"/><path d="M11 6l-6 6 6 6"/></svg></span>
+      <span class="to"><b>הרכז/ת של בית הספר</b>: מיטב או אסמאא</span>
+    </div>
+    <div class="rule">
+      <span class="when">הפנייה הגיעה לרכז/ת הלא נכון/ה</span>
+      <span class="arr"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5"/><path d="M11 6l-6 6 6 6"/></svg></span>
+      <span class="to"><b>לפי בית הספר</b>: מבקשים ממיטל לשנות את השיוך בהופה סקיור</span>
+    </div>
+  </div>
+  <div class="golden"><b>בכל העברה:</b> מי שמעביר/ה מוודא/ת שהצד השני קיבל/ה את התיק. לא מספיק לכתוב הערה. עד שיש אישור, התיק עדיין אצלך.</div>
+
+  <div class="btns">
+    <a class="btn" href="https://hopa.org.il/admin" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 4h6v6"/><path d="M20 4l-9 9"/><path d="M18 14v5a1 1 0 01-1 1H5a1 1 0 01-1-1V7a1 1 0 011-1h5"/></svg>פתח את הופה סקיור</a>
+    <a class="btn ghost" href="kehila.html" target="_blank" rel="noopener">הגורמים הקהילתיים לפי עיר</a>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="frow">
+      <a href="https://hopa.org.il" target="_blank" rel="noopener"><img src="hopa-logo.png" alt="הופה"></a>
+      <span class="fnote">טיוטה לדיון · הופה, <a href="https://hopa.org.il" target="_blank" rel="noopener">hopa.org.il</a></span>
+    </div>
+    <div class="credit">impactos</div>
+  </div>
+</footer>
+</body>
+</html>
