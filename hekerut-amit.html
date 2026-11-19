@@ -1,0 +1,630 @@
+<!doctype html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>הופה · היכרות עם מנהלי רשת אמית</title>
+<meta name="description" content="מצגת היכרות: מה זו הופה ואיך העבודה נראית בפועל בבית הספר">
+<link rel="icon" href="hopa-logo.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+:root{
+  --pink:#E8348A; --pinkd:#C2185B; --pinks:#FCE7F2;
+  --yel:#FFF200; --yeld:#FFD500; --yels:#FFFCE6;
+  --ink:#141414; --ink2:#4a4a4a; --line:#ececec; --bg:#ffffff;
+  --green:#3BA55C; --blue:#3D7DD8; --orange:#F5A623; --purple:#7E57C2; --gray:#9a9a9a;
+}
+*{box-sizing:border-box}
+html,body{margin:0;height:100%;background:#1b1b1b;color:var(--ink);font-family:Rubik,system-ui,sans-serif}
+.ltr{direction:ltr;unicode-bidi:isolate;display:inline-block}
+svg.ic{width:1em;height:1em;stroke:currentColor;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;flex:none}
+
+/* ===== במה ===== */
+#stage{position:fixed;inset:0;display:flex;align-items:center;justify-content:center;overflow:hidden}
+#deck{width:1920px;height:1080px;position:relative;flex:none;transform-origin:center center}
+.s{position:absolute;inset:0;background:var(--bg);padding:120px 150px 110px;display:none;flex-direction:column;overflow:hidden}
+.s.on{display:flex}
+.s:not(.cover):not(.end){justify-content:center}
+.s::before{content:"";position:absolute;top:0;left:0;right:0;height:14px;background:linear-gradient(90deg,var(--yel),var(--pink))}
+.kick{position:absolute;top:44px;right:150px;font-size:20px;font-weight:600;color:var(--pink);letter-spacing:.5px}
+.num{position:absolute;top:44px;left:150px;font-size:20px;color:#999}
+.brand{position:absolute;bottom:34px;right:150px;display:flex;align-items:center;gap:12px;font-size:18px;color:#777}
+.brand img{height:40px}
+h1{font-size:104px;line-height:1.02;font-weight:900;margin:0}
+h2{font-size:70px;line-height:1.08;font-weight:800;margin:0 0 18px}
+.lead{font-size:34px;line-height:1.45;color:var(--ink2);margin:0 0 36px;max-width:1450px}
+.hl{background:linear-gradient(transparent 58%,var(--yel) 58%);padding:0 6px}
+.pk{color:var(--pink)}
+.grow{flex:1;display:flex;flex-direction:column;justify-content:center}
+
+/* כרטיסים */
+.cards{display:grid;gap:28px}
+.c3{grid-template-columns:repeat(3,1fr)}.c4{grid-template-columns:repeat(4,1fr)}.c2{grid-template-columns:repeat(2,1fr)}
+.card{background:#fff;border:2px solid var(--line);border-radius:26px;padding:34px 34px 30px;position:relative;overflow:hidden}
+.card::before{content:"";position:absolute;top:0;right:0;left:0;height:9px;background:var(--bc,var(--pink))}
+.card h3{font-size:34px;margin:6px 0 12px;font-weight:800;display:flex;align-items:center;gap:14px}
+.card h3 svg.ic{font-size:44px;color:var(--bc,var(--pink))}
+.card p{font-size:27px;line-height:1.45;margin:0;color:var(--ink2)}
+.card ul{margin:0;padding:0 26px 0 0;font-size:26px;line-height:1.5;color:var(--ink2)}
+.pill{display:inline-block;padding:8px 20px;border-radius:99px;font-size:22px;font-weight:700;background:var(--pinks);color:var(--pinkd)}
+
+/* פתיחה */
+.cover{background:var(--yel);justify-content:center}
+.cover::before{display:none}
+.cover>.logo,.cover>h1,.cover>.sub,.cover>.who{position:relative;z-index:1}
+.cover .logo{height:150px;margin-bottom:50px;align-self:flex-start}
+.cover h1{font-size:120px}
+.cover .sub{font-size:42px;margin-top:28px;font-weight:500}
+.cover .who{margin-top:70px;font-size:30px;display:flex;gap:18px;align-items:center}
+.cover .who b{background:#141414;color:var(--yel);padding:10px 24px;border-radius:99px;font-weight:700}
+.sun{position:absolute;left:-160px;bottom:-200px;width:760px;height:760px;border-radius:50%;background:radial-gradient(circle,#fff 0 30%,transparent 31%),repeating-conic-gradient(var(--yeld) 0 8deg,transparent 8deg 18deg);opacity:.75;animation:spin 60s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+
+/* קלפים */
+.deckcards{display:grid;grid-template-columns:repeat(4,1fr);gap:26px;flex:1;margin-top:10px}
+.fc{perspective:1400px;cursor:pointer;border:0;background:none;padding:0;font:inherit;text-align:inherit;min-height:300px}
+.fc .in{position:relative;width:100%;height:100%;transition:transform .7s cubic-bezier(.2,.8,.2,1);transform-style:preserve-3d}
+.fc.flip .in{transform:rotateY(180deg)}
+.fc .f,.fc .b{position:absolute;inset:0;border-radius:26px;backface-visibility:hidden;-webkit-backface-visibility:hidden;display:flex;flex-direction:column;padding:30px}
+.fc .f{background:var(--pink);color:#fff;align-items:center;justify-content:center;gap:16px;box-shadow:0 10px 30px rgba(232,52,138,.25)}
+.fc:nth-child(even) .f{background:#141414;color:var(--yel)}
+.fc .f .n{font-size:110px;font-weight:900;line-height:1}
+.fc .f .t{font-size:24px;font-weight:600;opacity:.9}
+.fc .b{background:var(--yels);border:3px solid var(--yeld);transform:rotateY(180deg);justify-content:center}
+.fc .b .n{font-size:20px;font-weight:800;color:var(--pink);margin-bottom:10px}
+.fc .b p{font-size:29px;line-height:1.38;font-weight:600;margin:0}
+
+/* הבעיה */
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:30px;margin-top:20px}
+.stat{border-radius:28px;padding:40px 38px;background:var(--pinks)}
+.stat:nth-child(2){background:var(--yels)}
+.stat:nth-child(3){background:#f3f3f3}
+.stat b{display:block;font-size:92px;font-weight:900;line-height:1;color:var(--pinkd)}
+.stat:nth-child(2) b{color:#141414}
+.stat span{display:block;font-size:28px;line-height:1.4;margin-top:14px;color:var(--ink2)}
+.src{font-size:20px;color:#888;margin-top:26px}
+
+/* הרצף */
+.rail{position:relative;margin:50px 0 40px;height:150px}
+.rail .seg{position:absolute;top:58px;height:34px;border-radius:99px}
+.rail .a{right:0;width:50%;background:var(--pink)}
+.rail .z{left:0;width:50%;background:var(--yel);border:2px solid var(--yeld)}
+.rail .tick{position:absolute;top:0;font-size:40px;font-weight:900;transform:translateX(50%)}
+.rail .tick.r{right:0;transform:none}.rail .tick.l{left:0;transform:none}.rail .tick.m{right:50%}
+.rail .hand{position:absolute;right:50%;top:44px;transform:translateX(50%);width:64px;height:64px;border-radius:50%;background:#141414;color:var(--yel);display:flex;align-items:center;justify-content:center;font-size:34px;box-shadow:0 0 0 10px #fff}
+.rail .lbl{position:absolute;top:112px;font-size:28px;font-weight:700}
+.rail .lbl.r{right:0}.rail .lbl.l{left:0}
+.quote{font-size:44px;font-weight:800;line-height:1.3;border-right:12px solid var(--pink);padding:6px 34px 6px 0;margin-top:30px}
+
+/* מספרים */
+.big3{display:grid;grid-template-columns:repeat(3,1fr);gap:40px;margin-top:40px}
+.big3 div{text-align:center;padding:50px 20px;border-radius:30px;background:#141414;color:#fff}
+.big3 div:nth-child(2){background:var(--pink)}
+.big3 div:nth-child(3){background:var(--yel);color:#141414}
+.big3 b{display:block;font-size:150px;font-weight:900;line-height:1}
+.big3 span{display:block;font-size:32px;margin-top:16px;font-weight:500}
+
+/* וידאו */
+.vid{flex:1;display:flex;align-items:center;justify-content:center;margin-top:10px}
+.vid video{max-height:700px;width:auto;max-width:100%;border-radius:24px;box-shadow:0 20px 60px rgba(0,0,0,.25);background:#000;display:block}
+.vwrap{position:relative;display:inline-block;max-width:100%}
+.cap{position:absolute;right:50%;transform:translateX(50%);bottom:84px;max-width:88%;width:max-content;text-align:center;direction:rtl;font-size:36px;font-weight:700;line-height:1.35;color:#fff;background:rgba(20,20,20,.86);padding:10px 26px;border-radius:14px;pointer-events:none;opacity:0;transition:opacity .25s}
+.cap.on{opacity:1}
+
+/* רמזור */
+.flow{display:flex;align-items:stretch;gap:22px;margin:16px 0 26px}
+.flow .st2{flex:1;border-radius:24px;background:#f6f6f6;padding:28px 28px;font-size:26px;line-height:1.4}
+.flow .st2 b{display:flex;align-items:center;gap:12px;font-size:32px;margin-bottom:8px}
+.flow .st2 b svg{font-size:40px;color:var(--pink)}
+.flow .arr{display:flex;align-items:center;font-size:44px;color:var(--pink)}
+.lights{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+.light{border-radius:22px;padding:24px 26px;border:3px solid var(--lc);background:#fff}
+.light h4{margin:0 0 8px;font-size:30px;display:flex;align-items:center;gap:12px}
+.light h4 i{width:30px;height:30px;border-radius:50%;background:var(--lc);display:inline-block}
+.light p{margin:0;font-size:23px;line-height:1.42;color:var(--ink2)}
+.note-line{margin-top:24px;font-size:25px;display:flex;align-items:center;gap:14px;color:var(--ink2)}
+.note-line svg{font-size:34px;color:var(--pink)}
+
+/* בוגרים */
+.levels{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.lv{border-radius:24px;padding:28px 30px;background:var(--lb)}
+.lv h4{margin:0 0 10px;font-size:31px;display:flex;align-items:center;gap:12px}
+.lv h4 i{width:24px;height:24px;border-radius:50%;background:var(--lc)}
+.lv p{margin:0;font-size:25px;line-height:1.42}
+.junc{display:flex;gap:18px;margin-top:30px;flex-wrap:wrap}
+.junc span{display:flex;align-items:center;gap:12px;padding:16px 26px;border-radius:99px;background:#141414;color:#fff;font-size:26px;font-weight:600}
+.junc span svg{color:var(--yel);font-size:32px}
+
+/* מי מחזיק מה */
+.who3{display:grid;grid-template-columns:repeat(3,1fr);gap:30px;flex:1;margin-top:10px}
+.who3 .card{display:flex;flex-direction:column}
+.who3 .role{font-size:24px;font-weight:700;color:var(--bc);margin-bottom:6px}
+
+/* הוכחה */
+.proof{background:#141414;color:#fff}
+.proof h2{color:#fff}
+.proof .lead{color:#cfcfcf}
+.odo{display:flex;align-items:center;gap:70px;margin-top:30px}
+.odo .v{font-size:240px;font-weight:900;line-height:1}
+.odo .v.from{color:#777;text-decoration:line-through;text-decoration-color:var(--pink);text-decoration-thickness:14px}
+.odo .v.to{color:var(--yel)}
+.odo .cap{font-size:28px;color:#cfcfcf;margin-top:10px}
+.odo .arr{font-size:90px;color:var(--pink)}
+.proof .num{color:#888}.proof .brand{display:none}
+
+/* דרישות */
+.asks{display:grid;grid-template-columns:repeat(2,1fr);gap:22px 40px;margin:10px 0 30px;padding:0;list-style:none}
+.asks li{display:flex;gap:18px;align-items:flex-start;font-size:29px;line-height:1.4;padding:22px 26px;border-radius:22px;background:#f6f6f6}
+.asks li svg{font-size:40px;color:var(--pink);margin-top:2px}
+.backcard{display:flex;align-items:center;gap:26px;padding:28px 34px;border-radius:26px;background:var(--yels);border:3px dashed var(--yeld);font-size:31px;font-weight:600}
+.backcard svg{font-size:54px;color:var(--pink)}
+
+/* צעד הבא */
+.next{display:grid;grid-template-columns:1.5fr 1fr;gap:60px;flex:1;align-items:center}
+.steps{display:flex;flex-direction:column;gap:22px}
+.step{display:flex;gap:24px;align-items:flex-start}
+.step .k{flex:none;width:70px;height:70px;border-radius:50%;background:var(--pink);color:#fff;font-size:36px;font-weight:900;display:flex;align-items:center;justify-content:center}
+.step h3{margin:4px 0 6px;font-size:34px}
+.step p{margin:0;font-size:26px;line-height:1.42;color:var(--ink2)}
+.qrbox{background:#fff;border:3px solid #141414;border-radius:30px;padding:34px;text-align:center}
+.qrbox svg{width:330px;height:330px;display:block;margin:0 auto 18px}
+.qrbox b{font-size:30px;display:block}
+.qrbox a{font-size:21px;color:var(--pinkd);word-break:break-all}
+
+/* סיום */
+.end{background:var(--pink);color:#fff;justify-content:center}
+.end::before{display:none}
+.end h1{font-size:110px}
+.end .tag{font-size:40px;margin:18px 0 60px;font-weight:500}
+.end .ppl{display:grid;grid-template-columns:repeat(2,1fr);gap:30px;max-width:1400px}
+.end .p{background:#fff;color:#141414;border-radius:28px;padding:32px 36px}
+.end .p b{font-size:36px;display:block}
+.end .p span{display:block;font-size:24px;color:var(--ink2);margin:4px 0 14px}
+.end .p a{display:block;font-size:24px;color:var(--pinkd);text-decoration:none;margin-top:6px}
+.end .site{margin-top:50px;display:inline-flex;align-items:center;gap:16px;background:var(--yel);color:#141414;padding:16px 34px;border-radius:99px;font-size:32px;font-weight:800;text-decoration:none;align-self:flex-start}
+.end .site img{height:44px}
+.end .kick,.end .num,.end .brand{color:#fff}
+
+/* מושן */
+.s.on .a1{animation:up .7s both cubic-bezier(.2,.8,.2,1)}
+.s.on .st{animation:up .7s both cubic-bezier(.2,.8,.2,1);animation-delay:calc(var(--b,.3s) + var(--d,0) * .12s)}
+@keyframes up{from{opacity:0;transform:translateY(34px)}to{opacity:1;transform:none}}
+@media (prefers-reduced-motion:reduce){.s.on .a1,.s.on .st{animation:none}.sun{animation:none}.fc .in{transition:none}}
+
+/* פקדים */
+#ctl{position:fixed;bottom:16px;left:16px;display:flex;gap:8px;z-index:20;opacity:.35;transition:opacity .2s}
+#ctl:hover,#ctl:focus-within{opacity:1}
+#ctl button{border:0;background:rgba(255,255,255,.92);color:#141414;border-radius:12px;height:42px;min-width:42px;padding:0 12px;font:600 15px Rubik,sans-serif;cursor:pointer;box-shadow:0 4px 14px rgba(0,0,0,.2);display:flex;align-items:center;gap:6px}
+#ctl button svg{font-size:20px}
+#bar{position:fixed;top:0;right:0;left:0;height:4px;z-index:21}
+#bar i{display:block;height:100%;width:0;background:var(--ink);transition:width .3s;margin-right:0}
+#notes{position:fixed;right:20px;left:20px;bottom:70px;max-height:42vh;overflow:auto;background:#fff;border:3px solid var(--pink);border-radius:20px;padding:18px 24px 18px 60px;box-shadow:0 16px 50px rgba(0,0,0,.3);z-index:22;display:none;font-size:19px;line-height:1.55}
+#notes.on{display:block}
+#notes h4{margin:0 0 6px;color:var(--pink);font-size:16px}
+#notes .x{position:absolute;left:14px;top:12px;border:0;background:var(--pinks);color:var(--pinkd);font-size:20px;width:34px;height:34px;border-radius:50%;cursor:pointer}
+.who-say{display:inline-block;background:var(--yel);color:#141414;font-weight:700;padding:2px 12px;border-radius:99px;font-size:.85em;margin-bottom:6px}
+.nt{display:none}
+
+/* מסך מעביר/ה */
+body.pres #stage,body.pres #ctl,body.pres #bar{display:none}
+#pv{display:none}
+body.pres{background:#f4f4f4;overflow:auto;height:auto}
+body.pres #pv{display:block;padding:24px;direction:rtl;max-width:1000px;margin:0 auto}
+#pv .top{display:flex;justify-content:space-between;align-items:center;margin-bottom:14px;font-size:18px;color:#555}
+#pv .top b{font-size:28px;color:#141414}
+#pv .now{background:#fff;border-radius:18px;padding:22px 26px;border-top:8px solid var(--pink);font-size:21px;line-height:1.6}
+#pv .now h3{margin:0 0 10px;font-size:26px}
+#pv .nx{margin-top:14px;background:#fff;border-radius:14px;padding:14px 20px;color:#666;font-size:18px}
+#pv .btns{display:flex;gap:10px;margin-top:16px}
+#pv .btns button{flex:1;height:56px;border:0;border-radius:14px;font:700 20px Rubik,sans-serif;cursor:pointer;background:#141414;color:#fff}
+#pv .btns button+button{background:var(--pink)}
+
+/* ===== נייד / מסך צר: גלילה ===== */
+@media (max-width:860px),(max-aspect-ratio:1/1){
+  html,body{height:auto;background:#fff}
+  #stage{position:static;display:block;overflow:visible}
+  #deck{width:auto;height:auto;transform:none!important}
+  .s{position:relative;display:flex;inset:auto;padding:58px 16px 64px;min-height:0;border-bottom:10px solid #f1f1f1}
+  .s .a1,.s .st{animation:none!important}
+  .kick{top:24px;right:16px;font-size:14px}
+  .num{top:24px;left:16px;font-size:13px}
+  .brand{bottom:16px;right:16px;font-size:13px}.brand img{height:26px}
+  h1,.cover h1,.end h1{font-size:40px}
+  h2{font-size:30px}
+  .lead{font-size:18px;margin-bottom:20px}
+  .cover{padding-top:70px;padding-bottom:90px}.cover .logo{height:70px;margin-bottom:26px}.cover .sub{font-size:20px}.cover .who{font-size:16px;margin-top:30px;flex-wrap:wrap}
+  .sun{width:340px;height:340px;left:-120px;bottom:-140px}
+  .cards.c3,.cards.c4,.cards.c2,.stats,.big3,.lights,.levels,.who3,.asks,.next,.end .ppl{grid-template-columns:1fr;gap:14px}
+  .deckcards{grid-template-columns:1fr 1fr;gap:12px}
+  .fc{min-height:190px}
+  .fc .f .n{font-size:56px}.fc .f .t{font-size:14px}
+  .fc .b{padding:16px}.fc .b p{font-size:16px}.fc .b .n{font-size:13px}
+  .card{padding:22px 20px}.card h3{font-size:21px}.card h3 svg.ic{font-size:28px}.card p,.card ul{font-size:16px}
+  .stat{padding:22px}.stat b{font-size:48px}.stat span{font-size:16px}
+  .src{font-size:13px}
+  .rail{height:120px;margin:24px 0}.rail .tick{font-size:22px}.rail .seg{top:40px;height:22px}.rail .hand{top:30px;width:44px;height:44px;font-size:22px;box-shadow:0 0 0 6px #fff}.rail{height:auto;padding-top:82px}.rail .lbl{position:static;display:block;font-size:15px;margin-top:4px}.rail .lbl.r::before{content:"";display:inline-block;width:12px;height:12px;border-radius:50%;background:var(--pink);margin-left:8px}.rail .lbl.l::before{content:"";display:inline-block;width:12px;height:12px;border-radius:50%;background:var(--yeld);margin-left:8px}
+  .quote{font-size:21px;border-right-width:6px;padding-right:16px}
+  .big3 div{padding:22px}.big3 b{font-size:64px}.big3 span{font-size:17px}
+  .vid video{max-height:none;width:100%}.vwrap{width:100%}
+  .cap{font-size:14px;bottom:52px;padding:5px 10px;border-radius:8px}
+  .flow{flex-direction:column;gap:10px}.flow .arr{justify-content:center;transform:rotate(-90deg);font-size:28px}
+  .flow .st2{font-size:16px;padding:18px}.flow .st2 b{font-size:20px}
+  .light{padding:16px}.light h4{font-size:20px}.light p{font-size:15px}
+  .note-line{font-size:15px}
+  .lv{padding:18px}.lv h4{font-size:20px}.lv p{font-size:16px}
+  .junc span{font-size:15px;padding:10px 16px}
+  .who3 .role{font-size:15px}
+  .odo{gap:8px;flex-direction:column;align-items:flex-start}.odo .arr{transform:rotate(-90deg)}.odo .v{font-size:96px}.odo .arr{font-size:44px}.odo .cap{font-size:15px}
+  .asks li{font-size:16px;padding:14px}.asks li svg{font-size:26px}
+  .backcard{font-size:17px;padding:18px}.backcard svg{font-size:34px}
+  .step .k{width:44px;height:44px;font-size:22px}.step h3{font-size:20px}.step p{font-size:16px}
+  .qrbox svg{width:200px;height:200px}.qrbox b{font-size:18px}.qrbox a{font-size:14px}
+  .end .tag{font-size:20px;margin-bottom:26px}.end .p{padding:20px}.end .p b{font-size:22px}.end .p span,.end .p a{font-size:16px}
+  .end .site{font-size:18px;padding:12px 22px}.end .site img{height:28px}
+  #ctl,#bar,#notes{display:none!important}
+  .nt{display:block;margin-top:22px;background:var(--yels);border-radius:14px;padding:10px 14px;font-size:15px;line-height:1.55;color:#141414}
+  .nt summary{cursor:pointer;font-weight:700;color:var(--pinkd)}
+  .end .nt,.proof .nt{background:#fff}
+}
+
+/* ===== מצב הדפסת קלפים (?print=cards) ===== */
+#printSheet{display:none}
+body.printmode{background:#eee;height:auto}
+body.printmode #stage,body.printmode #ctl,body.printmode #bar,body.printmode #notes{display:none!important}
+body.printmode #printSheet{display:block}
+.ph{max-width:210mm;margin:16px auto;padding:0 16px;font-size:16px;direction:rtl;display:flex;gap:12px;align-items:center;justify-content:space-between;flex-wrap:wrap}
+.ph button{border:0;background:var(--pink);color:#fff;font:700 16px Rubik,sans-serif;padding:12px 22px;border-radius:12px;cursor:pointer}
+.sheet{width:210mm;height:297mm;margin:0 auto 16px;background:#fff;display:grid;grid-template-columns:1fr 1fr;grid-template-rows:repeat(4,1fr);box-shadow:0 4px 20px rgba(0,0,0,.12)}
+.pc{border:1px dashed #bbb;padding:9mm 9mm 7mm;display:flex;flex-direction:column;position:relative}
+.pc .top{display:flex;justify-content:space-between;align-items:center;margin-bottom:5mm}
+.pc .top b{width:11mm;height:11mm;border-radius:50%;background:var(--pink);color:#fff;display:flex;align-items:center;justify-content:center;font-size:17px}
+.pc:nth-child(even) .top b{background:#141414;color:var(--yel)}
+.pc .top img{height:8mm}
+.pc p{margin:0;font-size:21px;line-height:1.42;font-weight:600;flex:1;display:flex;align-items:center}
+.pc .bot{font-size:11px;color:#888}
+@media (max-width:860px){.sheet{width:100%;height:auto;grid-template-columns:1fr;grid-template-rows:none}.pc{min-height:150px}}
+@media print{
+  @page{size:A4;margin:0}
+  body.printmode{background:#fff}
+  .ph{display:none}
+  .sheet{box-shadow:none;margin:0;width:210mm;height:297mm;grid-template-columns:1fr 1fr;grid-template-rows:repeat(4,1fr)}
+  *{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+}
+</style>
+</head>
+<body>
+
+<div id="bar"><i></i></div>
+<div id="stage"><div id="deck">
+
+<!-- 1 פתיחה -->
+<section class="s cover" data-k="היכרות">
+  <div class="sun" aria-hidden="true"></div>
+  <img class="logo a1" src="hopa-logo.png" alt="Hopa!">
+  <h1 class="a1">מה זו הופה,<br>ואיך זה נראה <span class="pk">בבית הספר</span></h1>
+  <div class="sub a1">מפגש היכרות עם מנהלי ומנהלות רשת אמית</div>
+  <div class="who a1"><b>עמותת הופה</b> לירון גולן · מיטל פלג</div>
+  <template class="notes"><span class="who-say">לירון (הצעה)</span><br>פתיחה קצרה: תודה, מי אנחנו, ומה יהיה בשעה. "נתחיל דווקא מכם: יש לנו קלפים". עוד לא מסבירים מה זו הופה.</template>
+</section>
+
+<!-- 2 קלפים -->
+<section class="s" data-k="נתחיל מכם">
+  <h2 class="a1">שלפו קלף</h2>
+  <p class="lead a1">כל קלף הוא רגע שקורה בכל בית ספר. בחרו אחד, ואמרו בחצי דקה: <span class="hl">זה קורה אצלי?</span></p>
+  <div class="deckcards" id="flipCards"></div>
+  <template class="notes"><span class="who-say">מיטל (הצעה)</span><br>לוחצים על קלף כדי להפוך אותו. 3–4 מנהלים עונים, לא יותר מ-8 דקות. לא עונים להם עדיין. רושמים לעצמנו מה עלה, ובשקף "מה זה דורש מכם" חוזרים אליהם. אם יש קלפים מודפסים: כל מנהל/ת שולף/ת קלף מהערימה.</template>
+</section>
+
+<!-- 3 הבעיה -->
+<section class="s" data-k="למה זה חשוב">
+  <h2 class="a1">שתי נקודות שבהן צעירים <span class="pk">נעלמים</span></h2>
+  <p class="lead a1">בתוך בית הספר: תלמיד שעדיין מגיע, אבל כבר מתנתק. זו <b>נשירה סמויה</b>.<br>אחרי בית הספר: היום שאחרי הטקס. הקשר נקטע, ואין כתובת.</p>
+  <div class="stats">
+    <div class="stat st"><b class="ltr">~200K</b><span>צעירים בסיכון בישראל</span></div>
+    <div class="stat st"><b class="ltr">~70%</b><span>מהם לא מקבלים סיוע</span></div>
+    <div class="stat st"><b class="ltr">4,500</b><span>צעירים בלי עורף משפחתי</span></div>
+  </div>
+  <div class="src a1">מקור: סקירת המחקר של הופה, יוני 2026</div>
+  <template class="notes"><span class="who-say">לירון (הצעה)</span><br>לקשר למה שעלה בקלפים: "שמעתם את עצמכם, זה לא תיאורטי". המסר: הבעיה היא לא חוסר במענים, היא שאין מי שמחזיק את הצעיר לאורך זמן.</template>
+</section>
+
+<!-- 4 מה זו הופה -->
+<section class="s" data-k="מה זו הופה">
+  <h2 class="a1">רצף ליווי אחד, מגיל 14 עד 26</h2>
+  <p class="lead a1">עמותת הופה יוצרת רצף ליווי לבני נוער וצעירים: מניעת נשירה, ליווי בוגרים וחיבור להזדמנויות, בשילוב של קשר אנושי ותשתית חכמה.</p>
+  <div class="rail a1" aria-hidden="true">
+    <div class="seg a"></div><div class="seg z"></div>
+    <div class="tick r ltr">14</div><div class="tick m ltr">18</div><div class="tick l ltr">26</div>
+    <div class="hand"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M18 11V6a2 2 0 0 0-4 0v5M14 10V4a2 2 0 0 0-4 0v6M10 10.5V6a2 2 0 0 0-4 0v8"/><path d="M18 8a2 2 0 1 1 4 0v6a8 8 0 0 1-8 8h-2c-2.8 0-4.5-.86-5.99-2.34l-3.6-3.6a2 2 0 0 1 2.83-2.82L7 15"/></svg></div>
+    <div class="lbl r">מניעת נשירה · בתוך בית הספר</div>
+    <div class="lbl l">ליווי בוגרים · צבא, לימודים, עבודה</div>
+  </div>
+  <div class="quote a1">רוב התוכניות נגמרות בסוף י״ב.<br>אצלנו זו <span class="hl">נקודת התחלה</span>.</div>
+  <template class="notes"><span class="who-say">לירון (הצעה)</span><br>שני צירים שלא מתערבבים: 14–18 בבית הספר, 18–26 אחרי. בגיל 18 הרכז/ת מוסר/ת את התלמיד לרצף הבוגרים, ולא "משחרר/ת" אותו.</template>
+</section>
+
+<!-- 5 היקף -->
+<section class="s" data-k="איפה אנחנו היום">
+  <h2 class="a1">הופה היום</h2>
+  <div class="big3">
+    <div class="st"><b class="ltr">30+</b><span>בתי ספר ברחבי הארץ</span></div>
+    <div class="st"><b class="ltr">~5,000</b><span>בוגרים בליווי</span></div>
+    <div class="st"><b class="ltr">600+</b><span>מענים במאגר הארצי</span></div>
+  </div>
+  <p class="lead a1" style="margin-top:44px">ובתהליכי קליטה של בתי ספר נוספים.</p>
+  <template class="notes"><span class="who-say">לירון (הצעה)</span><br>הנוסח המאושר: "יותר מ-30 בתי ספר ברחבי הארץ, כ-5,000 בוגרים, ובתהליכי קליטה של בתי ספר נוספים". אם ישאלו על מניעת נשירה: בתשפ"ז המודל פועל בחמישה בתי ספר.</template>
+</section>
+
+<!-- 6 וידאו -->
+<section class="s" data-k="איך זה עובד">
+  <h2 class="a1">שתי דקות: הסיפור של נועה</h2>
+  <div class="vid a1"><div class="vwrap"><video id="eich" controls controlsList="nofullscreen" disablePictureInPicture preload="metadata" playsinline src="video/hopa-noa.mp4"></video><div class="cap" id="cap" aria-live="polite"></div></div></div>
+  <template class="notes"><span class="who-say">מיטל (הצעה)</span><br>הסיפור של נועה, מגיל 14 עד 26, בשתי דקות. מוזיקה וטקסט על המסך, בלי קריינות. נועה היא דמות להמחשה, וזה כתוב בסרטון. למסך מלא משתמשים במקש F של המצגת. אחרי הסרטון אפשר לשאול: "איפה בסיפור הזה בית הספר שלכם נמצא היום?"</template>
+</section>
+
+<!-- 7 14-18 -->
+<section class="s" data-k="מניעת נשירה · 14–18">
+  <h2 class="a1">בבית הספר: מכירים כל תלמיד, ומזהים מוקדם</h2>
+  <div class="flow">
+    <div class="st2 st"><b><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg> שלושה קולות</b>שאלון קצר לתלמיד, להורים ולמחנך/ת. הפער ביניהם מלמד הכי הרבה.</div>
+    <div class="arr st"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M19 12H5M12 19l-7-7 7-7"/></svg></div>
+    <div class="st2 st"><b><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><rect x="7" y="2" width="10" height="20" rx="3"/><circle cx="12" cy="7" r="1.6"/><circle cx="12" cy="12" r="1.6"/><circle cx="12" cy="17" r="1.6"/></svg> רמזור</b>המערכת מציעה צבע, וצוות בית הספר מאשר אותו בישיבת המיפוי.</div>
+    <div class="arr st"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M19 12H5M12 19l-7-7 7-7"/></svg></div>
+    <div class="st2 st"><b><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 4-6 8-6s8 2 8 6"/></svg> מבוגר ומענה</b>לכל צבע פעולה מוגדרת. רמזור בלי פעולה הוא דשבורד, לא תוכנית.</div>
+  </div>
+  <div class="lights">
+    <div class="light st" style="--lc:var(--gray)"><h4><i></i>אפור</h4><p>עוד לא מופה. אפור הוא "לא יודעים", לא "בסדר".</p></div>
+    <div class="light st" style="--lc:var(--green)"><h4><i></i>ירוק</h4><p>מעקב שגרתי, ובונים על החוזקה שהתלמיד כתב.</p></div>
+    <div class="light st" style="--lc:var(--yeld)"><h4><i></i>צהוב</h4><p>שיחה תוך שבועיים, מבוגר משמעותי בשמו ומטרה לשליש.</p></div>
+    <div class="light st" style="--lc:#E53935"><h4><i></i>אדום</h4><p>שיחה תוך שבוע, ליווי שבועי ותוכנית אישית כתובה.</p></div>
+  </div>
+  <div class="note-line a1"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg> הופה לא רואה את שמות התלמידים. השם והמפתח נשארים בבית הספר.</div>
+  <template class="notes"><span class="who-say">מיטל (הצעה)</span><br>חמישה תחומים בשאלונים: לימודי, מעורבות, שייכות, בית ומשפחה, גורמי טיפול. מעקב הנוכחות היומי נשאר אצל בית הספר ולפי הנוהל שלו, אנחנו לא מחליפים אותו. נקודת הפרטיות חשובה למנהלים, להדגיש אותה.</template>
+</section>
+
+<!-- 8 18-26 -->
+<section class="s" data-k="ליווי בוגרים · 18–26">
+  <h2 class="a1">אחרי הטקס: לבוגר יש <span class="pk">כתובת קבועה</span></h2>
+  <p class="lead a1">רכז/ת הבוגרים של בית הספר הוא המבוגר המשמעותי שלא נעלם. הוא יוזם קשר, מחבר להזדמנויות ולא מוותר, מסוף י״ב ועד גיל 26.</p>
+  <div class="levels">
+    <div class="lv st" style="--lb:#eef8f1;--lc:var(--green)"><h4><i></i>מרחוק</h4><p>כל הבוגרים: 3 שיחות יזומות בשנה, ברכות וקבוצת מחזור.</p></div>
+    <div class="lv st" style="--lb:#fff5e6;--lc:var(--orange)"><h4><i></i>מקרוב</h4><p>לפני מעבר או כשמשהו עלה: שיחה אחת בחודש.</p></div>
+    <div class="lv st" style="--lb:#fdecec;--lc:#E53935"><h4><i></i>בפעולה</h4><p>צורך ממשי: ליווי צמוד, סנגור ומול גורמים, עד שהצורך נענה.</p></div>
+  </div>
+  <div class="junc">
+    <span class="st"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M22 10 12 5 2 10l10 5 10-5z"/><path d="M6 12v5c3 2 9 2 12 0v-5"/></svg> סיום י״ב</span>
+    <span class="st"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 22V4M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1"/></svg> גיוס או שירות</span>
+    <span class="st"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M13 4h3a2 2 0 0 1 2 2v14M2 20h3M13 20h9M10 12v.01M13 4.56v16.88a.5.5 0 0 1-.6.49L5 20V5.6a1 1 0 0 1 .8-1l6.5-1.4a.5.5 0 0 1 .7.4z"/></svg> שחרור</span>
+    <span class="st"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20V3H6.5A2.5 2.5 0 0 0 4 5.5z"/><path d="M4 19.5A2.5 2.5 0 0 0 6.5 22H20v-5"/></svg> לימודים ועבודה</span>
+  </div>
+  <template class="notes"><span class="who-say">מיטל (הצעה)</span><br>הרמה נקבעת מחדש בכל מעבר. שיחת מעקב היא כ-15 דקות, ונפתחת ב"נוח לך לדבר עכשיו?". חיבור למענה בלי מעקב לא נחשב: סוגרים מעגל.</template>
+</section>
+
+<!-- 9 מי מחזיק מה -->
+<section class="s" data-k="מי מחזיק מה">
+  <h2 class="a1">שלושה שותפים, ותפקיד ברור לכל אחד</h2>
+  <div class="who3">
+    <div class="card st" style="--bc:var(--pink)"><div class="role">הרכז/ת בבית הספר</div><h3><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.7l-1-1.1a5.5 5.5 0 0 0-7.8 7.8L12 21l8.8-8.6a5.5 5.5 0 0 0 0-7.8z"/></svg> הקשר האנושי</h3><ul><li>מכיר/ה את התלמידים והבוגרים בשם</li><li>מוביל/ה את המיפוי והשיחות</li><li>מחבר/ת למענים וסוגר/ת מעגל</li></ul></div>
+    <div class="card st" style="--bc:#141414"><div class="role">הנהלת בית הספר</div><h3><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg> הגיבוי</h3><ul><li>שעות לרכז/ת ומקום בתוכנית העבודה</li><li>זמן לשאלונים ולישיבות מיפוי</li><li>החלטה בצוות, לא רק של המנהל/ת</li></ul></div>
+    <div class="card st" style="--bc:var(--yeld)"><div class="role">מטה הופה</div><h3><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.8-3.8a6 6 0 0 1-7.9 7.9l-6.9 6.9a2.1 2.1 0 0 1-3-3l6.9-6.9a6 6 0 0 1 7.9-7.9z"/></svg> הכלים והעורף</h3><ul><li>הכשרה וזום רכזים חודשי</li><li>המערכת, השאלונים ומאגר המענים</li><li>רכז מענים במטה לשאלות קשות</li></ul></div>
+  </div>
+  <template class="notes"><span class="who-say">מיטל (הצעה)</span><br>הכשל הנפוץ: כולם חושבים שמישהו אחר מטפל. המשפט למנהלים: "הרכז/ת לא צריך/ה לדעת הכול לבד, יש מאחוריו/ה מטה".</template>
+</section>
+
+<!-- 10 מה בית הספר מקבל -->
+<section class="s" data-k="מה בית הספר מקבל">
+  <h2 class="a1">מה מקבלים בית הספר והרכז/ת</h2>
+  <div class="cards c3" style="margin-top:20px">
+    <div class="card st" style="--bc:var(--pink)"><h3><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg> מערכת אחת</h3><p>תיק לכל בוגר, שאלוני מיפוי, רמזור ותזכורות. הכול במקום אחד, לא באקסלים.</p></div>
+    <div class="card st" style="--bc:var(--yeld)"><h3><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg> מאגר מענים</h3><p>יותר מ-600 מענים: מלגות, זכויות, תעסוקה, לימודים ושירות, לפי אזור וגיל.</p></div>
+    <div class="card st" style="--bc:var(--green)"><h3><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><circle cx="9" cy="8" r="3.5"/><path d="M2 21c0-3.5 3-5.5 7-5.5s7 2 7 5.5"/><path d="M16 4.5a3.5 3.5 0 0 1 0 7M22 21c0-3-2-5-4.5-5.4"/></svg> הכשרה וקהילה</h3><p>הכשרת רכזים, מפגש זום חודשי וקהילה של רכזים מכל הארץ.</p></div>
+    <div class="card st" style="--bc:var(--blue)"><h3><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="8" width="18" height="4" rx="1"/><path d="M12 8v13M19 12v9H5v-9M7.5 8a2.5 2.5 0 0 1 0-5C11 3 12 8 12 8s1-5 4.5-5a2.5 2.5 0 0 1 0 5"/></svg> ברכות בצמתים</h3><p>יום הולדת, גיוס ושחרור. הבוגר מרגיש שזוכרים אותו, והברכה יוצאת לבד.</p></div>
+    <div class="card st" style="--bc:var(--purple)"><h3><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="12" rx="2"/><path d="M12 16v4M8 20h8M7 8h6M7 11h10"/></svg> כלים לכיתה</h3><p>מצגת לשכבת י״ב, כרטיס כיס לשיחת בוגר, טופסי הסכמה ותבניות.</p></div>
+    <div class="card st" style="--bc:var(--orange)"><h3><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z"/></svg> עורף מקצועי</h3><p>רכז מענים במטה לשאלות על מלגות, השכלה ומקרים מורכבים.</p></div>
+  </div>
+  <template class="notes"><span class="who-say">מיטל (הצעה)</span><br>אפשר להראות כאן מסך אמיתי מ-HOPA Secure או את מצגת י״ב (yb.html), אם יש זמן. לא להיכנס לפירוט טכני.</template>
+</section>
+
+<!-- 11 הוכחה -->
+<section class="s proof" data-k="זה עובד">
+  <h2 class="a1">בית שאן: מה ליווי רציף עושה</h2>
+  <p class="lead a1">מחקר מלווה של 360 צעירים וצעירות בבית הספר הטכנולוגי בבית שאן.</p>
+  <div class="odo a1">
+    <div><div class="v from ltr">90%</div><div class="cap">נתמכי רווחה בכניסה</div></div>
+    <div class="arr"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M19 12H5M12 19l-7-7 7-7"/></svg></div>
+    <div><div class="v to ltr">10%</div><div class="cap">אחרי הליווי</div></div>
+  </div>
+  <template class="notes"><span class="who-say">לירון (הצעה)</span><br>הסיפור מאחורי המספר: רוב הבוגרים מתמידים בעבודה ומשתכרים. זה הרגע לסיפור אישי של בוגר/ת אחד/ת (בלי שם מלא).</template>
+</section>
+
+<!-- 12 מה זה דורש -->
+<section class="s" data-k="מה זה דורש מכם">
+  <h2 class="a1">מה זה דורש מבית הספר</h2>
+  <ul class="asks">
+    <li class="st"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 4-6 8-6s8 2 8 6"/></svg><span>רכז/ת עם שעות מוגדרות לתפקיד, וכפיפות ישירה למנהל/ת</span></li>
+    <li class="st"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg><span>זמן לשאלונים בשיעורי חינוך, וישיבות מיפוי עם המחנכים</span></li>
+    <li class="st"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 10h18M9 10v10"/></svg><span>ישיבת הנהלה בפתיחת השנה: תמונת הבוגרים, ההצלחות והפערים</span></li>
+    <li class="st"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M22 10 12 5 2 10l10 5 10-5z"/><path d="M6 12v5c3 2 9 2 12 0v-5"/></svg><span>קליטת מחזור י״ב לפני הפיזור: טלפון אישי והסכמה מכל תלמיד</span></li>
+  </ul>
+  <div class="backcard a1"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="2" width="14" height="20" rx="2" transform="rotate(-8 12 12)"/><path d="M10 9h5M10 13h4"/></svg><span>חוזרים לקלף ששלפתם בהתחלה: מה מכל זה היה משנה אותו?</span></div>
+  <template class="notes"><span class="who-say">מיטל (הצעה)</span><br>לא מדברים על כסף. אם שואלים: "נתאם בשיחה עם כל בית ספר". לחזור ל-2–3 מנהלים שענו בקלפים, ולשאול מה מכל זה היה עוזר להם.</template>
+</section>
+
+<!-- 13 צעד הבא -->
+<section class="s" data-k="הצעד הבא">
+  <h2 class="a1">איך מתחילים</h2>
+  <div class="next">
+    <div class="steps">
+      <div class="step st"><div class="k">1</div><div><h3>היכרות והחלטה</h3><p>המפגש הזה, ואחריו שיחה עם הנהלת בית הספר. ההחלטה מתקבלת בצוות.</p></div></div>
+      <div class="step st"><div class="k">2</div><div><h3>תיאום ציפיות</h3><p>מה בית הספר מספק ומה הופה מספקת, ומי הרכז/ת.</p></div></div>
+      <div class="step st"><div class="k">3</div><div><h3>הפעלה</h3><p>הסכמות, טעינת התלמידים והבוגרים למערכת, מיפוי פתיחה ותוכנית עבודה שנתית.</p></div></div>
+    </div>
+    <div class="qrbox st"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 37 37" role="img" aria-label="QR לשאלון ההיכרות" class="segno"><rect width="100%" height="100%" fill="#fff"/><path class="qrline" stroke="#141414" d="M2 2.5h7m2 0h1m8 0h4m1 0h1m2 0h7m-33 1h1m5 0h1m2 0h1m1 0h1m3 0h2m1 0h1m1 0h2m4 0h1m5 0h1m-33 1h1m1 0h3m1 0h1m1 0h3m1 0h1m1 0h1m1 0h1m1 0h5m1 0h1m1 0h1m1 0h3m1 0h1m-33 1h1m1 0h3m1 0h1m1 0h2m1 0h1m6 0h1m3 0h1m1 0h1m1 0h1m1 0h3m1 0h1m-33 1h1m1 0h3m1 0h1m1 0h3m2 0h6m4 0h1m2 0h1m1 0h3m1 0h1m-33 1h1m5 0h1m1 0h3m2 0h2m3 0h1m2 0h2m1 0h1m1 0h1m5 0h1m-33 1h7m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h7m-25 1h1m2 0h2m1 0h1m1 0h1m3 0h2m-22 1h1m1 0h5m2 0h2m2 0h2m2 0h1m1 0h1m2 0h1m1 0h1m1 0h5m-30 1h1m1 0h1m1 0h1m2 0h1m1 0h2m1 0h1m2 0h2m1 0h2m1 0h2m2 0h2m1 0h2m1 0h1m-33 1h1m2 0h1m1 0h4m1 0h1m1 0h6m6 0h2m2 0h1m1 0h2m-32 1h1m2 0h1m3 0h2m2 0h1m1 0h1m1 0h1m1 0h6m2 0h1m2 0h3m-30 1h3m2 0h4m1 0h2m1 0h1m1 0h1m2 0h1m2 0h1m2 0h1m2 0h2m-27 1h3m3 0h3m1 0h1m1 0h1m2 0h4m1 0h1m2 0h1m3 0h3m-33 1h1m1 0h1m2 0h4m3 0h2m1 0h2m3 0h2m2 0h4m1 0h3m-31 1h5m4 0h2m1 0h1m1 0h1m2 0h1m1 0h2m1 0h1m1 0h4m1 0h1m-30 1h1m1 0h6m2 0h3m1 0h1m1 0h1m1 0h1m3 0h1m1 0h1m1 0h2m3 0h1m-32 1h1m1 0h1m1 0h1m2 0h4m1 0h1m2 0h1m1 0h2m1 0h1m1 0h1m2 0h2m1 0h4m-32 1h3m1 0h3m6 0h2m2 0h1m2 0h2m2 0h4m1 0h2m-30 1h2m1 0h1m2 0h1m1 0h1m1 0h2m2 0h1m2 0h4m1 0h1m2 0h6m-33 1h4m2 0h2m2 0h5m3 0h1m4 0h2m2 0h3m1 0h2m-33 1h1m2 0h1m1 0h1m2 0h2m3 0h5m1 0h2m2 0h1m2 0h1m2 0h1m2 0h1m-33 1h1m2 0h4m1 0h3m1 0h1m1 0h1m3 0h1m2 0h2m2 0h2m2 0h3m-32 1h1m1 0h3m9 0h1m1 0h1m1 0h1m1 0h3m1 0h2m1 0h4m-31 1h1m1 0h1m1 0h1m1 0h4m2 0h3m2 0h1m2 0h1m1 0h7m2 0h1m-24 1h1m2 0h3m3 0h1m1 0h2m2 0h2m3 0h1m1 0h1m1 0h1m-33 1h7m2 0h3m2 0h2m1 0h1m2 0h1m1 0h3m1 0h1m1 0h1m1 0h2m-32 1h1m5 0h1m1 0h2m2 0h1m1 0h1m2 0h2m1 0h2m1 0h2m3 0h3m-31 1h1m1 0h3m1 0h1m1 0h1m1 0h2m1 0h1m1 0h2m3 0h1m1 0h1m1 0h6m2 0h1m-33 1h1m1 0h3m1 0h1m1 0h1m1 0h3m1 0h2m2 0h4m1 0h3m2 0h2m1 0h2m-33 1h1m1 0h3m1 0h1m1 0h4m1 0h1m1 0h2m4 0h4m1 0h2m-28 1h1m5 0h1m3 0h1m2 0h1m1 0h1m5 0h1m3 0h2m1 0h3m-31 1h7m1 0h1m3 0h1m1 0h2m1 0h1m1 0h1m2 0h6m3 0h1"/></svg>
+<b>שאלון היכרות קצר</b><a href="https://meytalp-dev.github.io/hopa-nihul/intake.html" target="_blank" rel="noopener" class="ltr">meytalp-dev.github.io/hopa-nihul/intake.html</a></div>
+  </div>
+  <template class="notes"><span class="who-say">לירון (הצעה)</span><br>לבקש מכל מי שמעוניין/ת לסרוק ולמלא עכשיו, 5 דקות. השאלון כולל פרטים, מצב קיים ומה חשוב לבית הספר. צוות הופה יוצר קשר לתיאום.</template>
+</section>
+
+<!-- 14 סיום -->
+<section class="s end" data-k="תודה">
+  <h1 class="a1">תודה!</h1>
+  <div class="tag a1">פתאום הכל נראה אפשרי</div>
+  <div class="ppl">
+    <div class="p st"><b>לירון גולן</b><span>מנכ"לית עמותת הופה</span><a href="mailto:liron@hopa.org.il" class="ltr">liron@hopa.org.il</a><a href="tel:0502671012" class="ltr">050-267-1012</a></div>
+    <div class="p st"><b>מיטל פלג</b><span>סמנכ"לית תפעול, עמותת הופה</span><a href="mailto:meytal@hopa.org.il" class="ltr">meytal@hopa.org.il</a><a href="tel:0536256653" class="ltr">053-625-6653</a></div>
+  </div>
+  <a class="site a1" href="https://hopa.org.il" target="_blank" rel="noopener"><img src="hopa-logo.png" alt=""><span class="ltr">hopa.org.il</span></a>
+  <template class="notes"><span class="who-say">שתינו</span><br>סבב שאלות פתוח. להשאיר את השקף הזה על המסך עם הפרטים.</template>
+</section>
+
+</div></div>
+
+<div id="ctl">
+  <button id="bPrev" aria-label="הקודם"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg></button>
+  <button id="bNext" aria-label="הבא"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="m15 18-6-6 6-6"/></svg></button>
+  <button id="bNotes" title="הערות (N)">הערות</button>
+  <button id="bPres" title="מסך מעביר/ה (P)">מעביר/ה</button>
+  <button id="bFull" title="מסך מלא (F)"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 3H5a2 2 0 0 0-2 2v3M21 8V5a2 2 0 0 0-2-2h-3M3 16v3a2 2 0 0 0 2 2h3M16 21h3a2 2 0 0 0 2-2v-3"/></svg></button>
+  <button id="bPrint" title="קלפים להדפסה"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9V2h12v7M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg> קלפים</button>
+</div>
+<div id="notes"><button class="x" aria-label="סגירה">×</button><h4 id="nH"></h4><div id="nT"></div></div>
+
+<div id="pv">
+  <div class="top"><b id="pvH"></b><span id="pvC"></span><span id="pvT" class="ltr"></span></div>
+  <div class="now"><div id="pvN"></div></div>
+  <div class="nx" id="pvX"></div>
+  <div class="btns"><button id="pvPrev">הקודם</button><button id="pvNext">הבא</button></div>
+</div>
+
+<div id="printSheet">
+  <div class="ph"><span><b>קלפי פתיחה למנהלים</b> · 8 קלפים בדף A4, לגזור לאורך הקווים</span><span><button id="doPrint">הדפסה</button> <a href="?" style="color:#C2185B">חזרה למצגת</a></span></div>
+  <div class="sheet" id="sheet"></div>
+</div>
+
+<script>
+const $ = s => document.querySelector(s);
+const esc = s => String(s).replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+
+/* קלפי הפתיחה למנהלים: מקור אחד לשקף ולהדפסה */
+const CARDS = [
+  'כמה מבוגרי המחזור הקודם את/ה יודע/ת היום איפה הם?',
+  "תלמידה בכיתה י' עדיין מגיעה, אבל כבר לא באמת נמצאת. מי אצלך שם לב ראשון?",
+  'היועצת אומרת: "יש לי 400 תלמידים". מי מחזיק את התלמיד שמתחיל להיעלם?',
+  'בוגר מלפני שנתיים מתקשר לבית הספר: "אין לי כסף ללימודים". למי השיחה מגיעה אצלך?',
+  'טקס הסיום נגמר. מה נשאר בין בית הספר לבוגרים אחרי הערב הזה?',
+  'מי בצוות שלך כבר יודע/ת דברים על הבוגרים, ואת/ה לא?',
+  'רכזת הבוגרים מבקשת 5 דקות בישיבת הנהלה. מה היית רוצה לשמוע ממנה?',
+  'סוף השנה הבאה. איך תדע/י שהליווי באמת עבד?'
+];
+
+const params = new URLSearchParams(location.search);
+const PRINT = params.get('print') === 'cards';
+const PRESENTER = params.get('presenter') === '1';
+
+/* בניית הקלפים בשקף */
+$('#flipCards').innerHTML = CARDS.map((t, i) =>
+  '<button type="button" class="fc st" style="--d:' + i + '" aria-label="קלף ' + (i+1) + '"><div class="in">' +
+  '<div class="f"><span class="n ltr">' + (i+1) + '</span><span class="t">לחצו להפוך</span></div>' +
+  '<div class="b"><span class="n">קלף ' + (i+1) + '</span><p>' + esc(t) + '</p></div></div></button>').join('');
+document.querySelectorAll('.fc').forEach(b => b.addEventListener('click', e => { e.stopPropagation(); b.classList.toggle('flip'); }));
+
+/* דף ההדפסה */
+$('#sheet').innerHTML = CARDS.map((t, i) =>
+  '<div class="pc"><div class="top"><b class="ltr">' + (i+1) + '</b><img src="hopa-logo.png" alt="Hopa!"></div><p>' + esc(t) + '</p><div class="bot">זה קורה אצלי? · hopa.org.il</div></div>').join('');
+$('#doPrint').onclick = () => window.print();
+if (PRINT) document.body.classList.add('printmode');
+
+/* כתוביות לסרטון (מתוזמנות לפי הקריינות המקורית) */
+const CAPS = [];
+(function(){
+  const v = $('#eich'), c = $('#cap'); if (!v || !c) return;
+  let last = null;
+  const upd = () => {
+    const t = v.currentTime; let hit = null;
+    for (const x of CAPS) if (t >= x[0] && t < x[1]) hit = x;
+    if (hit !== last){ last = hit; if (hit){ c.textContent = hit[2]; c.classList.add('on'); } else c.classList.remove('on'); }
+  };
+  v.addEventListener('timeupdate', upd); v.addEventListener('seeked', upd);
+  v.addEventListener('ended', () => { last = null; c.classList.remove('on'); });
+})();
+
+/* כרום והערות */
+const slides = [...document.querySelectorAll('.s')];
+const TOTAL = slides.length;
+slides.forEach((s, i) => {
+  s.insertAdjacentHTML('afterbegin', '<div class="kick">' + esc(s.dataset.k || '') + '</div>');
+  s.insertAdjacentHTML('beforeend', '<div class="num"><span class="ltr">' + (i+1) + ' / ' + TOTAL + '</span></div>');
+  if (!s.classList.contains('cover') && !s.classList.contains('end'))
+    s.insertAdjacentHTML('beforeend', '<div class="brand"><img src="hopa-logo.png" alt="Hopa!"></div>');
+  const t = s.querySelector('template.notes');
+  if (t) s.insertAdjacentHTML('beforeend', '<details class="nt"><summary>הערות למעבירות</summary><div>' + t.innerHTML + '</div></details>');
+});
+slides.forEach(s => s.querySelectorAll('.st').forEach((el, k) => { if (!el.style.getPropertyValue('--d')) el.style.setProperty('--d', k); }));
+
+const noteOf = i => { const t = slides[i].querySelector('template.notes'); return t ? t.innerHTML : ''; };
+const titleOf = i => { const h = slides[i].querySelector('h1,h2'); return (i+1) + '. ' + (h ? h.textContent.replace(/\s+/g, ' ').trim() : slides[i].dataset.k); };
+
+/* ניווט */
+let cur = Math.min(Math.max((parseInt(location.hash.slice(1)) || 1) - 1, 0), TOTAL - 1);
+let bc = null; try { bc = new BroadcastChannel('hopa-amit'); } catch(e) {}
+const isStack = () => matchMedia('(max-width:860px), (max-aspect-ratio:1/1)').matches;
+function go(i, fromRemote){
+  cur = Math.min(Math.max(i, 0), TOTAL - 1);
+  slides.forEach((s, k) => s.classList.toggle('on', k === cur));
+  slides.forEach((s, k) => { if (k !== cur) s.querySelectorAll('video').forEach(v => { try { v.pause(); } catch(e) {} }); });
+  $('#bar i').style.width = ((cur + 1) / TOTAL * 100) + '%';
+  $('#nH').textContent = 'הערות · ' + titleOf(cur);
+  $('#nT').innerHTML = noteOf(cur);
+  try { history.replaceState(null, '', location.search + '#' + (cur + 1)); } catch(e) {}
+  if (PRESENTER) renderPv();
+  if (bc && !fromRemote) bc.postMessage({ i: cur });
+}
+addEventListener('hashchange', () => { const n = parseInt(location.hash.slice(1)); if (n && n - 1 !== cur) go(n - 1); });
+if (bc) bc.onmessage = ev => { if (ev.data && typeof ev.data.i === 'number' && ev.data.i !== cur) go(ev.data.i, true); };
+
+function fit(){ $('#deck').style.transform = isStack() ? 'none' : 'scale(' + Math.min(innerWidth / 1920, innerHeight / 1080) + ')'; }
+addEventListener('resize', fit); fit();
+
+const next = () => go(cur + 1), prev = () => go(cur - 1);
+addEventListener('keydown', e => {
+  if (PRINT) return;
+  const k = e.key;
+  if (k === 'ArrowLeft' || k === 'PageDown' || k === ' ') { e.preventDefault(); next(); }
+  else if (k === 'ArrowRight' || k === 'PageUp') { e.preventDefault(); prev(); }
+  else if (k === 'Home') go(0);
+  else if (k === 'End') go(TOTAL - 1);
+  else if (k === 'n' || k === 'N' || k === 'מ') $('#notes').classList.toggle('on');
+  else if (k === 'f' || k === 'F' || k === 'כ') toggleFull();
+  else if (k === 'p' || k === 'P' || k === 'פ') openPresenter();
+});
+$('#stage').addEventListener('click', e => {
+  if (isStack() || e.target.closest('a,button,video,details')) return;
+  (e.clientX < innerWidth / 2 ? next : prev)();
+});
+$('#bNext').onclick = next; $('#bPrev').onclick = prev;
+$('#bNotes').onclick = () => $('#notes').classList.toggle('on');
+$('#notes .x').onclick = () => $('#notes').classList.remove('on');
+$('#bFull').onclick = toggleFull; $('#bPres').onclick = openPresenter;
+$('#bPrint').onclick = () => { location.href = '?print=cards'; };
+function toggleFull(){ try { document.fullscreenElement ? document.exitFullscreen() : document.documentElement.requestFullscreen(); } catch(e) {} }
+function openPresenter(){ window.open('?presenter=1#' + (cur + 1), 'hopa-amit-presenter', 'width=1000,height=760'); }
+
+/* מסך מעבירות */
+const t0 = Date.now();
+function renderPv(){
+  $('#pvH').textContent = titleOf(cur);
+  $('#pvC').textContent = 'שקף ' + (cur + 1) + ' מתוך ' + TOTAL;
+  $('#pvN').innerHTML = noteOf(cur) || '<i>אין הערות לשקף הזה</i>';
+  $('#pvX').textContent = cur < TOTAL - 1 ? 'הבא: ' + titleOf(cur + 1) : 'זה השקף האחרון';
+}
+if (PRESENTER){
+  document.body.classList.add('pres');
+  $('#pvPrev').onclick = prev; $('#pvNext').onclick = next;
+  setInterval(() => { const m = Math.floor((Date.now() - t0) / 60000), s = Math.floor((Date.now() - t0) / 1000) % 60; $('#pvT').textContent = m + ':' + String(s).padStart(2, '0'); }, 1000);
+}
+go(cur, true);
+</script>
+</body>
+</html>
