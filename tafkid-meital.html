@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>הופה · הגדרת תפקיד: מיטל</title>
-<meta name="description" content="הגדרת התפקיד של מיטל, סמנכ&quot;לית תפעול בהופה, במערך ליווי הבוגרים.">
+<meta name="description" content="הגדרת התפקיד של מיטל, סמנכ&quot;לית תפעול בהופה, ענייני הפנים של הופה.">
 <meta property="og:title" content="הופה · הגדרת תפקיד: מיטל">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -120,6 +120,16 @@ section{margin-bottom:46px;scroll-margin-top:30px}
 .tag.out{background:var(--green-soft);color:#2B7A45;border-color:#CDE8D5}
 .tag.care{background:var(--red-soft);color:var(--red);border-color:#F3CACA}
 
+.split{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+@media(max-width:760px){.split{grid-template-columns:1fr}}
+.split-col{border-radius:var(--r-md);padding:15px 18px;border:1px solid var(--line);background:#fff;box-shadow:var(--shadow)}
+.split-col h3{font-size:17px;margin-bottom:4px}
+.split-col ul{margin:4px 0;padding-inline-start:20px;font-size:15.5px}
+.split-col li{margin-bottom:5px}
+.split-col.me{border-top:6px solid var(--pink)}
+.split-col.both{border-top:6px solid var(--yellow-deep);background:var(--yellow-soft)}
+.split-col.li{border-top:6px solid var(--blue)}
+
 /* הדוגמה */
 .story{background:var(--yellow-soft);border:1px solid var(--yellow-deep);border-radius:var(--r-lg);padding:20px 24px}
 .story ol{margin:6px 0 0;padding-inline-start:22px}
@@ -169,7 +179,7 @@ footer{border-top:1px solid var(--line);padding:22px 0 34px;margin-top:10px}
       <span class="datechip">טיוטה לדיון · 18.11.2026</span>
     </div>
     <h1>הגדרת תפקיד: מיטל</h1>
-    <p class="sub">סמנכ"לית תפעול · מובילת מערך הליווי</p>
+    <p class="sub">סמנכ"לית תפעול · אחראית על ענייני הפנים של הופה</p>
   </div>
 </header>
 
@@ -177,50 +187,68 @@ footer{border-top:1px solid var(--line);padding:22px 0 34px;margin-top:10px}
 
 <section id="matara">
   <div class="sec-head"><span class="sec-num">1</span><h2>מטרת התפקיד</h2></div>
-  <div class="mission">מחזיקה את מערך הליווי: את השגרות, את הנתונים ואת המקרים שדורשים החלטה.</div>
+  <div class="mission">אחראית על כל ענייני הפנים של הופה: ההפעלה והצוות, בתי הספר, פיתוח תוכניות ומענים, ופתרונות טכנולוגיים.</div>
 </section>
 
 <section id="achrayut">
   <div class="sec-head"><span class="sec-num">2</span><h2>תחומי אחריות</h2></div>
   <div class="roles">
     <article class="role">
-      <h3>הובלת מערך הליווי</h3>
+      <h3>הפעלה שוטפת והצוות</h3>
       <ul>
-        <li>הגדרת שגרות העבודה ומסלול הטיפול בפנייה, ומעקב שהם עובדים</li>
-        <li>שיחת מעקב שבועית עם מיטב ועם אסמאא על הפניות הפתוחות</li>
-      </ul>
-    </article>
-    <article class="role g">
-      <h3>ריכוז המתנדבים</h3>
-      <ul>
-        <li>גיוס והכשרה</li>
-        <li>חלוקת רשימות הבוגרים לשיחות</li>
-        <li>זום חודשי ואישור שעות ב<a href="https://meytalp-dev.github.io/hopa-nihul/shaot.html?admin" target="_blank" rel="noopener">מערכת דיווח השעות</a></li>
-      </ul>
-    </article>
-    <article class="role b">
-      <h3>הופה סקיור והנתונים</h3>
-      <ul>
-        <li>ייבוא רשימות בוגרים והשלמת חוסרים</li>
-        <li>תמונת מצב של הפניות והבוגרים</li>
-        <li>שליחת שאלון המיפוי לבוגרים (נשלח רק מהמטה)</li>
+        <li>ניהול הצוות: רכז/ת חברה כללית, רכז/ת חברה ערבית, מתנדבים ומלגאים</li>
+        <li>שגרות עבודה, חפיפה וקליטה של עובדים חדשים</li>
+        <li>ריכוז המתנדבים: גיוס, הכשרה, זום חודשי ואישור שעות ב<a href="https://meytalp-dev.github.io/hopa-nihul/shaot.html?admin" target="_blank" rel="noopener">מערכת דיווח השעות</a></li>
+        <li>שיחת מעקב שבועית עם הרכזים על הפניות הפתוחות</li>
       </ul>
     </article>
     <article class="role y">
+      <h3>בתי הספר והרכזים</h3>
+      <ul>
+        <li>קליטה והפעלה של בתי ספר חדשים: רשימות בוגרים, פורטל וגישות</li>
+        <li>הכשרה וליווי של רכזי הבוגרים: מפגשי רכזים, תוכנית עבודה וליבת הפעילות</li>
+        <li>קשר שוטף עם מנהלי בתי הספר</li>
+        <li>מעקב אחרי כל בית ספר: מה פתוח ומה חסר</li>
+      </ul>
+    </article>
+    <article class="role g">
+      <h3>פיתוח תוכניות ומענים</h3>
+      <ul>
+        <li>פיתוח תוכניות: בוגרים 18–26, מניעת נשירה 14–18, הכנה לצו ראשון, חשיפה למכינות</li>
+        <li>מאגר המענים: איתור, עדכון וסדר באתר</li>
+        <li>מיפוי שיתופי פעולה אפשריים ובדיקה שהם מתאימים לבוגרים</li>
+      </ul>
+    </article>
+    <article class="role b">
+      <h3>פתרונות טכנולוגיים ונתונים</h3>
+      <ul>
+        <li>הופה סקיור, הופה דש, הפורטל הבית ספרי, תקווה והבוטים</li>
+        <li>איכות הנתונים: ייבוא רשימות, השלמת חוסרים ופרטיות</li>
+        <li>מדידת אימפקט ותמונות מצב</li>
+        <li>הכנת הדיווחים והנתונים למשרד העבודה</li>
+        <li>שליחת שאלון המיפוי לבוגרים (נשלח רק מהמטה)</li>
+      </ul>
+    </article>
+    <article class="role">
       <h3>מקרים שמועברים אליי</h3>
       <ul>
         <li>מצוקה, פגיעה או סכנה, עוד באותו יום</li>
         <li>תקיעות שלא נפתרה אחרי שבועיים</li>
-        <li>מקרים שדורשים החלטה או תקציב</li>
+        <li>מקרים שדורשים החלטה</li>
         <li>שינוי שיוך של פנייה בין רכזים בהופה סקיור</li>
       </ul>
     </article>
   </div>
 </section>
 
+<section id="chaluka">
+  <div class="sec-head"><span class="sec-num">3</span><h2>החלוקה עם לירון</h2></div>
+  <div class="split"><div class="split-col me"><h3>אצלי</h3><ul><li>כל ענייני הפנים של הופה</li><li>הכנת הדיווחים והנתונים למשרד העבודה</li><li>קשר שוטף עם מנהלי בתי הספר</li></ul></div><div class="split-col both"><h3>ביחד</h3><ul><li>שיתופי פעולה</li><li>תוכן ורשתות חברתיות</li></ul></div><div class="split-col li"><h3>אצל לירון, המנכ"לית</h3><ul><li>מבט העל</li><li>קשרי חוץ</li><li>ייצוג מול משרד העבודה</li><li>פגישות הנהלה עם מנהלי בתי הספר</li><li>תקציב, גיוס משאבים ופרסים</li></ul></div></div>
+</section>
+
 <section id="lo">
-  <div class="sec-head"><span class="sec-num">3</span><h2>לא בתפקיד</h2></div>
-  <div class="golden">ליווי שוטף של תיקי בוגרים. תיק שמגיע אליי חוזר לרכז/ת ברגע שהבעיה נפתרת.</div>
+  <div class="sec-head"><span class="sec-num">4</span><h2>לא בתפקיד</h2></div>
+  <div class="golden">ליווי שוטף של תיקי בוגרים. תיק שמגיע אליי חוזר לרכז/ת ברגע שהבעיה נפתרת.<br>תקציב, גיוס משאבים ופרסים. אלה אצל לירון.</div>
 </section>
 
 </main>
