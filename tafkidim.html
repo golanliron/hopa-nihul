@@ -128,6 +128,16 @@ section{margin-bottom:46px;scroll-margin-top:30px}
 .lk{display:inline-block;font-size:13.5px;font-weight:700;text-decoration:none;border:1px solid var(--pink);color:var(--pink-deep);border-radius:999px;padding:3px 11px;background:#fff}
 .lk:hover{background:var(--pink-soft)}
 
+details>summary{list-style:none;cursor:pointer;position:relative;padding-inline-end:30px}
+details>summary::-webkit-details-marker{display:none}
+details>summary::after{content:"";position:absolute;left:2px;top:50%;width:9px;height:9px;border-left:2.5px solid var(--pink);border-bottom:2.5px solid var(--pink);transform:translateY(-70%) rotate(-45deg);transition:transform .2s}
+details[open]>summary::after{transform:translateY(-30%) rotate(135deg)}
+.role details>summary .role-top{margin-bottom:0}
+.sbody details>summary h3{margin-bottom:0}
+.sbody details[open]>summary h3{margin-bottom:8px}
+.dbody{padding-top:4px}
+.expand-all{background:none;border:1px solid var(--line);border-radius:999px;padding:5px 14px;font:inherit;font-size:14px;font-weight:700;color:var(--ink-2);cursor:pointer;margin-bottom:12px}
+
 /* הדוגמה */
 .story{background:var(--yellow-soft);border:1px solid var(--yellow-deep);border-radius:var(--r-lg);padding:20px 24px}
 .story ol{margin:6px 0 0;padding-inline-start:22px}
@@ -206,12 +216,15 @@ footer{border-top:1px solid var(--line);padding:22px 0 34px;margin-top:10px}
   <div class="sec-head"><span class="sec-num">2</span><h2>התפקידים</h2></div>
   <p class="sec-lead">רכז/ת חברה כללית ורכז/ת חברה ערבית עובדים באותו מודל, של מלווה תיק. ההבדל ביניהם הוא בבתי הספר.</p>
 
+  <button type="button" class="expand-all" data-target="tafkidim">פתיחת הכל</button>
   <div class="roles">
 
     <article class="role y">
-      <div class="role-top">
+      <details>
+      <summary><div class="role-top">
         <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="8" r="3.2"/><path d="M3.5 19c.7-3.2 3-5 5.5-5s4.8 1.8 5.5 5"/><path d="M16 4.5a3 3 0 010 6"/><path d="M18 14.3c1.4.7 2.3 2.2 2.6 4.7"/></svg></span>
-        <div><h3>רכז/ת חברה כללית</h3><div class="title">רכזת מענים ותוכניות · מלוות תיק</div></div>
+        <div><h3>רכז/ת חברה כללית</h3><div class="title">רכזת מענים ותוכניות · מלוות תיק</div></div></summary>
+      <div class="dbody">
       </div>
       <div class="meta"><span>16 בתי ספר</span></div>
       <p class="schools">בתי הספר שאינם במגזר הערבי, הבדואי והדרוזי.</p>
@@ -226,13 +239,16 @@ footer{border-top:1px solid var(--line);padding:22px 0 34px;margin-top:10px}
         <li>כשהפניות הפתוחות מטופלות: מצטרף/ת לשיחות עם בוגרים שלא ענו על שאלון המיפוי</li>
         <li>עדכון הופה סקיור בכל שלב (ראו המסלול)</li>
       </ul>
-      <div class="not"><b>לא בתפקיד:</b> שליחת שאלון המיפוי (רק המטה שולח אותו), וטיפול לבד במקרה של מצוקה. מקרה כזה עובר למיטל עוד באותו יום.</div>
+      <div class="not"><b>לא בתפקיד:</b> שליחת שאלון המיפוי (רק המטה שולח אותו), וטיפול לבד במקרה של מצוקה. מקרה כזה עובר למיטל עוד באותו יום.</div></div>
+      </details>
     </article>
 
     <article class="role b">
-      <div class="role-top">
+      <details>
+      <summary><div class="role-top">
         <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="8" r="3.2"/><path d="M3.5 19c.7-3.2 3-5 5.5-5s4.8 1.8 5.5 5"/><path d="M16 4.5a3 3 0 010 6"/><path d="M18 14.3c1.4.7 2.3 2.2 2.6 4.7"/></svg></span>
-        <div><h3>רכז/ת חברה ערבית</h3><div class="title">רכזת מענים ותוכניות · מלוות תיק · החברה הערבית, הבדואית והדרוזית</div></div>
+        <div><h3>רכז/ת חברה ערבית</h3><div class="title">רכזת מענים ותוכניות · מלוות תיק · החברה הערבית, הבדואית והדרוזית</div></div></summary>
+      <div class="dbody">
       </div>
       <div class="meta"><span>9 בתי ספר</span></div>
       <p class="schools">לקייה, ג'וליס, סח'נין, טורעאן, נווה מדבר, ביר אל-מכסור, רהט, כרמל חיפה, ירכא.</p>
@@ -247,13 +263,16 @@ footer{border-top:1px solid var(--line);padding:22px 0 34px;margin-top:10px}
         <li>כשהפניות הפתוחות מטופלות: מצטרף/ת לשיחות עם בוגרים שלא ענו על שאלון המיפוי</li>
         <li>עדכון הופה סקיור בכל שלב (ראו המסלול)</li>
       </ul>
-      <div class="not"><b>לא בתפקיד:</b> שליחת שאלון המיפוי, וטיפול לבד במקרה של מצוקה. מקרה כזה עובר למיטל עוד באותו יום.</div>
+      <div class="not"><b>לא בתפקיד:</b> שליחת שאלון המיפוי, וטיפול לבד במקרה של מצוקה. מקרה כזה עובר למיטל עוד באותו יום.</div></div>
+      </details>
     </article>
 
     <article class="role g">
-      <div class="role-top">
+      <details>
+      <summary><div class="role-top">
         <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 005 5L15 13l5 2v4a1 1 0 01-1 1A16 16 0 014 5a1 1 0 011-1z"/></svg></span>
-        <div><h3>מתנדבים ומלגאים</h3><div class="title">שיחות לבוגרים שלא ענו על השאלון</div></div>
+        <div><h3>מתנדבים ומלגאים</h3><div class="title">שיחות לבוגרים שלא ענו על השאלון</div></div></summary>
+      <div class="dbody">
       </div>
       <div class="meta"><span>כ-10 בוגרים בחודש</span><span>בריכוז מיטל</span></div>
       <p class="goal">מחזירים למעגל בוגרים שלא ענו על שאלון המיפוי.</p>
@@ -265,7 +284,8 @@ footer{border-top:1px solid var(--line);padding:22px 0 34px;margin-top:10px}
         <li>סימן למצוקה: מעבירים למיטל מיד</li>
         <li>דיווח שעות ב<a href="https://meytalp-dev.github.io/hopa-nihul/shaot.html" target="_blank" rel="noopener">מערכת דיווח השעות</a></li>
       </ul>
-      <div class="not"><b>לא בתפקיד:</b> ליווי תיק. מרגע שעלה צורך, הוא עובר לרכז/ת, והרכז/ת חוזר/ת לבוגר/ת.</div>
+      <div class="not"><b>לא בתפקיד:</b> ליווי תיק. מרגע שעלה צורך, הוא עובר לרכז/ת, והרכז/ת חוזר/ת לבוגר/ת.</div></div>
+      </details>
     </article>
 
   </div>
@@ -288,72 +308,73 @@ footer{border-top:1px solid var(--line);padding:22px 0 34px;margin-top:10px}
   <div class="sec-head"><span class="sec-num">4</span><h2>מסלול הפנייה, שלב אחר שלב</h2></div>
   <p class="sec-lead">השלבים בכחול והכפתורים במודגש הם השמות שמופיעים בהופה סקיור, בתפריט "הפניות שלך". בצילומי המסך יש נתוני הדגמה, לא בוגרים אמיתיים.</p>
 
+  <button type="button" class="expand-all" data-target="maslul">פתיחת הכל</button>
   <div class="flow">
 
     <div class="step">
       <span class="dot">1</span>
-      <div class="sbody">
-        <h3>פנייה נכנסת</h3>
+      <div class="sbody"><details>
+        <summary><h3>פנייה נכנסת</h3></summary>
         <div class="srow"><span class="k">מאיפה</span><span>שאלון המיפוי, פנייה ישירה של הבוגר/ת, צורך שמתנדב/ת העביר/ה, או בית הספר</span></div><div class="srow"><span class="k">מי אחראי/ת</span><span>הרכז/ת של בית הספר: רכז/ת חברה כללית או רכז/ת חברה ערבית</span></div><div class="srow"><span class="k">בהופה סקיור</span><span>בתפריט <b>"הפניות שלך"</b>, הפנייה מופיעה במצב <span class="tag">חדשה</span>. לוחצים <b>"אני על זה"</b>, והפנייה משויכת אליך.</span></div><div class="srow"><span class="k">קישורים</span><span class="lks"><a class="lk" href="https://hopa.org.il/admin/requests-inbox" target="_blank" rel="noopener">הופה סקיור · הפניות שלך</a></span></div><figure class="shot"><a href="img/tafkidim/1-new.jpg" target="_blank" rel="noopener"><img src="img/tafkidim/1-new.jpg" alt="כרטיס פנייה חדשה עם הכפתור אני על זה" loading="lazy"></a><figcaption>פנייה חדשה: "אני על זה" לוקח אותה לטיפול</figcaption></figure>
-      </div>
+      </details></div>
     </div>
 
     <div class="step">
       <span class="dot">2</span>
-      <div class="sbody">
-        <h3>יצירת קשר</h3>
+      <div class="sbody"><details>
+        <summary><h3>יצירת קשר</h3></summary>
         <div class="srow"><span class="k">איך מציגים</span><span>מבית הספר שבו הבוגר/ת למד/ה, <b>לא מעמותת הופה</b></span></div>
         <div class="srow"><span class="k">מי אחראי/ת</span><span>מלווה התיק</span></div><div class="srow"><span class="k">מתי ממשיכים</span><span>ענה/תה: עוברים לשלב 3. לא ענה/תה: מנסים שוב, בטלפון ובוואטסאפ. אחרי 3 ניסיונות בלי מענה: <b>"שינוי שלב"</b> ל<span class="tag">ממתין לבוגר/ת</span>, ו<b>"אחזור אליו/ה"</b> עם תאריך.</span></div><div class="srow"><span class="k">בהופה סקיור</span><span><b>"ניסיתי ליצור קשר"</b>, בוחרים טלפון, וואטסאפ או אחר, ולוחצים <b>"רישום הניסיון"</b></span></div><div class="srow"><span class="k">קישורים</span><span class="lks"><a class="lk" href="https://hopa.org.il/admin/requests-inbox" target="_blank" rel="noopener">הופה סקיור · הפניות שלך</a><a class="lk" href="https://docs.google.com/document/d/1YsLJqhojw6ogZle5kN5Jwhgk5DbGIUup-FlefVkKfaI/edit?usp=sharing" target="_blank" rel="noopener">תסריטי שיחה</a></span></div><figure class="shot"><a href="img/tafkidim/2-attempt.jpg" target="_blank" rel="noopener"><img src="img/tafkidim/2-attempt.jpg" alt="רישום ניסיון ליצירת קשר" loading="lazy"></a><figcaption>בתוך "פתיחת הפנייה": באיזו דרך ניסית, ו"רישום הניסיון"</figcaption></figure>
-      </div>
+      </details></div>
     </div>
 
     <div class="step">
       <span class="dot">3</span>
-      <div class="sbody">
-        <h3>שיחה והבנת הצורך</h3>
+      <div class="sbody"><details>
+        <summary><h3>שיחה והבנת הצורך</h3></summary>
         <div class="srow"><span class="k">מי אחראי/ת</span><span>מלווה התיק</span></div><div class="srow"><span class="k">מה עושים</span><span>מבינים מה הבוגר/ת צריך/ה באמת, ומה כבר ניסה/תה</span></div><div class="srow"><span class="k">בהופה סקיור</span><span>השלב <span class="tag">בטיפול</span>. כותבים בהערה בקצרה מה הצורך.</span></div><div class="srow"><span class="k">קישורים</span><span class="lks"><a class="lk" href="https://docs.google.com/document/d/1YsLJqhojw6ogZle5kN5Jwhgk5DbGIUup-FlefVkKfaI/edit?usp=sharing" target="_blank" rel="noopener">תסריטי שיחה</a></span></div>
-      </div>
+      </details></div>
     </div>
 
     <div class="step">
       <span class="dot">4</span>
-      <div class="sbody">
-        <h3>הפניה למענה</h3>
+      <div class="sbody"><details>
+        <summary><h3>הפניה למענה</h3></summary>
         <div class="srow"><span class="k">מי אחראי/ת</span><span>מלווה התיק</span></div><div class="srow"><span class="k">מה עושים</span><span>מוצאים מענה ושולחים לבוגר/ת את הצעד הבא, ברור ובשפה שלו/ה: קישור, טלפון או טופס, ומה לעשות עד מתי</span></div><div class="srow"><span class="k">בהופה סקיור</span><span><b>"שינוי שלב"</b> ל<span class="tag">הופנה למענה</span> + הערה: לאן הופנה/תה. <b>"שמירת השלב"</b>. אחר כך <b>"אחזור אליו/ה"</b>, תאריך <b>בעוד 7 ימים</b>, ו<b>"קביעת תאריך"</b>.</span></div><div class="srow"><span class="k">קישורים</span><span class="lks"><a class="lk" href="https://hopa.org.il" target="_blank" rel="noopener">מאגר המענים באתר הופה</a><a class="lk" href="manim-bogrim.html" target="_blank" rel="noopener">דפי מענים לבוגרים</a><a class="lk" href="kehila.html" target="_blank" rel="noopener">גורמים קהילתיים לפי עיר</a></span></div><figure class="shot"><a href="img/tafkidim/4-stage.jpg" target="_blank" rel="noopener"><img src="img/tafkidim/4-stage.jpg" alt="שינוי שלב להופנה למענה" loading="lazy"></a><figcaption>"שינוי שלב": מסמנים "הופנה למענה" וכותבים לאן</figcaption></figure><figure class="shot"><a href="img/tafkidim/4-followup.jpg" target="_blank" rel="noopener"><img src="img/tafkidim/4-followup.jpg" alt="קביעת תאריך לחזרה" loading="lazy"></a><figcaption>"אחזור אליו/ה": קובעים תאריך לחזרה בעוד 7 ימים</figcaption></figure>
-      </div>
+      </details></div>
     </div>
 
     <div class="step">
       <span class="dot">5</span>
-      <div class="sbody">
-        <h3>בדיקה: הגיע/ה למענה?</h3>
+      <div class="sbody"><details>
+        <summary><h3>בדיקה: הגיע/ה למענה?</h3></summary>
         <div class="srow"><span class="k">מי אחראי/ת</span><span>אותו מלווה תיק, בתאריך שנקבע. התאריך מופיע בכרטיס: "לחזור אליו/ה ב-..."</span></div><div class="srow"><span class="k">מתי ממשיכים</span><span>נרשם/ה או קיבל/ה מענה: סוגרים (שלב 7). לא הצליח/ה או לא התחיל/ה: שלב 6.</span></div><div class="srow"><span class="k">בהופה סקיור</span><span><b>"פתיחת הפנייה"</b> מראה את היסטוריית הטיפול: מה נעשה, מתי, ומה נכתב</span></div><div class="srow"><span class="k">קישורים</span><span class="lks"><a class="lk" href="https://hopa.org.il/admin/requests-inbox" target="_blank" rel="noopener">הופה סקיור · הפניות שלך</a></span></div><figure class="shot"><a href="img/tafkidim/5-history.jpg" target="_blank" rel="noopener"><img src="img/tafkidim/5-history.jpg" alt="היסטוריית הטיפול בפנייה" loading="lazy"></a><figcaption>היסטוריית הטיפול: כל צעד נרשם עם תאריך ושם</figcaption></figure>
-      </div>
+      </details></div>
     </div>
 
     <div class="step">
       <span class="dot">6</span>
-      <div class="sbody">
-        <h3>נתקע/ה: עוזרים</h3>
+      <div class="sbody"><details>
+        <summary><h3>נתקע/ה: עוזרים</h3></summary>
         <div class="srow"><span class="k">מי אחראי/ת</span><span>מלווה התיק</span></div><div class="srow"><span class="k">מה עושים</span><span>ממלאים יחד את הטופס, מתקשרים לגורם המענה, או מחפשים חלופה. אם אחרי שבועיים זה עדיין תקוע, או שצריך החלטה או תקציב, מעבירים למיטל.</span></div><div class="srow"><span class="k">בהופה סקיור</span><span><b>"שינוי שלב"</b> ל<span class="tag">בטיפול</span> + הערה: איפה נתקע/ה. <b>"אחזור אליו/ה"</b> עם תאריך חדש.</span></div><div class="srow"><span class="k">קישורים</span><span class="lks"><a class="lk" href="kehila.html" target="_blank" rel="noopener">גורמים קהילתיים לפי עיר</a><a class="lk" href="https://hopa.org.il" target="_blank" rel="noopener">מאגר המענים באתר הופה</a></span></div>
-      </div>
+      </details></div>
     </div>
 
     <div class="step">
       <span class="dot">7</span>
-      <div class="sbody">
-        <h3>סגירת התיק</h3>
+      <div class="sbody"><details>
+        <summary><h3>סגירת התיק</h3></summary>
         <div class="srow"><span class="k">מי אחראי/ת</span><span>מלווה התיק</span></div><div class="srow"><span class="k">בהופה סקיור</span><span><b>"סגירת פנייה"</b>, בוחרים איך הסתיימה: <span class="tag out">קיבל/ה מענה</span> <span class="tag out">הופנה/תה לגורם אחר</span> <span class="tag out">לא היה מענה מהבוגר/ת</span> <span class="tag out">לא רלוונטי</span>, ולוחצים <b>"סגירת הפנייה"</b></span></div><div class="srow"><span class="k">אם חוזרים</span><span>בוגר/ת שחזר/ה עם אותו צורך: <b>"פתיחה מחדש"</b> בכרטיס, ולא פותחים פנייה חדשה</span></div><div class="srow"><span class="k">קישורים</span><span class="lks"><a class="lk" href="https://hopa.org.il/admin/requests-inbox" target="_blank" rel="noopener">הופה סקיור · הפניות שלך</a></span></div><figure class="shot"><a href="img/tafkidim/7-close.jpg" target="_blank" rel="noopener"><img src="img/tafkidim/7-close.jpg" alt="סגירת פנייה ובחירת התוצאה" loading="lazy"></a><figcaption>"סגירת פנייה": בוחרים איך הסתיימה</figcaption></figure>
-      </div>
+      </details></div>
     </div>
 
     <div class="step care">
       <span class="dot">!</span>
-      <div class="sbody">
-        <h3>בכל שלב: סימן למצוקה</h3>
+      <div class="sbody"><details>
+        <summary><h3>בכל שלב: סימן למצוקה</h3></summary>
         <div class="srow"><span class="k">מי אחראי/ת</span><span>מיטל, <b>עוד באותו יום</b>, בטלפון ולא רק בהופה סקיור</span></div>
         <div class="srow"><span class="k">בהופה סקיור</span><span>פנייה שהמערכת זיהתה כמצוקה מסומנת <span class="tag care">מצוקה</span>. בכל מקרה, גם בלי הסימון: טלפון למיטל. אחרי החיבור לגורם טיפולי התיק חוזר לרכז/ת ללוות מרחוק.</span></div>
-      </div>
+      </details></div>
     </div>
 
   </div>
@@ -422,5 +443,8 @@ footer{border-top:1px solid var(--line);padding:22px 0 34px;margin-top:10px}
     <div class="credit">impactos</div>
   </div>
 </footer>
+<script>
+document.querySelectorAll('.expand-all').forEach(function(b){b.addEventListener('click',function(){var d=document.querySelectorAll('#'+b.dataset.target+' details');var open=[].some.call(d,function(x){return !x.open});d.forEach(function(x){x.open=open});b.textContent=open?'סגירת הכל':'פתיחת הכל';});});
+</script>
 </body>
 </html>
