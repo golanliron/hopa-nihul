@@ -187,6 +187,75 @@ h2{font-size:70px;line-height:1.08;font-weight:800;margin:0 0 18px}
 .end .site img{height:44px}
 .end .kick,.end .num,.end .brand{color:#fff}
 
+/* מערכת ואתר: צילום + רשימה */
+.shot2{display:grid;grid-template-columns:1.25fr 1fr;gap:60px;align-items:center;flex:1}
+.frame{border-radius:22px;overflow:hidden;border:3px solid #141414;box-shadow:0 18px 50px rgba(0,0,0,.16);background:#fff}
+.frame .bar{height:34px;background:#141414;display:flex;align-items:center;gap:8px;padding:0 16px}
+.frame .bar i{width:11px;height:11px;border-radius:50%;background:#555}
+.frame .bar i:first-child{background:var(--pink)}.frame .bar i:nth-child(2){background:var(--yel)}
+.frame img{display:block;width:100%}
+.stack2{display:flex;flex-direction:column;gap:22px}
+.stack2 .frame{border-width:2px;box-shadow:0 10px 30px rgba(0,0,0,.12)}
+.stack2 .frame img{max-height:300px;object-fit:cover;object-position:top}
+.nw{white-space:nowrap}
+.ticks{list-style:none;margin:0 0 30px;padding:0;display:flex;flex-direction:column;gap:18px}
+.ticks li{font-size:29px;line-height:1.4;padding-right:46px;position:relative}
+.ticks li::before{content:"";position:absolute;right:0;top:9px;width:26px;height:26px;border-radius:50%;background:var(--yel);box-shadow:inset 0 0 0 7px var(--pink)}
+.ticks b{font-weight:800}
+.golink{display:inline-flex;align-items:center;gap:12px;background:#141414;color:var(--yel);text-decoration:none;font-size:26px;font-weight:800;padding:16px 30px;border-radius:99px;align-self:flex-start}
+.golink svg{font-size:30px}
+.mini{font-size:20px;color:#888;margin-top:14px}
+.sideqr{display:flex;gap:22px;align-items:center;margin-top:8px}
+.sideqr svg{width:150px;height:150px;flex:none;border:2px solid #141414;border-radius:14px;padding:6px;background:#fff}
+.sideqr span{font-size:22px;line-height:1.4;color:var(--ink2)}
+
+/* הכשרת רכזים */
+.route{display:grid;grid-template-columns:repeat(3,1fr);gap:26px;margin:6px 0 30px}
+.mt{border-radius:26px;padding:28px 30px;background:#f6f6f6;position:relative}
+.mt .d{display:inline-block;font-size:20px;font-weight:800;background:#141414;color:var(--yel);padding:5px 16px;border-radius:99px;margin-bottom:12px}
+.mt h3{font-size:31px;margin:0 0 8px;font-weight:800}
+.mt p{font-size:23px;line-height:1.45;margin:0;color:var(--ink2)}
+.mt:nth-child(2){background:var(--pinks)}.mt:nth-child(2) .d{background:var(--pink);color:#fff}
+.kit{display:grid;grid-template-columns:1.1fr 1fr;gap:30px;align-items:stretch}
+.chal{background:var(--pink);color:#fff;border-radius:26px;padding:28px 34px;display:flex;flex-direction:column;justify-content:center;transform:rotate(-1.2deg);box-shadow:0 14px 34px rgba(232,52,138,.28)}
+.chal small{font-size:19px;font-weight:700;opacity:.85}
+.chal p{font-size:31px;font-weight:800;line-height:1.35;margin:8px 0 0}
+.tools{display:flex;flex-wrap:wrap;gap:12px;align-content:center}
+.tools span{font-size:23px;font-weight:700;padding:12px 22px;border-radius:99px;background:var(--yels);border:2px solid var(--yeld)}
+
+/* 8 הרכיבים */
+.r8{display:grid;grid-template-columns:repeat(4,1fr);gap:22px;margin-top:8px}
+.r8 div{border-radius:24px;padding:24px 26px;background:#fff;border:3px solid var(--c);position:relative}
+.r8 b{display:block;font-size:54px;font-weight:900;color:var(--c);line-height:1}
+.r8 h3{font-size:29px;margin:8px 0 4px;font-weight:800}
+.r8 p{font-size:21px;margin:0;color:var(--ink2)}
+.game .brand{display:none}
+.r8 em{position:absolute;top:18px;right:22px;font-style:normal;font-size:17px;font-weight:800;background:var(--yel);padding:3px 12px;border-radius:99px}
+.r8note{margin-top:28px;font-size:28px;font-weight:600}
+
+/* המשחק בשקף */
+.s.game{padding:96px 70px 60px}
+.gwrap{display:grid;grid-template-columns:1fr 250px;gap:26px;flex:1;min-height:0}
+.gwrap iframe{width:100%;height:100%;border:3px solid #141414;border-radius:20px;background:#fff}
+.gside{display:flex;flex-direction:column;gap:18px;justify-content:center;text-align:center}
+.gside svg{width:220px;height:220px;margin:0 auto;border:2px solid #141414;border-radius:16px;padding:8px;background:#fff}
+.gside b{font-size:24px}
+.gside span{font-size:19px;color:var(--ink2);line-height:1.4}
+.gmob{display:none}
+
+/* מדידה */
+.m4{display:grid;grid-template-columns:repeat(4,1fr);gap:22px;margin:6px 0 30px}
+.m4 div{border-radius:26px;padding:28px 26px;background:#141414;color:#fff}
+.m4 div:nth-child(2){background:var(--pink)}
+.m4 div:nth-child(3){background:var(--yel);color:#141414}
+.m4 div:nth-child(4){background:#f3f3f3;color:#141414}
+.m4 b{display:block;font-size:22px;font-weight:700;opacity:.8;margin-bottom:10px}
+.m4 p{font-size:29px;line-height:1.35;margin:0;font-weight:800}
+.how{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.how div{font-size:25px;line-height:1.4;padding:22px 26px;border-radius:22px;border:2px solid var(--line)}
+.how div b{display:block;font-size:27px;margin-bottom:4px}
+
+
 /* מושן */
 .s.on .a1{animation:up .7s both cubic-bezier(.2,.8,.2,1)}
 .s.on .st{animation:up .7s both cubic-bezier(.2,.8,.2,1);animation-delay:calc(var(--b,.3s) + var(--d,0) * .12s)}
@@ -263,6 +332,20 @@ body.pres #pv{display:block;padding:24px;direction:rtl;max-width:1000px;margin:0
   .qrbox svg{width:200px;height:200px}.qrbox b{font-size:18px}.qrbox a{font-size:14px}
   .end .tag{font-size:20px;margin-bottom:26px}.end .p{padding:20px}.end .p b{font-size:22px}.end .p span,.end .p a{font-size:16px}
   .end .site{font-size:18px;padding:12px 22px}.end .site img{height:28px}
+  .shot2,.route,.kit,.r8,.m4,.how,.gwrap{grid-template-columns:1fr;gap:14px}
+  .ticks li{font-size:16px;padding-right:30px}.ticks li::before{width:18px;height:18px;top:3px;box-shadow:inset 0 0 0 5px var(--pink)}
+  .golink{font-size:16px;padding:12px 20px}.mini{font-size:13px}
+  .sideqr svg{width:100px;height:100px}.sideqr span{font-size:14px}
+  .mt{padding:18px}.mt .d{font-size:13px}.mt h3{font-size:20px}.mt p{font-size:15px}
+  .chal{padding:18px;transform:none}.chal small{font-size:13px}.chal p{font-size:18px}
+  .tools span{font-size:14px;padding:8px 14px}
+  .r8{grid-template-columns:1fr 1fr;gap:10px}.r8 div{padding:14px}.r8 b{font-size:30px}.r8 h3{font-size:17px}.r8 p{font-size:13px}.r8 em{font-size:11px;top:10px;left:10px}
+  .r8note{font-size:16px}
+  .s.game{padding:58px 16px 64px}
+  .gwrap iframe,.gside{display:none}
+  .gmob{display:inline-flex}
+  .m4 div{padding:18px}.m4 b{font-size:13px}.m4 p{font-size:18px}
+  .how div{font-size:15px;padding:14px}.how div b{font-size:17px}
   #ctl,#bar,#notes{display:none!important}
   .nt{display:block;margin-top:22px;background:var(--yels);border-radius:14px;padding:10px 14px;font-size:15px;line-height:1.55;color:#141414}
   .nt summary{cursor:pointer;font-weight:700;color:var(--pinkd)}
@@ -306,7 +389,7 @@ body.printmode #printSheet{display:block}
   <h1 class="a1">מה זו הופה,<br>ואיך זה נראה <span class="pk">בבית הספר</span></h1>
   <div class="sub a1">מפגש היכרות עם מנהלי ומנהלות רשת אמית</div>
   <div class="who a1"><b>עמותת הופה</b> לירון גולן · מיטל פלג</div>
-  <template class="notes"><span class="who-say">לירון (הצעה)</span><br>פתיחה קצרה: תודה, מי אנחנו, ומה יהיה בשעה. "נתחיל דווקא מכם: יש לנו קלפים". עוד לא מסבירים מה זו הופה.</template>
+  <template class="notes"><span class="who-say">לירון (הצעה)</span><br>פתיחה קצרה: תודה, מי אנחנו, ומה יהיה בשעה ורבע: היכרות, המערכת והכלים, משחק קצר שבו בונים תוכנית עבודה, ושאלות. "נתחיל דווקא מכם: יש לנו קלפים". עוד לא מסבירים מה זו הופה.</template>
 </section>
 
 <!-- 2 קלפים -->
@@ -406,6 +489,112 @@ body.printmode #printSheet{display:block}
   <template class="notes"><span class="who-say">מיטל (הצעה)</span><br>אפשר להראות כאן מסך אמיתי מ-HOPA Secure או את מצגת י״ב (yb.html), אם יש זמן. לא להיכנס לפירוט טכני.</template>
 </section>
 
+<!-- Secure -->
+<section class="s" data-k="המערכת">
+  <h2 class="a1">HOPA Secure: <span class="pk">תיק לכל בוגר</span>, במקום אחד</h2>
+  <div class="shot2">
+    <div class="stack2 a1">
+      <div class="frame"><div class="bar"><i></i><i></i><i></i></div><img src="img/tafkidim/2-attempt.jpg" alt="מסך פנייה של בוגר במערכת, עם כפתורי ניסיתי ליצור קשר ושינוי שלב (נתוני הדגמה)"></div>
+      <div class="frame"><div class="bar"><i></i><i></i><i></i></div><img src="img/tafkidim/5-history.jpg" alt="היסטוריית הטיפול בפנייה: כל שלב מתועד עם תאריך (נתוני הדגמה)"></div>
+    </div>
+    <div>
+      <ul class="ticks">
+        <li class="st"><b>תיק בוגר:</b> פרטים, שאלון מיפוי, שיחות והערות</li>
+        <li class="st"><b>פניות בוגרים</b> בשלבים, עם תזכורת כשמשהו ממתין</li>
+        <li class="st"><b>דורשי טיפול:</b> מי חסר טלפון, מי לא דיברו איתו מזמן</li>
+        <li class="st"><b>ברכות אוטומטיות</b> ביום הולדת, בגיוס ובשחרור</li>
+        <li class="st"><b>היסטוריה מלאה:</b> כשרכז/ת מתחלף/ת, שום דבר לא הולך לאיבוד</li>
+      </ul>
+      <a class="golink a1" href="https://hopa.org.il" target="_blank" rel="noopener"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M14 4h6v6M20 4l-9 9M18 14v5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h5"/></svg>הדגמה חיה במערכת</a>
+      <div class="mini a1">הצילומים: בית ספר להדגמה, בלי בוגרים אמיתיים</div>
+    </div>
+  </div>
+  <template class="notes"><span class="who-say">מיטל (הצעה), 5 דק'</span><br>להדגמה חיה: להיכנס מראש ולפתוח <b>רק את בית הספר להדגמה</b>. חשבון אדמין על המקרן מראה בוגרים אמיתיים. אם אין אינטרנט, הצילומים מספיקים. המסר: הרכז/ת לא עובד/ת באקסלים, והכול נשאר בבית הספר גם כשמתחלפים אנשים.</template>
+</section>
+
+<!-- האתר -->
+<section class="s" data-k="האתר ומאגר המענים">
+  <h2 class="a1">האתר של הופה: <span class="pk">כל המענים</span> במקום אחד</h2>
+  <div class="shot2">
+    <div class="frame a1"><div class="bar"><i></i><i></i><i></i></div><img src="img/amit/site.jpg" alt="דף הבית של אתר הופה: כל המענים, המלגות וההזדמנויות לצעירים בגילאי 14–26"></div>
+    <div>
+      <ul class="ticks">
+        <li class="st"><b>מלגות, זכויות, תעסוקה, לימודים ושירות,</b> <span class="nw">לגילאי <span class="ltr">14–26</span></span></li>
+        <li class="st"><b>חיפוש לפי אזור וגיל:</b> הבוגר מוצא לבד, הרכז/ת שולח/ת קישור</li>
+        <li class="st"><b>מתעדכן כל הזמן,</b> עם תאריכי הרשמה</li>
+        <li class="st"><b>פתוח לכולם ובחינם,</b> גם לבוגרים ולהורים</li>
+      </ul>
+      <div class="sideqr a1"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 29 29" role="img" aria-label="QR לאתר הופה"><rect width="100%" height="100%" fill="#fff"/><path stroke="#141414" d="M2 2.5h7m2 0h2m1 0h1m1 0h1m3 0h7m-25 1h1m5 0h1m2 0h1m1 0h1m6 0h1m5 0h1m-25 1h1m1 0h3m1 0h1m2 0h1m3 0h1m4 0h1m1 0h3m1 0h1m-25 1h1m1 0h3m1 0h1m1 0h1m2 0h5m2 0h1m1 0h3m1 0h1m-25 1h1m1 0h3m1 0h1m2 0h4m1 0h1m1 0h1m1 0h1m1 0h3m1 0h1m-25 1h1m5 0h1m1 0h1m3 0h1m1 0h1m1 0h1m1 0h1m5 0h1m-25 1h7m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h7m-17 1h2m2 0h1m2 0h2m-16 1h2m3 0h1m2 0h3m1 0h4m1 0h2m1 0h1m-22 1h1m1 0h1m4 0h1m2 0h3m2 0h2m1 0h2m1 0h1m1 0h2m-23 1h1m3 0h1m3 0h1m1 0h5m2 0h4m1 0h1m-25 1h1m1 0h1m1 0h1m2 0h1m3 0h1m3 0h1m1 0h2m1 0h2m-22 1h2m1 0h1m1 0h3m3 0h1m1 0h3m2 0h2m4 0h1m-24 1h1m3 0h1m5 0h1m1 0h1m1 0h5m3 0h2m-25 1h2m2 0h4m1 0h1m1 0h1m2 0h2m1 0h2m2 0h2m1 0h1m-22 1h1m1 0h1m1 0h1m1 0h4m1 0h3m2 0h3m-22 1h3m3 0h1m1 0h2m3 0h2m1 0h5m2 0h1m-16 1h1m1 0h1m1 0h1m1 0h1m1 0h1m3 0h1m3 0h1m-25 1h7m2 0h1m1 0h1m2 0h1m1 0h1m1 0h1m1 0h1m3 0h1m-25 1h1m5 0h1m2 0h1m5 0h2m3 0h1m2 0h2m-25 1h1m1 0h3m1 0h1m2 0h1m1 0h3m1 0h6m2 0h2m-25 1h1m1 0h3m1 0h1m2 0h2m1 0h1m3 0h2m2 0h1m1 0h2m-24 1h1m1 0h3m1 0h1m1 0h1m2 0h1m2 0h1m2 0h1m1 0h3m1 0h2m-25 1h1m5 0h1m1 0h1m1 0h2m1 0h1m2 0h1m2 0h2m-21 1h7m4 0h3m1 0h2m1 0h1m2 0h1m2 0h1"/></svg><span>סרקו ונסו עכשיו:<br><a href="https://hopa.org.il" target="_blank" rel="noopener" class="ltr" style="color:var(--pinkd)">hopa.org.il</a></span></div>
+    </div>
+  </div>
+  <template class="notes"><span class="who-say">לירון (הצעה), 4 דק'</span><br>לבקש מהמנהלים לסרוק ולחפש מענה אחד לבוגר שהם מכירים. שימו לב: האתר כותב "יותר מ-1000 תוכניות", ובשקף "הופה היום" כתוב 600+ מענים במאגר. כדאי להחליט איזה מספר אומרים.</template>
+</section>
+
+<!-- הכשרת רכזים -->
+<section class="s" data-k="הכשרת רכזים">
+  <h2 class="a1">הכשרת רכזים: <span class="pk">ככה זה נראה</span></h2>
+  <p class="lead a1" style="margin-bottom:26px">מסלול של שלושה מפגשים, שבסופו כל רכז/ת יוצא/ת עם תוכנית עבודה שנתית לבית הספר.</p>
+  <div class="route">
+    <div class="mt st"><span class="d">מפגש 1 · זום</span><h3>מה עושים בליווי</h3><p>בוגר אמיתי מספר מה עזר לו. מכירים את 8 הרכיבים, ובונים יחד צ׳ק־ליסט לשכבת י״ב.</p></div>
+    <div class="mt st"><span class="d">מפגש 2 · פנים אל פנים</span><h3>שולחנות הרעיונות</h3><p>כל שולחן מקבל רכיב וקלפי אתגר, ויש 90 שניות לזרוק רעיונות. עלו 223 רעיונות, ומהם נבנתה החוברת.</p></div>
+    <div class="mt st"><span class="d">מפגש 3 · זום</span><h3>התוכנית המלאה</h3><p>כל שולחן מציג, כל אחד לוקח מה שמתאים לו, ומפיקים מסמך תוכנית עם שורת חתימה למנהל/ת.</p></div>
+  </div>
+  <div class="kit">
+    <div class="chal st"><small>דוגמה לקלף אתגר מהמפגש</small><p>יש לי 20 דקות מול שכבת י״ב, פעם אחת בשנה. מה אני עושה בהן?</p></div>
+    <div class="tools st"><span>חוברת 8 רכיבים · 101 רעיונות</span><span>מחברת מלווה</span><span>32 קלפי אתגר</span><span>זום רכזים חודשי</span><span>כרטיס כיס לשיחת בוגר</span><span>ליווי צמוד מהמטה</span></div>
+  </div>
+  <template class="notes"><span class="who-say">מיטל (הצעה), 5 דק'</span><br>להראות שההכשרה מעשית: הרכזים לא מקבלים הרצאה, הם בונים בעצמם. אפשר להחזיק ביד את החוברת המודפסת. מכאן עוברים ישר לשאלה "איך בונים תוכנית עבודה".</template>
+</section>
+
+<!-- 8 הרכיבים -->
+<section class="s" data-k="איך בונים תוכנית עבודה">
+  <h2 class="a1">תוכנית עבודה = <span class="pk">8 רכיבים</span> לאורך השנה</h2>
+  <div class="r8">
+    <div class="st" style="--c:#E8348A"><b class="ltr">1</b><h3>השותפים</h3><p>מי בבית הספר איתי</p></div>
+    <div class="st" style="--c:#f0a500"><b class="ltr">2</b><h3>שכבת י״ב</h3><p>לפני שהם הולכים</p></div>
+    <div class="st" style="--c:#22b573"><em>שוטף</em><b class="ltr">3</b><h3>המאגר</h3><p>רשימה שלא מתפוררת</p></div>
+    <div class="st" style="--c:#4a9fe0"><em>שוטף</em><b class="ltr">4</b><h3>הקשר השוטף</h3><p>מתי, לכמה, באיזה ערוץ</p></div>
+    <div class="st" style="--c:#9b6fd4"><b class="ltr">5</b><h3>מענים וזכויות</h3><p>מה עושים עם מה ששמענו</p></div>
+    <div class="st" style="--c:#e07a5f"><b class="ltr">6</b><h3>קהילה ואירועים</h3><p>יום בוגרים, מחזור, חוזרים</p></div>
+    <div class="st" style="--c:#2a9d8f"><em>שוטף</em><b class="ltr">7</b><h3>תיעוד ומדידה</h3><p>איך יודעים שזה עובד</p></div>
+    <div class="st" style="--c:#6a4c93"><b class="ltr">8</b><h3>מול ההנהלה</h3><p>גיבוי, תקציב ומקום בתוכנית</p></div>
+  </div>
+  <p class="r8note a1">לא עושים הכול בבת אחת: <span class="hl">בכל חודש בוחרים רכיב</span>, וחלק מהרכיבים רצים לאורך כל השנה.</p>
+  <template class="notes"><span class="who-say">מיטל (הצעה), 2 דק'</span><br>סקירה מהירה בלבד, בלי להיכנס לכל רכיב. "בואו ננסה לבנות שנה ביחד" ועוברים למשחק.</template>
+</section>
+
+<!-- המשחק -->
+<section class="s game" data-k="בונים תוכנית · משחק">
+  <div class="gwrap">
+    <iframe src="bonim-tochnit.html?embed=1" title="משחק: בונים תוכנית עבודה שנתית" loading="lazy" allow="clipboard-write"></iframe>
+    <div class="gside">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 37 37" role="img" aria-label="QR למשחק בניית התוכנית"><rect width="100%" height="100%" fill="#fff"/><path stroke="#141414" d="M2 2.5h7m6 0h7m1 0h3m2 0h7m-33 1h1m5 0h1m6 0h3m1 0h1m2 0h5m1 0h1m5 0h1m-33 1h1m1 0h3m1 0h1m2 0h1m1 0h3m1 0h1m1 0h1m1 0h2m2 0h2m1 0h1m1 0h3m1 0h1m-33 1h1m1 0h3m1 0h1m3 0h1m2 0h2m3 0h2m2 0h2m2 0h1m1 0h3m1 0h1m-33 1h1m1 0h3m1 0h1m2 0h4m1 0h1m2 0h1m3 0h1m1 0h1m2 0h1m1 0h3m1 0h1m-33 1h1m5 0h1m1 0h1m2 0h1m3 0h1m3 0h4m3 0h1m5 0h1m-33 1h7m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h7m-24 1h2m1 0h1m1 0h9m1 0h1m-25 1h1m2 0h1m1 0h2m1 0h2m1 0h4m1 0h1m2 0h1m1 0h1m2 0h2m1 0h1m-27 1h1m1 0h3m3 0h1m2 0h2m2 0h3m1 0h1m1 0h1m1 0h4m3 0h2m-33 1h3m2 0h3m1 0h1m2 0h3m1 0h1m2 0h2m1 0h1m1 0h1m1 0h3m1 0h1m1 0h1m-31 1h2m1 0h1m4 0h4m1 0h1m5 0h2m1 0h1m1 0h1m1 0h2m1 0h2m-31 1h1m1 0h3m3 0h1m1 0h1m1 0h9m1 0h4m1 0h1m2 0h1m-33 1h1m1 0h3m2 0h3m1 0h2m1 0h4m1 0h4m1 0h1m1 0h1m1 0h2m1 0h2m-33 1h5m1 0h1m1 0h1m1 0h3m1 0h1m1 0h2m4 0h2m1 0h2m1 0h1m1 0h2m-32 1h4m5 0h3m1 0h5m1 0h1m1 0h1m2 0h1m1 0h4m1 0h1m-32 1h3m2 0h3m3 0h1m1 0h3m1 0h1m2 0h2m1 0h1m2 0h1m1 0h1m2 0h1m-32 1h2m1 0h1m3 0h2m1 0h1m1 0h3m1 0h2m2 0h1m2 0h3m1 0h1m1 0h1m-30 1h1m2 0h1m2 0h1m1 0h4m4 0h2m2 0h1m4 0h1m4 0h3m-33 1h1m4 0h1m2 0h3m1 0h1m1 0h1m2 0h1m1 0h3m1 0h1m3 0h1m3 0h2m-33 1h1m1 0h2m1 0h2m2 0h2m1 0h1m1 0h3m4 0h1m2 0h1m6 0h2m-30 1h1m1 0h1m2 0h1m1 0h3m1 0h1m1 0h1m3 0h1m1 0h1m1 0h3m3 0h3m-33 1h2m1 0h2m1 0h1m2 0h1m1 0h1m2 0h1m1 0h1m1 0h2m2 0h1m1 0h1m2 0h1m1 0h2m1 0h1m-32 1h1m1 0h1m1 0h1m1 0h2m1 0h2m1 0h4m3 0h4m2 0h4m-30 1h1m1 0h1m2 0h3m1 0h1m1 0h2m1 0h4m3 0h1m2 0h5m-21 1h3m2 0h2m1 0h1m1 0h5m1 0h1m3 0h2m2 0h1m-33 1h7m3 0h2m2 0h1m1 0h3m1 0h1m3 0h1m1 0h1m1 0h4m-32 1h1m5 0h1m1 0h1m3 0h2m3 0h1m1 0h3m2 0h1m3 0h1m2 0h1m-32 1h1m1 0h3m1 0h1m3 0h5m2 0h1m1 0h4m1 0h6m1 0h1m-32 1h1m1 0h3m1 0h1m1 0h1m1 0h1m1 0h1m3 0h1m1 0h1m2 0h1m1 0h1m2 0h1m1 0h3m-31 1h1m1 0h3m1 0h1m3 0h2m4 0h1m6 0h2m3 0h1m3 0h1m-33 1h1m5 0h1m2 0h1m1 0h1m1 0h1m1 0h1m1 0h10m-27 1h7m1 0h1m3 0h2m2 0h1m2 0h1m1 0h1m2 0h3m1 0h2m1 0h1"/></svg>
+      <b>בנו תוכנית לבית הספר שלכם</b>
+      <span>סרקו, גררו רעיונות לחודשים, ובסוף לחצו "הפקת התוכנית"</span>
+    </div>
+    <a class="golink gmob" href="bonim-tochnit.html">פתיחת המשחק</a>
+  </div>
+  <template class="notes"><span class="who-say">מיטל (הצעה), 15 דק'</span><br><b>2 דק':</b> מדגימים על המסך עם הקבוצה: ספטמבר, איזה רכיב? גוררים רעיון אחד. מה רץ כל השנה? (המאגר, הקשר השוטף, תיעוד)<br><b>10 דק':</b> כל מנהל/ת סורק/ת ובונה שנה לבית הספר שלו/ה. בטלפון: מקישים על רעיון ואז על חודש.<br><b>3 דק':</b> 2–3 מנהלים מראים את התוכנית: באיזה חודש מה, ומה חסר להם. התוכנית נשמרת רק בטלפון שלהם, ואפשר להדפיס או להעתיק אותה.</template>
+</section>
+
+<!-- תיעוד ומדידה -->
+<section class="s" data-k="תיעוד ומדידה">
+  <h2 class="a1">איך יודעים <span class="pk">שזה עובד</span></h2>
+  <p class="lead a1" style="margin-bottom:26px">ארבעה מדדים פשוטים, שבית הספר יכול לענות עליהם בסוף כל שנה:</p>
+  <div class="m4">
+    <div class="st"><b>קשר</b><p>כמה מהבוגרים היה איתם קשר בשנה האחרונה</p></div>
+    <div class="st"><b>מאגר חי</b><p>כמה מספרי טלפון במאגר עדיין תקינים</p></div>
+    <div class="st"><b>בדרך</b><p>כמה מהבוגרים לומדים, עובדים או משרתים</p></div>
+    <div class="st"><b>מבוגר משמעותי</b><p>"יש לי מבוגר שאכפת לו ממני": שאלה אחת בסקר השנתי</p></div>
+  </div>
+  <div class="how">
+    <div class="st"><b>כל שיחה, בקצרה</b>תאריך, מה עלה ומה סוכם. כשמתקשרים שוב, זוכרים הכול.</div>
+    <div class="st"><b>עדכון חודשי למנהל/ת</b>כמה שיחות, מה עלה ובמה צריך עזרה.</div>
+    <div class="st"><b>פעם ברבעון</b>בודקים שמי שהכי צריך באמת קיבל הכי הרבה זמן.</div>
+  </div>
+  <template class="notes"><span class="who-say">לירון (הצעה), 5 דק'</span><br>התיעוד נעשה בתוך HOPA Secure, והמספרים יוצאים ממנו. לשאול את המנהלים: "איזה מהמדדים הייתם רוצים לראות בישיבת הנהלה?"</template>
+</section>
+
 <!-- 11 הוכחה -->
 <section class="s proof" data-k="זה עובד">
   <h2 class="a1">בית שאן: מה ליווי רציף עושה</h2>
@@ -428,7 +617,7 @@ body.printmode #printSheet{display:block}
     <li class="st"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M22 10 12 5 2 10l10 5 10-5z"/><path d="M6 12v5c3 2 9 2 12 0v-5"/></svg><span>קליטת מחזור י״ב לפני הפיזור: טלפון אישי והסכמה מכל תלמיד</span></li>
   </ul>
   <div class="backcard a1"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="2" width="14" height="20" rx="2" transform="rotate(-8 12 12)"/><path d="M10 9h5M10 13h4"/></svg><span>חוזרים לקלף ששלפתם בהתחלה: מה מכל זה היה משנה אותו?</span></div>
-  <template class="notes"><span class="who-say">מיטל (הצעה)</span><br>לא מדברים על כסף. אם שואלים: "נתאם בשיחה עם כל בית ספר". לחזור ל-2–3 מנהלים שענו בקלפים, ולשאול מה מכל זה היה עוזר להם.</template>
+  <template class="notes"><span class="who-say">מיטל (הצעה)</span><br>לא מדברים על תקציב במפגש הזה. לחזור ל-2–3 מנהלים שענו בקלפים, ולשאול מה מכל זה היה עוזר להם.</template>
 </section>
 
 <!-- 13 צעד הבא -->

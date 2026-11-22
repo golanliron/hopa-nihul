@@ -1,0 +1,397 @@
+<!doctype html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>בונים תוכנית עבודה · הופה</title>
+<meta name="description" content="משחק בניית תוכנית עבודה שנתית לליווי בוגרים לפי 8 הרכיבים">
+<link rel="icon" href="hopa-logo.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+:root{--pink:#E8348A;--pinkd:#C2185B;--pinks:#FCE7F2;--yel:#FFF200;--yeld:#FFD500;--yels:#FFFCE6;--ink:#141414;--ink2:#555;--line:#e6e6e6;--bg:#f6f5f2}
+*{box-sizing:border-box}
+html,body{margin:0;background:var(--bg);color:var(--ink);font-family:Rubik,system-ui,sans-serif}
+button,input{font:inherit}
+.ltr{direction:ltr;unicode-bidi:isolate;display:inline-block}
+
+/* ===== מבנה: מסך מלא במחשב, גלילה בנייד ===== */
+#app{display:flex;flex-direction:column;height:100vh}
+header{display:flex;align-items:center;gap:16px;padding:12px 20px;background:#fff;border-bottom:4px solid var(--yel);flex:none;flex-wrap:wrap}
+header img{height:38px}
+header h1{font-size:24px;margin:0;font-weight:800}
+header h1 small{display:block;font-size:14px;font-weight:500;color:var(--ink2);margin-top:2px}
+header .sp{flex:1}
+#school{border:2px solid var(--line);border-radius:12px;padding:9px 14px;font-size:16px;width:240px;background:#fafafa}
+.btn{border:0;border-radius:12px;padding:11px 20px;font-weight:700;font-size:16px;cursor:pointer;background:#141414;color:#fff}
+.btn.pk{background:var(--pink)}
+.btn.gh{background:#fff;color:var(--ink);border:2px solid var(--line)}
+.btn:focus-visible,.tab:focus-visible,.idea:focus-visible,.slot:focus-visible{outline:3px solid var(--yeld);outline-offset:2px}
+main{flex:1;display:grid;grid-template-columns:400px 1fr;min-height:0}
+
+/* ארגז הרעיונות */
+#box{background:#fff;border-left:2px solid var(--line);display:flex;flex-direction:column;min-height:0}
+.tabs{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;padding:12px;flex:none}
+.tab{border:2px solid var(--c);background:#fff;color:var(--ink);border-radius:12px;padding:7px 4px 6px;cursor:pointer;text-align:center;line-height:1.15;position:relative}
+.tab b{display:block;font-size:20px;font-weight:900;color:var(--c)}
+.tab span{display:block;font-size:12.5px;font-weight:600}
+.tab.on{background:var(--c);color:#fff}.tab.on b{color:#fff}
+.tab .ong{position:absolute;top:-8px;left:-4px;background:var(--yel);color:#141414;font-size:10.5px;font-weight:800;padding:1px 6px;border-radius:99px}
+.tab .cnt{position:absolute;top:-8px;right:-4px;background:#141414;color:#fff;font-size:11px;font-weight:800;min-width:19px;height:19px;border-radius:99px;display:none;align-items:center;justify-content:center}
+.tab .cnt.on{display:flex}
+.boxhead{padding:4px 16px 8px;flex:none}
+.boxhead h2{margin:0;font-size:21px;display:flex;align-items:center;gap:8px}
+.boxhead h2 i{width:14px;height:14px;border-radius:50%;background:var(--c);display:inline-block}
+.boxhead p{margin:2px 0 0;font-size:14px;color:var(--ink2)}
+#ideas{flex:1;overflow:auto;padding:4px 12px 12px;display:flex;flex-direction:column;gap:8px;min-height:0}
+.idea{border:2px solid var(--line);border-right:7px solid var(--c);background:#fff;border-radius:12px;padding:9px 12px;font-size:15px;line-height:1.38;cursor:grab;user-select:none;-webkit-user-select:none;touch-action:pan-y;position:relative;text-align:right;width:100%}
+.idea:hover{border-color:#ccc;border-right-color:var(--c)}
+.idea.sel{background:var(--yels);border-color:var(--yeld);border-right-color:var(--c);box-shadow:0 0 0 3px var(--yel)}
+.idea .hp{display:inline-block;font-size:11px;font-weight:800;background:var(--yel);padding:0 7px;border-radius:99px;margin-left:6px;vertical-align:1px}
+.idea .used{position:absolute;left:8px;bottom:5px;font-size:11px;font-weight:800;color:#22b573}
+.own{display:flex;gap:6px;padding:10px 12px;border-top:2px solid var(--line);flex:none}
+.own input{flex:1;border:2px solid var(--line);border-radius:10px;padding:8px 10px;font-size:15px;min-width:0}
+.own .btn{padding:8px 14px;font-size:15px}
+
+/* לוח השנה */
+#board{overflow:auto;padding:14px 18px 18px;min-height:0}
+.hint{font-size:15px;color:var(--ink2);margin:0 0 10px;display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+.hint b{color:var(--ink)}
+.slot{background:#fff;border:2px dashed #d6d6d6;border-radius:16px;padding:10px;min-height:96px;transition:background .15s,border-color .15s;display:flex;flex-direction:column;gap:6px}
+.slot .sh{display:flex;align-items:center;gap:6px;font-weight:800;font-size:16px}
+.slot .sh .dots{display:flex;gap:3px;margin-right:auto}
+.slot .sh .dots i{width:12px;height:12px;border-radius:50%;background:var(--c)}
+.slot .em{font-size:13px;color:#aaa;margin:auto 0}
+.slot.has{border-style:solid;border-color:var(--line)}
+.slot.over,.armed .slot:hover{background:var(--yels);border-color:var(--yeld);border-style:solid}
+.armed .slot{cursor:copy}
+#year{margin-bottom:12px;background:#141414;border-color:#141414;color:#fff;min-height:84px}
+#year .sh{font-size:17px}
+#year .em{color:#999}
+#year.over{background:#2b2b2b;border-color:var(--yel)}
+#year .items{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:6px}
+.months{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
+.chip{display:flex;align-items:flex-start;gap:6px;background:#fafafa;border:1px solid var(--line);border-right:5px solid var(--c);border-radius:9px;padding:5px 8px;font-size:13px;line-height:1.3;color:var(--ink);cursor:grab;touch-action:pan-y;user-select:none;-webkit-user-select:none}
+.chip span{flex:1}
+.chip button{border:0;background:none;color:#999;font-size:17px;line-height:1;cursor:pointer;padding:0 2px}
+.chip button:hover{color:var(--pinkd)}
+#year .chip{background:#232323;border-color:#333;border-right-color:var(--c);color:#fff}
+
+.ghost{position:fixed;z-index:99;pointer-events:none;max-width:280px;transform:translate(50%,-50%) rotate(-2deg);box-shadow:0 14px 30px rgba(0,0,0,.25);opacity:.95}
+.toast{position:fixed;bottom:18px;left:50%;transform:translateX(-50%);background:#141414;color:#fff;padding:10px 18px;border-radius:12px;font-size:15px;z-index:100;opacity:0;transition:opacity .2s;pointer-events:none}
+.toast.on{opacity:1}
+
+/* ===== התוכנית ===== */
+#plan{display:none;position:fixed;inset:0;background:#e9e8e4;overflow:auto;z-index:50;padding:20px}
+#plan.on{display:block}
+.pbar{max-width:900px;margin:0 auto 12px;display:flex;gap:8px;flex-wrap:wrap}
+.doc{max-width:900px;margin:0 auto;background:#fff;border-radius:6px;padding:40px 46px;box-shadow:0 4px 24px rgba(0,0,0,.1)}
+.doc .dh{display:flex;justify-content:space-between;align-items:flex-start;border-bottom:4px solid var(--pink);padding-bottom:14px;margin-bottom:18px;gap:16px}
+.doc .dh h2{margin:0;font-size:28px;font-weight:900}
+.doc .dh .sub{font-size:16px;color:var(--ink2);margin-top:4px}
+.doc .dh img{height:46px}
+.doc .cov{display:flex;gap:6px;flex-wrap:wrap;margin:0 0 18px;font-size:14px;align-items:center}
+.doc .cov span{padding:3px 10px;border-radius:99px;border:2px solid var(--c);font-weight:700}
+.doc .cov span.y{background:var(--c);color:#fff}
+.doc .cov span.n{opacity:.45;border-style:dashed}
+.doc table{width:100%;border-collapse:collapse;font-size:15px}
+.doc th{background:#141414;color:#fff;text-align:right;padding:8px 10px;font-weight:700}
+.doc td{border-bottom:1px solid #e3e3e3;padding:8px 10px;vertical-align:top;line-height:1.4}
+.doc td.per{font-weight:800;white-space:nowrap}
+.doc td.rc{white-space:nowrap;font-weight:700;color:var(--c)}
+.doc .rcm{display:none}
+.doc tr.yr td{background:#f7f7f7}
+.doc td input{width:100%;border:0;border-bottom:1px dashed #bbb;padding:3px 2px;font-size:15px;background:transparent;min-width:90px}
+.doc .empty{color:#999;padding:30px;text-align:center;font-size:17px}
+.doc .sign{display:grid;grid-template-columns:1fr 1fr 1fr;gap:30px;margin-top:40px;font-size:15px}
+.doc .sign div{border-top:2px solid #141414;padding-top:6px;color:var(--ink2)}
+.doc .foot{margin-top:24px;font-size:12px;color:#999;display:flex;justify-content:space-between}
+
+/* מצב הטמעה בשקף */
+.embed header{padding:8px 16px}.embed header h1 small{display:none}
+
+/* ===== נייד ===== */
+@media (max-width:900px){
+  #app{height:auto;min-height:100vh}
+  header{padding:10px 14px;gap:10px}
+  header h1{font-size:19px}header h1 small{font-size:12.5px}
+  header .sp{display:none}
+  #school{width:100%;order:5;font-size:16px}
+  header .btn{padding:9px 14px;font-size:15px}
+  main{display:block}
+  #box{position:sticky;top:0;z-index:5;border-left:0;border-bottom:3px solid var(--line);max-height:52vh;box-shadow:0 6px 16px rgba(0,0,0,.06)}
+  .tabs{display:flex;overflow-x:auto;padding:10px 12px 8px;gap:6px;scrollbar-width:none}
+  .tab{flex:none;min-width:74px;padding:6px 8px}
+  .tab b{font-size:16px}.tab span{font-size:12px}
+  .boxhead{padding:2px 14px 4px}.boxhead h2{font-size:17px}.boxhead p{font-size:12.5px}
+  #ideas{padding:4px 12px 10px}
+  .idea{font-size:14.5px}
+  .own{padding:8px 12px}
+  #board{padding:12px 12px 30px;overflow:visible}
+  .months{grid-template-columns:1fr 1fr;gap:8px}
+  #year .items{grid-template-columns:1fr}
+  .slot{min-height:80px;padding:8px}
+  #plan{padding:10px}
+  .doc{padding:20px 14px}
+  .doc .dh h2{font-size:20px}.doc .dh img{height:34px}
+  .doc table,.doc td input{font-size:13.5px}
+  .doc th,.doc td{padding:6px 5px}
+  .doc th:nth-child(2),.doc td.rc{display:none}
+  .doc .rcm{display:block;font-weight:800;color:var(--c);font-size:12px;margin-bottom:2px}
+  .doc td.per{white-space:normal;width:22%}
+  .doc .sign{grid-template-columns:1fr;gap:22px}
+}
+
+@media print{
+  @page{size:A4;margin:12mm}
+  body{background:#fff}
+  #app,.pbar,.toast{display:none!important}
+  #plan{display:block!important;position:static;background:#fff;padding:0;overflow:visible}
+  .doc{box-shadow:none;padding:0;max-width:none}
+  .doc td input{border:0}
+  *{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+}
+</style>
+</head>
+<body>
+<div id="app">
+  <header>
+    <img src="hopa-logo.png" alt="Hopa!">
+    <h1>בונים תוכנית עבודה שנתית<small>ליווי בוגרים · 8 רכיבים · רעיונות מהחוברת</small></h1>
+    <span class="sp"></span>
+    <input id="school" type="text" placeholder="שם בית הספר" aria-label="שם בית הספר">
+    <button class="btn gh" id="reset" type="button">ניקוי</button>
+    <button class="btn pk" id="make" type="button">הפקת התוכנית</button>
+  </header>
+  <main>
+    <aside id="box" aria-label="ארגז הרעיונות">
+      <div class="tabs" id="tabs" role="tablist"></div>
+      <div class="boxhead" id="bh"></div>
+      <div id="ideas"></div>
+      <form class="own" id="own"><input id="ownT" type="text" placeholder="רעיון משלכם לרכיב הזה" aria-label="רעיון משלכם"><button class="btn" type="submit">הוספה</button></form>
+    </aside>
+    <section id="board" aria-label="לוח השנה">
+      <p class="hint"><b>גררו רעיון לחודש,</b> או הקישו על רעיון ואז על החודש. רכיב שעובדים עליו כל השנה? שימו אותו ב"לאורך כל השנה".</p>
+      <div class="slot" id="year" data-slot="year" tabindex="0"></div>
+      <div class="months" id="months"></div>
+    </section>
+  </main>
+</div>
+
+<div id="plan" aria-live="polite">
+  <div class="pbar">
+    <button class="btn" id="back" type="button">חזרה לבנייה</button>
+    <button class="btn pk" id="print" type="button">הדפסה / PDF</button>
+    <button class="btn gh" id="copy" type="button">העתקה כטקסט</button>
+  </div>
+  <div class="doc" id="doc"></div>
+</div>
+<div class="toast" id="toast"></div>
+
+<script src="rechivim-data.js"></script>
+<script>
+(function(){
+var $=function(s){return document.querySelector(s)};
+var esc=function(s){return String(s).replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]})};
+var COL={1:'#E8348A',2:'#f0a500',3:'#22b573',4:'#4a9fe0',5:'#9b6fd4',6:'#e07a5f',7:'#2a9d8f',8:'#6a4c93'};
+var ONGOING={3:1,4:1,7:1}; /* רכיבים שבדרך כלל רצים לאורך כל השנה (הצעה, לא חובה) */
+var MONTHS=['ספטמבר','אוקטובר','נובמבר','דצמבר','ינואר','פברואר','מרץ','אפריל','מאי','יוני','יולי','אוגוסט'];
+var SLOTS=['year'].concat(MONTHS.map(function(_,i){return 'm'+i}));
+var KEY='hopa-bonim-tochnit-v1';
+if(/[?&]embed=1/.test(location.search))document.body.classList.add('embed');
+
+/* כל הרעיונות: id יציב לפי רכיב ומיקום */
+var ALL={};
+RCH.forEach(function(c){
+  var k=0;
+  (IDEAS[c.n]||[]).forEach(function(t){if(typeof t==='string'){ALL[c.n+'-'+(++k)]={id:c.n+'-'+k,n:c.n,t:t,h:0}}});
+  (ADD[c.n]||[]).forEach(function(t){ALL[c.n+'-'+(++k)]={id:c.n+'-'+k,n:c.n,t:t,h:1}});
+});
+
+/* מצב */
+var S={cur:1,school:'',own:[],slots:{},who:{}};
+SLOTS.forEach(function(s){S.slots[s]=[]});
+try{var raw=localStorage.getItem(KEY);if(raw){var o=JSON.parse(raw);if(o&&o.slots){S.cur=o.cur||1;S.school=o.school||'';S.own=o.own||[];S.who=o.who||{};SLOTS.forEach(function(s){S.slots[s]=(o.slots[s]||[])})}}}catch(e){}
+S.own.forEach(function(x){ALL[x.id]=x});
+function save(){try{localStorage.setItem(KEY,JSON.stringify(S))}catch(e){}}
+
+var sel=null; /* רעיון שנבחר בהקשה */
+function toast(t){var el=$('#toast');el.textContent=t;el.classList.add('on');clearTimeout(toast.h);toast.h=setTimeout(function(){el.classList.remove('on')},1800)}
+function usedCount(id){var c=0;SLOTS.forEach(function(s){S.slots[s].forEach(function(x){if(x===id)c++})});return c}
+function compCount(n){var c=0;SLOTS.forEach(function(s){S.slots[s].forEach(function(x){if(ALL[x]&&ALL[x].n===n)c++})});return c}
+
+function renderTabs(){
+  $('#tabs').innerHTML=RCH.map(function(c){
+    var k=compCount(c.n);
+    return '<button type="button" role="tab" class="tab'+(c.n===S.cur?' on':'')+'" data-n="'+c.n+'" style="--c:'+COL[c.n]+'" aria-selected="'+(c.n===S.cur)+'">'+
+      (ONGOING[c.n]?'<em class="ong">שוטף</em>':'')+'<em class="cnt'+(k?' on':'')+'">'+k+'</em>'+
+      '<b class="ltr">'+c.n+'</b><span>'+esc(c.t)+'</span></button>';
+  }).join('');
+}
+function renderIdeas(){
+  var c=RCH[S.cur-1];
+  $('#box').style.setProperty('--c',COL[c.n]);
+  $('#bh').innerHTML='<h2><i></i>'+c.n+'. '+esc(c.t)+'</h2><p>'+esc(c.d)+(ONGOING[c.n]?' · בדרך כלל רץ לאורך כל השנה':'')+'</p>';
+  var list=Object.keys(ALL).map(function(k){return ALL[k]}).filter(function(x){return x.n===c.n});
+  $('#ideas').innerHTML=list.map(function(x){
+    var u=usedCount(x.id);
+    return '<button type="button" class="idea'+(sel===x.id?' sel':'')+'" data-id="'+x.id+'" style="--c:'+COL[x.n]+'">'+
+      (x.h?'<span class="hp">הופה</span>':'')+(x.own?'<span class="hp" style="background:#141414;color:#fff">שלנו</span>':'')+esc(x.t)+
+      (u?'<span class="used">✓ בתוכנית</span>':'')+'</button>';
+  }).join('');
+}
+function chip(id,slot,i){
+  var x=ALL[id];if(!x)return '';
+  return '<div class="chip" data-id="'+id+'" data-from="'+slot+'" data-i="'+i+'" style="--c:'+COL[x.n]+'"><span>'+esc(x.t)+'</span><button type="button" class="rm" aria-label="הסרה">×</button></div>';
+}
+function dots(slot){
+  var seen={},h='';S.slots[slot].forEach(function(id){var n=ALL[id]&&ALL[id].n;if(n&&!seen[n]){seen[n]=1;h+='<i style="--c:'+COL[n]+'" title="'+esc(RCH[n-1].t)+'"></i>'}});
+  return '<span class="dots">'+h+'</span>';
+}
+function renderSlots(){
+  var y=$('#year');
+  y.classList.toggle('has',S.slots.year.length>0);
+  y.innerHTML='<div class="sh">לאורך כל השנה'+dots('year')+'</div>'+
+    (S.slots.year.length?'<div class="items">'+S.slots.year.map(function(id,i){return chip(id,'year',i)}).join('')+'</div>':'<div class="em">רכיבים שעובדים עליהם כל השנה, למשל הקשר השוטף או המאגר</div>');
+  $('#months').innerHTML=MONTHS.map(function(m,i){
+    var s='m'+i,arr=S.slots[s];
+    return '<div class="slot'+(arr.length?' has':'')+'" data-slot="'+s+'" tabindex="0"><div class="sh">'+m+dots(s)+'</div>'+
+      (arr.length?arr.map(function(id,j){return chip(id,s,j)}).join(''):'<div class="em">גררו לכאן</div>')+'</div>';
+  }).join('');
+}
+function renderAll(){renderTabs();renderIdeas();renderSlots();document.body.classList.toggle('armed',!!sel)}
+
+function place(id,slot){
+  if(!ALL[id]||!S.slots[slot])return;
+  if(S.slots[slot].indexOf(id)>-1){toast('הרעיון כבר נמצא שם');return}
+  S.slots[slot].push(id);save();
+  toast(slot==='year'?'נוסף ל"לאורך כל השנה"':'נוסף ל'+MONTHS[+slot.slice(1)]);
+}
+function removeAt(slot,i){S.slots[slot].splice(i,1);save()}
+
+/* --- טאבים, הקשה ובחירה --- */
+$('#tabs').addEventListener('click',function(e){var b=e.target.closest('.tab');if(!b)return;S.cur=+b.dataset.n;save();renderTabs();renderIdeas();$('#ideas').scrollTop=0});
+$('#board').addEventListener('click',function(e){
+  var rm=e.target.closest('.rm');
+  if(rm){var c=rm.closest('.chip');removeAt(c.dataset.from,+c.dataset.i);renderAll();return}
+  var s=e.target.closest('[data-slot]');
+  if(s&&sel){place(sel,s.dataset.slot);sel=null;renderAll()}
+});
+$('#board').addEventListener('keydown',function(e){
+  if((e.key==='Enter'||e.key===' ')&&sel){var s=e.target.closest('[data-slot]');if(s){e.preventDefault();place(sel,s.dataset.slot);sel=null;renderAll()}}
+});
+$('#own').addEventListener('submit',function(e){
+  e.preventDefault();var t=$('#ownT').value.trim();if(!t)return;
+  var x={id:'o'+Date.now().toString(36),n:S.cur,t:t,h:0,own:1};
+  ALL[x.id]=x;S.own.push(x);save();$('#ownT').value='';sel=x.id;renderAll();toast('נוסף. עכשיו הקישו על חודש');
+});
+$('#school').value=S.school;
+$('#school').addEventListener('input',function(){S.school=this.value;save()});
+$('#reset').addEventListener('click',function(){
+  if(!confirm('לנקות את כל התוכנית?'))return;
+  SLOTS.forEach(function(s){S.slots[s]=[]});S.who={};sel=null;save();renderAll();
+});
+
+/* --- גרירה: עכבר מיד, מגע אחרי לחיצה ארוכה. הקשה = בחירה --- */
+var D=null;
+document.addEventListener('pointerdown',function(e){
+  if(e.button>0)return;
+  var el=e.target.closest('.idea,.chip');if(!el||e.target.closest('.rm'))return;
+  D={el:el,id:el.dataset.id,from:el.dataset.from||null,i:el.dataset.i,x:e.clientX,y:e.clientY,touch:e.pointerType!=='mouse',on:false,pid:e.pointerId};
+  if(D.touch)D.timer=setTimeout(function(){if(D&&!D.moved)startDrag(D.x,D.y)},260);
+});
+function startDrag(x,y){
+  D.on=true;
+  var g=D.el.cloneNode(true);g.classList.add('ghost');g.classList.remove('sel');g.style.width=Math.min(D.el.offsetWidth,280)+'px';
+  document.body.appendChild(g);D.g=g;moveGhost(x,y);
+  if(navigator.vibrate)try{navigator.vibrate(15)}catch(e){}
+}
+function moveGhost(x,y){D.g.style.left=x+'px';D.g.style.top=y+'px';
+  var t=document.elementFromPoint(x,y),s=t&&t.closest('[data-slot]');
+  document.querySelectorAll('.slot.over').forEach(function(o){if(o!==s)o.classList.remove('over')});
+  if(s)s.classList.add('over');D.over=s;
+}
+document.addEventListener('pointermove',function(e){
+  if(!D)return;
+  var dx=e.clientX-D.x,dy=e.clientY-D.y,far=dx*dx+dy*dy>64;
+  if(!D.on){
+    if(far){D.moved=true;if(D.touch){clearTimeout(D.timer);D=null;return}startDrag(e.clientX,e.clientY)}else return;
+  }
+  e.preventDefault();moveGhost(e.clientX,e.clientY);
+});
+/* בזמן גרירה במגע: לא לגלול */
+document.addEventListener('touchmove',function(e){if(D&&D.on)e.preventDefault()},{passive:false});
+function endDrag(e,cancel){
+  if(!D)return;clearTimeout(D.timer);
+  var d=D;D=null;
+  if(d.on){
+    if(d.g)d.g.remove();
+    document.querySelectorAll('.slot.over').forEach(function(o){o.classList.remove('over')});
+    if(!cancel&&d.over){
+      var to=d.over.dataset.slot;
+      if(d.from){ if(to!==d.from){removeAt(d.from,+d.i);place(d.id,to)} }
+      else place(d.id,to);
+    }
+    renderAll();suppressClick();
+  }else if(!cancel&&!d.from&&!d.moved){
+    sel=(sel===d.id)?null:d.id;renderAll();
+    if(sel)toast('עכשיו הקישו על חודש');
+    suppressClick();
+  }
+}
+document.addEventListener('pointerup',function(e){endDrag(e,false)});
+document.addEventListener('pointercancel',function(e){endDrag(e,true)});
+function suppressClick(){var f=function(ev){ev.stopPropagation();ev.preventDefault()};document.addEventListener('click',f,true);setTimeout(function(){document.removeEventListener('click',f,true)},0)}
+/* מקלדת: Enter על רעיון בוחר אותו */
+$('#ideas').addEventListener('keydown',function(e){var b=e.target.closest('.idea');if(b&&(e.key==='Enter'||e.key===' ')){e.preventDefault();sel=(sel===b.dataset.id)?null:b.dataset.id;renderAll();var nb=document.querySelector('.idea[data-id="'+b.dataset.id+'"]');if(nb)nb.focus()}});
+document.addEventListener('keydown',function(e){if(e.key==='Escape'&&sel){sel=null;renderAll()}});
+
+/* --- הפקת התוכנית --- */
+function rows(){
+  var out=[];
+  SLOTS.forEach(function(s){
+    var per=s==='year'?'לאורך כל השנה':MONTHS[+s.slice(1)];
+    S.slots[s].forEach(function(id){var x=ALL[id];if(x)out.push({s:s,per:per,x:x,key:s+'|'+id})});
+  });
+  return out;
+}
+function renderPlan(){
+  var R=rows(),used={};R.forEach(function(r){used[r.x.n]=1});
+  var nUsed=Object.keys(used).length;
+  var h='<div class="dh"><div><h2>תוכנית עבודה שנתית · ליווי בוגרים</h2><div class="sub">'+(S.school?esc(S.school)+' · ':'')+'שנת הלימודים תשפ״ז</div></div><img src="hopa-logo.png" alt="Hopa!"></div>';
+  h+='<div class="cov"><b style="margin-left:4px">רכיבים בתוכנית: <span class="ltr" style="border:0;padding:0">'+nUsed+'/8</span></b>'+
+    RCH.map(function(c){return '<span class="'+(used[c.n]?'y':'n')+'" style="--c:'+COL[c.n]+'">'+esc(c.t)+'</span>'}).join('')+'</div>';
+  if(!R.length){h+='<div class="empty">עוד לא נבחרו רעיונות. חזרו לבנייה וגררו רעיונות לחודשים.</div>'}
+  else{
+    h+='<table><thead><tr><th>מתי</th><th>רכיב</th><th>מה עושים</th><th style="width:22%">אחראי/ת</th></tr></thead><tbody>';
+    var last='';
+    R.forEach(function(r){
+      h+='<tr'+(r.s==='year'?' class="yr"':'')+'><td class="per">'+(r.per!==last?esc(r.per):'')+'</td>'+
+        '<td class="rc" style="--c:'+COL[r.x.n]+'">'+esc(RCH[r.x.n-1].t)+'</td><td><span class="rcm" style="--c:'+COL[r.x.n]+'">'+esc(RCH[r.x.n-1].t)+'</span>'+esc(r.x.t)+'</td>'+
+        '<td><input data-k="'+esc(r.key)+'" value="'+esc(S.who[r.key]||'')+'" placeholder="מי?" aria-label="אחראי/ת"></td></tr>';
+      last=r.per;
+    });
+    h+='</tbody></table>';
+  }
+  h+='<div class="sign"><div>הרכז/ת</div><div>אישור המנהל/ת</div><div>תאריך</div></div>';
+  h+='<div class="foot"><span>נבנה מתוך חוברת 8 הרכיבים בליווי בוגרים</span><span class="ltr">hopa.org.il</span></div>';
+  $('#doc').innerHTML=h;
+}
+$('#doc').addEventListener('input',function(e){var i=e.target.closest('input[data-k]');if(i){S.who[i.dataset.k]=i.value;save()}});
+$('#make').addEventListener('click',function(){sel=null;renderPlan();$('#plan').classList.add('on');$('#plan').scrollTop=0});
+$('#back').addEventListener('click',function(){$('#plan').classList.remove('on');renderAll()});
+$('#print').addEventListener('click',function(){window.print()});
+$('#copy').addEventListener('click',function(){
+  var R=rows(),t='תוכנית עבודה שנתית · ליווי בוגרים'+(S.school?' · '+S.school:'')+'\n\n',last='';
+  R.forEach(function(r){if(r.per!==last){t+='\n'+r.per+'\n';last=r.per}t+='• ['+RCH[r.x.n-1].t+'] '+r.x.t+(S.who[r.key]?' · אחראי/ת: '+S.who[r.key]:'')+'\n'});
+  var done=function(){toast('התוכנית הועתקה')};
+  try{navigator.clipboard.writeText(t).then(done,function(){fallback(t);done()})}catch(e){fallback(t);done()}
+});
+function fallback(t){var a=document.createElement('textarea');a.value=t;a.style.position='fixed';a.style.opacity='0';document.body.appendChild(a);a.select();try{document.execCommand('copy')}catch(e){}a.remove()}
+
+renderAll();
+})();
+</script>
+</body>
+</html>
